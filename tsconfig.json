@@ -1,0 +1,22 @@
+{
+  "include": ["src/**/*.ts", "src/components/App.tsx"],
+  "exclude": ["node_modules", "**/*.spec.ts"],
+  "compilerOptions": {
+    "module": "CommonJS",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "target": "ES2015",
+    "outDir": "dist",
+    "rootDir": "src",
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
+  }
+}
