@@ -1,0 +1,39 @@
+{
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "**/*.spec.ts"],
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "es5",
+
+    "outDir": "dist",
+    "rootDir": "src",
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "noEmit": true,
+    "moduleResolution": "node",
+    "allowJs": true,
+
+    "sourceMap": true,
+    "removeComments": true,
+
+    "strict": true,
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "allowSyntheticDefaultImports": true,
+
+    "baseUrl": "src",
+    "paths": {
+      "@components/*": ["./components/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@assets/*": ["./assets/*"],
+      "@redux/*": ["./redux/*"],
+      "@styles/*": ["./styles/*"],
+      "@constants/*": ["./constants/*"],
+      "@services/*": ["./services/*"],
+      "@utils/*": ["./utils/*"],
+    },
+  }
+}

@@ -1,0 +1,35 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "linebreak-style": ["error", "windows"],
+        "react/function-component-definition": "off",
+        "react/jsx-filename-extension": "off",
+        "import/no-unresolved": "off",
+        "indent": ["warn", 4],
+        "no-tabs": "off",
+        "react/jsx-indent": "off",
+        "react/jsx-indent-props": "off",
+        "semi": ["warn", "never"],
+        "no-unused-vars": "warn"
+    },
+    "ignorePatterns": ["node-modules/*", "webpack/*", "webpack.config.ts"]
+}
