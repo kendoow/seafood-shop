@@ -1,0 +1,129 @@
+.Container {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 550px;
+  height: 750px;
+
+  background: left 15% / 50% no-repeat url("@assets/fishBg.png"),
+    right 78% / 60% no-repeat url("@assets/fishBgRight.png");
+  background-color: #fff !important;
+
+  .Exit {
+    position: absolute;
+    z-index: 1;
+    top: 40px;
+    left: -30px;
+
+    width: 70px;
+    height: 70px;
+
+    cursor: pointer;
+    transition: all 0.3s;
+
+    background-color: #fff;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
+
+    &:hover {
+      transition: all 0.3s;
+      transform: scale(1.05);
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 34px;
+      left: 10px;
+
+      width: 50px;
+      height: 5px;
+
+      content: "";
+
+      background-color: #000;
+    }
+
+    &::before {
+      transition: all 0.3s;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transition: all 0.3s;
+      transform: rotate(-45deg);
+    }
+  }
+
+  .Title {
+    margin-bottom: 35px;
+
+    color: #000;
+
+    font-size: 64px;
+    font-weight: bold;
+    line-height: 75px;
+  }
+
+  .Redirect {
+    display: flex;
+    justify-content: space-between;
+
+    width: 350px;
+    margin-bottom: 10px;
+
+    font-size: 20px;
+
+    .Link {
+      transition: all 0.3s;
+
+      color: #000;
+      border-bottom: 1px solid #000;
+
+      &:hover {
+        transition: all 0.3s;
+
+        opacity: 0.8;
+        border-bottom: 1px solid transparent;
+      }
+    }
+  }
+
+  .PasswordWrapper {
+    position: relative;
+    .InputPassword {
+      padding-right: 50px;
+    }
+    .ToggleShow {
+      position: absolute;
+      z-index: 2;
+      top: 18px;
+      right: 20px;
+
+      padding-left: 3px;
+    }
+  }
+
+  .Btn {
+    margin-top: 60px;
+  }
+
+  .ErrorValid {
+    border: 1px solid red;
+    
+  }
+
+  .Error {
+    margin-bottom: 3px;
+    height: 22px;
+   
+    vertical-align: middle;
+    display: flex;
+    text-align: center;
+
+    color: red;
+  }
+}

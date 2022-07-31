@@ -7,7 +7,7 @@
 
     "outDir": "dist",
     "rootDir": "src",
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "esModuleInterop": true,
     "noEmit": true,
     "moduleResolution": "node",
@@ -34,6 +34,7 @@
       "@constants/*": ["./constants/*"],
       "@services/*": ["./services/*"],
       "@utils/*": ["./utils/*"],
+      "@pages/*":["./pages/*"]
     },
   }
 }

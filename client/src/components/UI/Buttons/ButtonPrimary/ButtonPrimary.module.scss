@@ -1,0 +1,44 @@
+.Primary {
+	width: 200px;
+	height: 75px;
+
+	transition: all 0.3s;
+	text-align: center;
+	text-transform: lowercase;
+
+	color: #FFF;
+	background-color: #000;
+
+	font-size: 36px;
+
+	&:disabled {
+		&:hover {
+			transform: none;
+		}
+	}
+
+	&:hover {
+		transition: all 0.3s;
+		transform: scale(1.02);
+	}
+}
+
+.Secondary {
+	width: 360px;
+	height: 110px;
+
+	transition: all 0.3s;
+	text-align: center;
+	text-transform: lowercase;
+
+	color: #FFF;
+	border: 1px solid #FFF;
+	background-color: transparent;
+
+	font-size: 36px;
+
+	&:hover {
+		transition: all 0.3s;
+		transform: scale(1.02);
+	}
+}

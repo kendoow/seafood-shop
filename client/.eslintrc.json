@@ -1,35 +1,53 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "@typescript-eslint"
-    ],
-    "rules": {
-        "linebreak-style": ["error", "windows"],
-        "react/function-component-definition": "off",
-        "react/jsx-filename-extension": "off",
-        "import/no-unresolved": "off",
-        "indent": ["warn", 4],
-        "no-tabs": "off",
-        "react/jsx-indent": "off",
-        "react/jsx-indent-props": "off",
-        "semi": ["warn", "never"],
-        "no-unused-vars": "warn"
-    },
-    "ignorePatterns": ["node-modules/*", "webpack/*", "webpack.config.ts"]
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "rules": {
+    "linebreak-style": ["error", "windows"],
+    "react/function-component-definition": "off",
+    "import/no-unresolved": "off",
+    "indent": ["warn", 4],
+    "no-tabs": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
+    "react/jsx-indent": "off",
+    "react/jsx-indent-props": "off",
+    "semi": ["warn", "never"],
+    "no-unused-vars": "warn",
+    "react/prop-types": "off",
+
+    "react/jsx-props-no-spreading": "off",
+    "react/button-has-type": "off",
+    "jsx-a11y/mouse-events-have-key-events": "off",
+    "react/no-array-index-key": "warn",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "react/jsx-wrap-multilines": "off",
+
+    "no-case-declarations": "off",
+    "no-unused-expressions": "off",
+    "operator-linebreak": "off",
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "off",
+    "consistent-return": "off",
+    "class-methods-use-this": "off",
+    "no-useless-catch": "off",
+    "import/order": "off",
+    "max-len": ["warn", 150],
+    "comma-dangle": "off",
+    "arrow-body-style": "off",
+    "import/extensions": "off"
+  },
+  "ignorePatterns": ["node-modules/*", "webpack/*", "webpack.config.ts"]
 }

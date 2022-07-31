@@ -1,4 +1,4 @@
-import { Configuration } from "webpack"
+import { Configuration, ProvidePlugin } from "webpack"
 
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
@@ -49,11 +49,14 @@ const webpackConfigBase: Configuration = {
     plugins: [
         new HtmlWebpackPlugin({
             template: pathResolve('public/index.html')
-        })
+        }),
+        new ProvidePlugin({
+            React: "react", 
+         }),
     ],
 
     devtool: 'inline-source-map',
-    
+   
     resolve: {
         alias: {
             '@components': pathResolve('src/components/'),
@@ -64,6 +67,7 @@ const webpackConfigBase: Configuration = {
             '@constants': pathResolve('src/constans/'),
             '@services': pathResolve('src/services/'),
             '@utils': pathResolve('src/utils/'),
+            '@pages': pathResolve('src/pages/')
         },            
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
     }
