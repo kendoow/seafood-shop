@@ -4,6 +4,6 @@ export interface ButtonPrimaryProps extends DetailedHTMLProps<HTMLAttributes<HTM
     children: ReactNode,
     className?: string,
     disabled?:boolean,
-    type?: 'Primary' | 'Secondary'
+    type?: 'Primary' | 'Secondary' | 'SecondaryArrowed' |'PrimaryMin'
 
 }

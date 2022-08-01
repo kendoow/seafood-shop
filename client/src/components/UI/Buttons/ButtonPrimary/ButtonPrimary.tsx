@@ -12,7 +12,9 @@ const ButtonPrimary: FC<ButtonPrimaryProps> = ({
             disabled={disabled}
             className={cn(className, styles.Btn, {
                 [styles.Primary]: type === 'Primary',
+                [styles.PrimaryMin]: type === 'PrimaryMin',
                 [styles.Secondary]: type === 'Secondary',
+                [styles.SecondaryArrowed]: type === 'SecondaryArrowed',
             })}
         >
             {children}

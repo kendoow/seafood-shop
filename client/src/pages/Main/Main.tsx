@@ -1,10 +1,15 @@
-import MainBlock from '@components/containers/Main/MainBlock'
+import DeliveryBlock from '@components/containers/DeliveryBlock/DeliveryBlock'
+import MainBlock from '@components/containers/MainBlock/MainBlock'
+import ProductsBlock from '@components/containers/ProductsBlock/ProductsBlock'
 import Layout from '@components/layouts/Layout/Layout'
 
 const Main = () => (
 
     <Layout>
         <MainBlock />
+        <ProductsBlock />
+        <DeliveryBlock />
+
     </Layout>
 
 )

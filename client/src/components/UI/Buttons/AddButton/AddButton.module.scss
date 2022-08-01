@@ -1,0 +1,43 @@
+.Container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	width: 130px;
+	height: 55px;
+	padding-right: 23px;
+	padding-left: 23px;
+
+	border: 1px solid #000;
+
+	.PlusContainer {
+		cursor: pointer;
+		transform: all 0.3s;
+
+		font-size: 24px;
+
+		&:hover {
+			transition: all 0.3s;
+
+			opacity: 0.8;
+		}
+	}
+
+	.MinusContainer {
+		cursor: pointer;
+		transform: all 0.3s;
+
+		font-size: 24px;
+
+		&:hover {
+			transform: all 0.3s;
+
+			opacity: 0.8;
+		}
+	}
+
+	.Amount {
+        font-weight: 500;
+		font-size: 24px;
+	}
+}

@@ -9,7 +9,7 @@ const MainBlock: FC = () => {
     return (
         <div className={styles.Container}>
             <div className={styles.Grid}>
-                <motion.div initial={{ x: -1500, opacity: 0, }} animate={{ x: 0, opacity: 1 }} transition={{ delay: 1, ease: 'easeInOut' }} className={styles.Text}>
+                <div className={styles.Text}>
                     <Text className={styles.Title} size="lg" textTransform="lowercase">Свежая икра</Text>
                     <Text className={styles.Decription} size="md">
                         Прямые поставки красной икры и рыбы с Камчатки
@@ -21,7 +21,7 @@ const MainBlock: FC = () => {
                         Сотни довольных клиентов
                     </Text>
                     <ButtonPrimary className={styles.Btn} type="Secondary">К продукции</ButtonPrimary>
-                </motion.div>
+                </div>
 
                 <div className={styles.Image}>
                     <img src="" alt="fish" />

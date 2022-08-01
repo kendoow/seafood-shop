@@ -42,3 +42,54 @@
 		transform: scale(1.02);
 	}
 }
+
+.SecondaryArrowed {
+	width: 360px;
+	height: 110px;
+	padding-left: 40px;
+
+	transition: all 0.3s;
+	text-align: left;
+	text-transform: lowercase;
+
+	color: #FFF;
+	border: 1px solid #FFF;
+	background: url("@assets/arrowRight.png") no-repeat right 5% top 50%;
+	background-color: transparent;
+
+	font-size: 36px;
+
+	&:hover {
+		padding-left: 50px;
+
+		transition: all 0.3s;
+		transform: scale(1.02);
+
+		background: url("@assets/arrowRight.png") no-repeat right 2% top 50%;
+	}
+}
+
+.PrimaryMin {
+	width: 160px;
+	height: 55px;
+
+	transition: all 0.3s;
+	text-align: center;
+	text-transform: lowercase;
+
+	color: #FFF;
+	background-color: #000;
+
+	font-size: 24px;
+
+	&:disabled {
+		&:hover {
+			transform: none;
+		}
+	}
+
+	&:hover {
+		transition: all 0.3s;
+		transform: scale(1.02);
+	}
+}
