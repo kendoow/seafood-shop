@@ -1,0 +1,153 @@
+.Container {
+	position: fixed;
+	z-index: 8;
+	top: 0;
+	left: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 100vw;
+	height: 100vh;
+
+	transition: all 0.3s;
+	transform: translateX(100%);
+	backdrop-filter: blur(15px);
+}
+
+.Active {
+	position: fixed;
+	z-index: 2;
+	top: 0;
+
+	left: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+
+	width: 100vw;
+	height: 100vh;
+
+	transition: all 0.3s;
+	transform: translateX(0);
+
+	background-color: transparent;
+	backdrop-filter: blur(10px);
+
+	.Content {
+		position: relative;
+
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
+		justify-content: space-between;
+
+		width: 600px;
+		min-height: 100vh;
+
+		background-color: #FFF;
+
+		.Text {
+			display: flex;
+			flex-direction: column;
+
+			width: 400px;
+			margin-top: 30px;
+			padding-right: 2%;
+			padding-left: 2%;
+
+			text-transform: lowercase;
+
+			font-size: 64px;
+			font-weight: 600;
+				
+			.Title{
+				margin-left: 10px;
+				margin-bottom:47px ;
+			}
+			.CloseBtn {
+				width: 10px;
+
+				cursor: pointer;
+				transition: all 0.3s;
+
+				&:hover {
+					transition: all 0.3s;
+
+					opacity: 0.8;
+				}
+
+				&::before,
+				&::after {
+					position: absolute;
+					top: 57px;
+					right: 40px;
+
+					width: 40px;
+					height: 4px;
+
+					content: "";
+
+					background: #000;
+				}
+
+				&::after {
+					transform: rotate(45deg);
+				}
+
+				&::before {
+					transform: rotate(-45deg);
+				}
+			}
+		}
+
+		.Products {
+			padding-right: 2%;
+
+			
+
+			font-size: 36px;
+			font-weight: 500;
+			line-height: 42px;
+		}
+
+		.Btn {
+			display: flex;
+			justify-content: flex-start;
+
+			width: 100%;
+
+			background-color: #000;
+
+			.BtnElement {
+				display: flex;
+				align-items: center;
+
+				width: 100%;
+				padding: 65px;
+
+				transition: all 0.3s;
+
+				color: #FFF;
+				border: none;
+				background: url("@assets/arrowRight.png") no-repeat right 20% top 50%;
+				background-color: transparent;
+
+				font-size: 36px;
+				font-size: 48px;
+				font-weight: 500;
+
+				&:hover {
+					padding-left: 100px;
+
+					transition: all 0.3s;
+					transform: scale(1.02);
+
+					background: url("@assets/arrowRight.png") no-repeat right 15% top 50%;
+				}
+			}
+		}
+	}
+}

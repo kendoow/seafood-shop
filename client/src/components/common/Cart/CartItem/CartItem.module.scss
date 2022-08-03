@@ -1,0 +1,53 @@
+.Container {
+  width: max-content;
+  height: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 3%;
+
+  .Image {   
+    margin-right: 20px;
+  }
+  .Main {
+    display: flex;
+    width: 350px;
+    justify-content: space-between;
+    img {
+       
+      cursor: pointer;
+      transition: all 0.3s;
+      &:hover {
+        transition: all 0.3s;
+        transform: scale(1.02);
+      }
+    }
+    .MainText {
+      .Name {
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 38px;
+        margin-bottom: 10px;
+      }
+      .Weight {
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 28px;
+
+        color: #747474;
+      }
+    }
+  }
+  .Price {
+    text-align: right;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 42px;
+    margin-bottom: 16px;
+  }
+  .Btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

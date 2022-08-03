@@ -1,3 +1,5 @@
+import CartItem from '@components/common/Cart/CartItem/CartItem'
+import CartModal from '@components/common/Cart/CartModal/CartModal'
 import DeliveryBlock from '@components/containers/DeliveryBlock/DeliveryBlock'
 import MainBlock from '@components/containers/MainBlock/MainBlock'
 import ProductsBlock from '@components/containers/ProductsBlock/ProductsBlock'
@@ -9,7 +11,6 @@ const Main = () => (
         <MainBlock />
         <ProductsBlock />
         <DeliveryBlock />
-
     </Layout>
 
 )

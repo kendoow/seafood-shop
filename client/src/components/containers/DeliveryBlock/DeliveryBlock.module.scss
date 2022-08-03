@@ -9,8 +9,22 @@
     margin-bottom: 50px;
     font-weight: bold;
   }
-  .Decription{
+  .DecrBlock{
+    display: flex;
+    max-width: 800px;
+    align-items: center;
+    justify-content: flex-start;
     margin-bottom: 30px;
+    .ImgBlock{
+      align-items: center;
+      display: flex;
+      justify-content: flex-start;
+     
+      margin-right: 30px;
+    }
+  }
+  .Decription{
+    
   }
   .Btn{
     margin-top: 70px;

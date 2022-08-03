@@ -10,7 +10,7 @@
 	.Image {
 		display: flex;
 		justify-content: center;
-        
+
 		padding-top: 15px;
 
 		.Heart {
@@ -34,26 +34,28 @@
 
 		.Description {
 			display: flex;
+			align-items: flex-end;
 			justify-content: space-between;
-        align-items: flex-end;
+
 			margin-top: 25px;
 			margin-bottom: 60px;
 
 			.Name {
 				font-size: 32px;
-                font-weight: 500;
+				font-weight: 500;
 			}
 
 			.Weight {
-                font-weight: 500;
 				font-size: 24px;
+				font-weight: 500;
 			}
 		}
 
 		.Price {
 			margin-bottom: 20px;
-            font-weight: 500;
+
 			font-size: 36px;
+			font-weight: 500;
 		}
 
 		.Btns {
