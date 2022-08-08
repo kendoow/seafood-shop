@@ -7,14 +7,19 @@ import { Link } from 'react-router-dom'
 import styles from './Login.module.scss'
 import hidden from '@assets/hidden.svg'
 import show from '@assets/show.svg'
+import useTypedDispatch from '@hooks/useTypedDispatch'
+import { IUserLogin } from '@redux/slices/auth/auth.interface'
+import { authLogin } from '@redux/slices/auth/auth.actions'
 
 const Login: FC = () => {
     const [hidePassword, setHidePassword] = useState<boolean>(true)
     const [validErrorMail, setValidErrorMail] = useState<boolean>(false)
     const [validErrorPassword, setValidErrorPassword] = useState<boolean>(false)
-    const emailLogin = useInput('', { isEmpty: true, minLength: 5, isEmail: true })
 
+    const emailLogin = useInput('', { isEmpty: true, minLength: 5, isEmail: true })
     const passwordLogin = useInput('', { isEmpty: true, minLength: 3 })
+
+    const dispatch = useTypedDispatch()
 
     const handlerButtonLogin = () => {
         if (!emailLogin.inputVaild) {
@@ -27,6 +32,11 @@ const Login: FC = () => {
         } else {
             setValidErrorPassword(false)
         }
+        const user: IUserLogin = {
+            email: emailLogin.value,
+            password: passwordLogin.value,
+        }
+        dispatch(authLogin(user))
     }
 
     return (

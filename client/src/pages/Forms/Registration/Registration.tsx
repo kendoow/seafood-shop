@@ -7,30 +7,36 @@ import Input from '@components/UI/Input/Input'
 import useInput from '@hooks/useInput'
 import hidden from '@assets/hidden.svg'
 import show from '@assets/show.svg'
+import { authRegistration } from '@redux/slices/auth/auth.actions'
+import useTypedDispatch from '@hooks/useTypedDispatch'
+import { IUserRegistration } from '@redux/slices/auth/auth.interface'
+import useRedirect from '@hooks/useRedirect'
 
 const Registration: FC = () => {
     const [hidePassword, setHidePassword] = useState<boolean>(true)
     const [hidePasswordRepeat, setHidePasswordRepeat] = useState<boolean>(true)
     const [validErrorMail, setValidErrorMail] = useState<boolean>(false)
     const [validErrorPassword, setValidErrorPassword] = useState<boolean>(false)
-    const [validName, setValidName] = useState<boolean>(false)
+    const [validNameError, setValidNameError] = useState<boolean>(false)
     const [validErrorRepeat, setValidErrorRepeat] = useState<boolean>(false)
-
+    const dispatch = useTypedDispatch()
     const nameRegistration = useInput('', { isEmpty: true })
     const emailRegistration = useInput('', { isEmpty: true, minLength: 5, isEmail: true })
     const passwordRegistration = useInput('', { isEmpty: true, minLength: 3 })
     const passwordRepeat = useInput('', { isEmpty: true, minLength: 3 })
 
-    const handlerButtonRegistration = () => {
+    const redirectHome = useRedirect('/')
+
+    const Validation = () => {
         if (!emailRegistration.inputVaild) {
             setValidErrorMail(true)
         } else {
             setValidErrorMail(false)
         }
-        if (!nameRegistration.inputVaild) {
-            setValidName(true)
+        if (nameRegistration.isEmpty) {
+            setValidNameError(true)
         } else {
-            setValidName(false)
+            setValidNameError(false)
         }
         if (!passwordRegistration.inputVaild) {
             setValidErrorPassword(true)
@@ -42,6 +48,17 @@ const Registration: FC = () => {
         } else {
             setValidErrorRepeat(false)
         }
+    }
+
+    const handlerButtonRegistration = () => {
+        console.log(Validation)
+        Validation()
+        const user: IUserRegistration = {
+            name: nameRegistration.value,
+            email: emailRegistration.value,
+            password: passwordRegistration.value
+        }
+        dispatch(authRegistration(user))
     }
 
     return (
@@ -61,12 +78,12 @@ const Registration: FC = () => {
                     </Link>
                 </div>
                 <div className={styles.InputsWrapper}>
-                    {validName && <div className={styles.Error}>Поле не может быть пустым</div>}
+                    {validNameError && <div className={styles.Error}>Поле не может быть пустым</div>}
                     <Input
                         value={nameRegistration.value}
                         onChange={nameRegistration.onChange}
                         onBlur={nameRegistration.onBlur}
-                        className={validErrorMail ? styles.ErrorValid : styles.Input}
+                        className={validNameError ? styles.ErrorValid : styles.Input}
                         placeholder="Имя"
                         type="text"
                     />
@@ -121,6 +138,7 @@ const Registration: FC = () => {
                 <ButtonPrimary
                     onClick={handlerButtonRegistration}
                     className={styles.Btn}
+
                 >
                     создать
                 </ButtonPrimary>

@@ -10,19 +10,7 @@
 	background-color: #000;
 	grid-template-columns: 1fr 1.2fr;
 
-	.Logo {
-		width: fit-content;
-		margin-left: 10px;
 
-		img {
-			transition: all 0.3s;
-
-			&:hover {
-				transition: all 0.3s;
-				transform: scaleY(1.2);
-			}
-		}
-	}
 
 	.Nav {
 		display: grid;
@@ -45,7 +33,6 @@
 	}
 
 	.Icons {
-
 		display: grid;
 		align-items: center;
 		justify-self: self-end;
@@ -82,9 +69,103 @@
 }
 
 .Container {
-
 }
 
 .Footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	height: 350px;
 	padding: 0 calc(50% - 650px);
+
+	background-color: #000;
+
+	.Contacts {
+		&Title {
+			margin-bottom: 10px;
+
+			text-transform: lowercase;
+
+			color: #FFF;
+
+			font-size: 36px;
+			font-weight: 500;
+			line-height: 42px;
+		}
+
+		.FooterLinks {
+			display: flex;
+			flex-direction: column;
+
+			margin-bottom: 15px;
+
+			a {
+				margin-bottom: 10px;
+
+				transition: all 0.3s;
+				text-transform: lowercase;
+
+				color: #FFF;
+
+				font-size: 32px;
+				font-weight: 400;
+				line-height: 38px;
+
+				&:hover {
+					transition: all 0.3s;
+					transform: scale(1.05);
+				}
+			}
+		}
+
+		.FooterIcons {
+			img {
+				margin-right: 25px;
+
+				transition: all 0.3s;
+
+				&:hover {
+					transition: all 0.3s;
+					transform: scale(1.05);
+				}
+			}
+		}
+	}
+
+	.FooterNav {
+		display: flex;
+		flex-direction: column;
+
+		.FooterNavItem {
+			transition: all 0.3s;
+			text-align: right;
+			text-transform: lowercase;
+
+			color: #FFF;
+
+			font-size: 36px;
+			font-weight: 500;
+			line-height: 42px;
+
+			&:hover {
+				transition: all 0.3s;
+				transform: scale(1.05);
+			}
+		}
+	}
+}
+
+.Logo {
+	width: fit-content;
+	margin-left: 10px;
+
+	img {
+		transition: all 0.3s;
+
+		&:hover {
+			transition: all 0.3s;
+			transform: scaleY(1.2);
+		}
+	}
 }

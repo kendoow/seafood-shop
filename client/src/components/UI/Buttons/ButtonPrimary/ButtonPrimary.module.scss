@@ -10,6 +10,7 @@
 	background-color: #000;
 
 	font-size: 36px;
+	font-weight: 500;
 
 	&:disabled {
 		&:hover {
@@ -36,6 +37,7 @@
 	background-color: transparent;
 
 	font-size: 36px;
+	font-weight: 500;
 
 	&:hover {
 		transition: all 0.3s;
@@ -58,6 +60,7 @@
 	background-color: transparent;
 
 	font-size: 36px;
+	font-weight: 500;
 
 	&:hover {
 		padding-left: 50px;
@@ -81,6 +84,7 @@
 	background-color: #000;
 
 	font-size: 24px;
+	font-weight: 500;
 
 	&:disabled {
 		&:hover {

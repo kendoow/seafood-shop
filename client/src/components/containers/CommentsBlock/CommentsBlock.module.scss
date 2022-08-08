@@ -1,0 +1,18 @@
+.Container {
+	width: fit-content;
+	max-width: 1000px;
+	padding: 0 calc(50% - 650px);
+
+	.Slider {
+		display: flex;
+		overflow: hidden;
+		align-items: center;
+		justify-content: center;
+
+		height: 300px;
+
+		cursor: pointer;
+
+		border-radius: 10px 10px 0 0;
+	}
+}

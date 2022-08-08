@@ -3,14 +3,15 @@ import Text from '@components/UI/Text/Text'
 import { FC } from 'react'
 import styles from './MainBlock.module.scss'
 import Arrow from '@assets/downArrow.svg'
-import { motion } from 'framer-motion'
+import mainBg from '@assets/mainFish.png'
 
 const MainBlock: FC = () => {
     return (
         <div className={styles.Container}>
+            <Text className={styles.Title} size="lg" textTransform="lowercase">Свежая икра</Text>
             <div className={styles.Grid}>
                 <div className={styles.Text}>
-                    <Text className={styles.Title} size="lg" textTransform="lowercase">Свежая икра</Text>
+
                     <Text className={styles.Decription} size="md">
                         Прямые поставки красной икры и рыбы с Камчатки
                     </Text>
@@ -24,7 +25,7 @@ const MainBlock: FC = () => {
                 </div>
 
                 <div className={styles.Image}>
-                    <img src="" alt="fish" />
+                    <img src={mainBg} alt="fish" />
                 </div>
             </div>
             <img className={styles.Arrow} src={Arrow} alt="arrow" />

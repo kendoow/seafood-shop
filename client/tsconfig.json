@@ -34,7 +34,8 @@
       "@constants/*": ["./constants/*"],
       "@services/*": ["./services/*"],
       "@utils/*": ["./utils/*"],
-      "@pages/*":["./pages/*"]
+      "@pages/*":["./pages/*"],
+      "@http/*":["./http/*"]
     },
   }
 }

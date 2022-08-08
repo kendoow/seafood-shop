@@ -23,6 +23,9 @@ const CartModal: FC<CartModalProps> = ({ active, setActive }) => {
 
                     <div className={styles.Products}>
                         <CartItem />
+                        <CartItem />
+                        <CartItem />
+                        <CartItem />
                     </div>
                 </div>
 

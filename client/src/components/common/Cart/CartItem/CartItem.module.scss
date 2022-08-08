@@ -1,53 +1,71 @@
 .Container {
-  width: max-content;
-  height: 250px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-right: 3%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 
-  .Image {   
-    margin-right: 20px;
-  }
-  .Main {
-    display: flex;
-    width: 350px;
-    justify-content: space-between;
-    img {
-       
-      cursor: pointer;
-      transition: all 0.3s;
-      &:hover {
-        transition: all 0.3s;
-        transform: scale(1.02);
-      }
-    }
-    .MainText {
-      .Name {
-        font-weight: 500;
-        font-size: 32px;
-        line-height: 38px;
-        margin-bottom: 10px;
-      }
-      .Weight {
-        font-weight: 500;
-        font-size: 24px;
-        line-height: 28px;
+	width: max-content;
+	height: 250px;
+	margin-bottom: 20px;
+	padding-right: 4%;
+	padding-left: 4%;
 
-        color: #747474;
-      }
-    }
-  }
-  .Price {
-    text-align: right;
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 42px;
-    margin-bottom: 16px;
-  }
-  .Btns {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+	background-color: #FFF;
+	filter: drop-shadow(8px 8px 10px rgb(0 0 0 / 25%));
+
+	.Image {
+		margin-right: 20px;
+	}
+
+	.Main {
+		display: flex;
+		justify-content: space-between;
+
+		width: 350px;
+
+		img {
+
+			cursor: pointer;
+			transition: all 0.3s;
+
+			&:hover {
+				transition: all 0.3s;
+				transform: scale(1.02);
+			}
+		}
+
+		.MainText {
+			.Name {
+				margin-bottom: 10px;
+
+				font-size: 32px;
+				font-weight: 500;
+				line-height: 38px;
+			}
+
+			.Weight {
+
+				color: #747474;
+
+				font-size: 24px;
+				font-weight: 500;
+				line-height: 28px;
+			}
+		}
+	}
+
+	.Price {
+		margin-bottom: 16px;
+
+		text-align: right;
+
+		font-size: 36px;
+		font-weight: 500;
+		line-height: 42px;
+	}
+
+	.Btns {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
 }

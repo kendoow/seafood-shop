@@ -17,7 +17,7 @@ const webpackConfigBase: Configuration = {
     module: {
         rules: [
             {
-                test: /\.(ts|js)x?$/,
+                test: /\.ts|\.tsx$/,
                 exclude: /node_modules/,
                 use: 'babel-loader',
             },
@@ -64,10 +64,11 @@ const webpackConfigBase: Configuration = {
             '@assets': pathResolve('src/assets/'),
             '@redux': pathResolve('src/redux/'),
             '@styles': pathResolve('src/styles/'),
-            '@constants': pathResolve('src/constans/'),
+            '@constants': pathResolve('src/constants/'),
             '@services': pathResolve('src/services/'),
             '@utils': pathResolve('src/utils/'),
-            '@pages': pathResolve('src/pages/')
+            '@pages': pathResolve('src/pages/'),
+            '@http': pathResolve('src/http/')
         },            
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
     }
