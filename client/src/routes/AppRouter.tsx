@@ -1,5 +1,6 @@
 import useTypedDispatch from '@hooks/useTypedDispatch'
 import useTypedSelector from '@hooks/useTypedSelector'
+import Favorite from '@pages/Favorite/Favorite'
 import Login from '@pages/Forms/Login/Login'
 import Registration from '@pages/Forms/Registration/Registration'
 import Main from '@pages/Main/Main'
@@ -23,7 +24,7 @@ const AppRouter: FC = () => {
             <Route path="/" element={<Main />} />
 
             <Route path="/profile" element={<Profile />} />
-            <Route path="*" element={<Main />} />
+            <Route path="/favorite" element={<Favorite />} />
             {isAuth ?
                 <>
 
@@ -32,6 +33,7 @@ const AppRouter: FC = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/registration" element={<Registration />} />
                   </>}
+            <Route path="*" element={<Main />} />
         </Routes>
     )
 }

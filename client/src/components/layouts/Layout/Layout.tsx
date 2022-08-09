@@ -79,17 +79,16 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                     <Link to="/" className={styles.FooterNavItem}>
                         главная
                     </Link>
-                    {isAuth ? <> </> : 
-                    <>
-                        {' '}
-                        <Link to="/registration" className={styles.FooterNavItem}>
+                    {isAuth ? <> </> :
+                        <>
+                            {' '}
+                            <Link to="/registration" className={styles.FooterNavItem}>
                             регистрация
-                        </Link>
-                        <Link to="/login" className={styles.FooterNavItem}>
+                            </Link>
+                            <Link to="/login" className={styles.FooterNavItem}>
                             вход
-                        </Link>
-                    </>
-                    }
+                            </Link>
+                        </>}
 
                     <Link to="/profile" className={styles.FooterNavItem}>
                         личный кабинет

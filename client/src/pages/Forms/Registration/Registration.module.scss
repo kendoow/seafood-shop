@@ -114,19 +114,29 @@
 		margin-top: 60px;
 	}
 
+	.BtnCenter {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
 	.ErrorValid {
+		padding-right: 50px;
+
 		border: 1px solid red;
+		background-color: rgb(255 225 225);
+
+		&::placeholder {
+			color: rgb(255 121 121);
+		}
 	}
 
 	.Error {
 		display: flex;
 
+
 		height: 22px;
 		margin-bottom: 3px;
-
-		text-align: center;
-
-		vertical-align: middle;
 
 		color: red;
 	}

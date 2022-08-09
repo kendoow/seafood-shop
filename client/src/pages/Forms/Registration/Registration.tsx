@@ -1,65 +1,34 @@
 import { FC, useState } from 'react'
-import FormLayout from '@components/layouts/FormLayout/FormLayout'
-import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
+import { Formik } from 'formik'
+import * as yup from 'yup'
 import { Link } from 'react-router-dom'
 import styles from './Registration.module.scss'
+
+import { authRegistration } from '@redux/slices/auth/auth.actions'
+
+import useTypedDispatch from '@hooks/useTypedDispatch'
+
 import Input from '@components/UI/Input/Input'
-import useInput from '@hooks/useInput'
+import FormLayout from '@components/layouts/FormLayout/FormLayout'
+import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
+
 import hidden from '@assets/hidden.svg'
 import show from '@assets/show.svg'
-import { authRegistration } from '@redux/slices/auth/auth.actions'
-import useTypedDispatch from '@hooks/useTypedDispatch'
-import { IUserRegistration } from '@redux/slices/auth/auth.interface'
-import useRedirect from '@hooks/useRedirect'
 
 const Registration: FC = () => {
     const [hidePassword, setHidePassword] = useState<boolean>(true)
-    const [hidePasswordRepeat, setHidePasswordRepeat] = useState<boolean>(true)
-    const [validErrorMail, setValidErrorMail] = useState<boolean>(false)
-    const [validErrorPassword, setValidErrorPassword] = useState<boolean>(false)
-    const [validNameError, setValidNameError] = useState<boolean>(false)
-    const [validErrorRepeat, setValidErrorRepeat] = useState<boolean>(false)
+    const [hidePasswordConfirm, setHidePasswordComfirm] = useState<boolean>(true)
+
     const dispatch = useTypedDispatch()
-    const nameRegistration = useInput('', { isEmpty: true })
-    const emailRegistration = useInput('', { isEmpty: true, minLength: 5, isEmail: true })
-    const passwordRegistration = useInput('', { isEmpty: true, minLength: 3 })
-    const passwordRepeat = useInput('', { isEmpty: true, minLength: 3 })
 
-    const redirectHome = useRedirect('/')
-
-    const Validation = () => {
-        if (!emailRegistration.inputVaild) {
-            setValidErrorMail(true)
-        } else {
-            setValidErrorMail(false)
-        }
-        if (nameRegistration.isEmpty) {
-            setValidNameError(true)
-        } else {
-            setValidNameError(false)
-        }
-        if (!passwordRegistration.inputVaild) {
-            setValidErrorPassword(true)
-        } else {
-            setValidErrorPassword(false)
-        }
-        if (passwordRepeat.value !== passwordRegistration.value) {
-            setValidErrorRepeat(true)
-        } else {
-            setValidErrorRepeat(false)
-        }
-    }
-
-    const handlerButtonRegistration = () => {
-        console.log(Validation)
-        Validation()
-        const user: IUserRegistration = {
-            name: nameRegistration.value,
-            email: emailRegistration.value,
-            password: passwordRegistration.value
-        }
-        dispatch(authRegistration(user))
-    }
+    const validationSchema = yup.object().shape({
+        name: yup.string().typeError('Должно быть строкой').min(3, 'Минимальная длина поля - 3 символа').max(20, 'Максимальная длина поля - 20 символов')
+            .required('Это поле обязательно'),
+        email: yup.string().email('Введите верный email').required('Это поле обязательно'),
+        password: yup.string().typeError('Должно быть строкой').min(5, 'Минимальная длина поля - 5 символов').max(20, 'Максимальная длина поля - 20 символов')
+            .required('Это поле обязательно'),
+        confirmPassword: yup.string().oneOf([yup.ref('password')], 'Пароли не совпадают').required('Это поле обязательно')
+    })
 
     return (
 
@@ -77,71 +46,96 @@ const Registration: FC = () => {
                         Войти
                     </Link>
                 </div>
-                <div className={styles.InputsWrapper}>
-                    {validNameError && <div className={styles.Error}>Поле не может быть пустым</div>}
-                    <Input
-                        value={nameRegistration.value}
-                        onChange={nameRegistration.onChange}
-                        onBlur={nameRegistration.onBlur}
-                        className={validNameError ? styles.ErrorValid : styles.Input}
-                        placeholder="Имя"
-                        type="text"
-                    />
-                    {validErrorMail && <div className={styles.Error}>Введите почту корректно</div>}
-                    <Input
-                        value={emailRegistration.value}
-                        onChange={emailRegistration.onChange}
-                        onBlur={emailRegistration.onBlur}
-                        className={validErrorMail ? styles.ErrorValid : styles.Input}
-                        placeholder="Почта"
-                        type="text"
-                    />
-                    {validErrorPassword && <div className={styles.Error}>Введите пароль корректно</div>}
-                    <div className={styles.PasswordWrapper}>
-
-                        <Input
-                            value={passwordRegistration.value}
-                            onChange={passwordRegistration.onChange}
-                            onBlur={passwordRegistration.onBlur}
-                            className={validErrorPassword ? styles.ErrorValid : styles.InputPassword}
-                            placeholder="Пароль"
-                            type={hidePassword ? 'password' : 'text'}
-                        />
-                        <button className={styles.ToggleShow} onClick={() => setHidePassword(!hidePassword)}>
-                            <img
-                                src={hidePassword ? hidden : show}
-                                alt="hidden"
-                            />
-                        </button>
-                    </div>
-                    {validErrorRepeat && <div className={styles.Error}>Пароли не совпадают</div>}
-                    <div className={styles.PasswordWrapper}>
-
-                        <Input
-                            value={passwordRepeat.value}
-                            onChange={passwordRepeat.onChange}
-                            onBlur={passwordRepeat.onBlur}
-                            className={validErrorRepeat ? styles.ErrorValid : styles.InputPassword}
-                            placeholder="Повторите пароль"
-                            type={hidePasswordRepeat ? 'password' : 'text'}
-                        />
-
-                        <button className={styles.ToggleShow} onClick={() => setHidePasswordRepeat(!hidePasswordRepeat)}>
-                            <img
-                                src={hidePasswordRepeat ? hidden : show}
-                                alt="hidden"
-                            />
-                        </button>
-                    </div>
-                </div>
-
-                <ButtonPrimary
-                    onClick={handlerButtonRegistration}
-                    className={styles.Btn}
-
+                <Formik
+                    initialValues={{
+                        name: '',
+                        email: '',
+                        password: '',
+                        confirmPassword: ''
+                    }}
+                    validateOnBlur
+                    onSubmit={(values) => dispatch(authRegistration(values))}
+                    validationSchema={validationSchema}
                 >
-                    создать
-                </ButtonPrimary>
+                    {({
+                        values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty
+                    }) => (
+                        <div className={styles.InputsWrapper}>
+                            {touched.name && errors.name && <p className={styles.Error}>{errors.name}</p>}
+                            <Input
+                                className={touched.name && errors.name && styles.ErrorValid}
+                                placeholder="Имя"
+                                type="text"
+                                name="name"
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                value={values.name}
+                            />
+                            {touched.email && errors.email && <p className={styles.Error}>{errors.email}</p>}
+                            <Input
+                                className={touched.email && errors.email && styles.ErrorValid}
+                                placeholder="Почта"
+                                type="email"
+                                name="email"
+                                onBlur={handleBlur}
+                                onChange={handleChange}
+                                value={values.email}
+                            />
+                            {touched.password && errors.password && <p className={styles.Error}>{errors.password}</p>}
+                            <div className={styles.PasswordWrapper}>
+
+                                <Input
+                                    name="password"
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    value={values.password}
+                                    className={touched.password && errors.password ? styles.ErrorValid : styles.InputPassword}
+                                    placeholder="Пароль"
+                                    type={hidePassword ? 'password' : 'text'}
+                                />
+                                <button className={styles.ToggleShow} onClick={() => setHidePassword(!hidePassword)}>
+                                    <img
+                                        src={hidePassword ? hidden : show}
+                                        alt="hidden"
+                                    />
+                                </button>
+                            </div>
+                            {touched.confirmPassword && errors.confirmPassword && <p className={styles.Error}>{errors.confirmPassword}</p>}
+                            <div className={styles.PasswordWrapper}>
+
+                                <Input
+                                    name="confirmPassword"
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    value={values.confirmPassword}
+                                    className={touched.confirmPassword && errors.confirmPassword ? styles.ErrorValid : styles.InputPassword}
+                                    placeholder="Повторите пароль"
+                                    type={hidePasswordConfirm ? 'password' : 'text'}
+                                />
+
+                                <button className={styles.ToggleShow} onClick={() => setHidePasswordComfirm(!hidePasswordConfirm)}>
+                                    <img
+                                        src={hidePasswordConfirm ? hidden : show}
+                                        alt="hidden"
+                                    />
+                                </button>
+                            </div>
+                            <div className={styles.BtnCenter}>
+                                <ButtonPrimary
+                                    onClick={handleSubmit}
+                                    className={styles.Btn}
+                                    disabled={!isValid && !dirty}
+                                    type="submit"
+                                >
+                                создать
+                                </ButtonPrimary>
+                            </div>
+                        </div>
+
+                    )}
+
+                </Formik>
+
             </div>
         </FormLayout>
     )

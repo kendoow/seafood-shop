@@ -1,6 +1,6 @@
 import { hashSync, compareSync } from 'bcrypt'
 import { IUser } from './../interfaces/auth.interface';
-import pool from '@models/db'
+import pool from 'index';
 import { ApiError } from 'exceptions/apiError';
 import tokenService from './token.service';
 

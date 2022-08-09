@@ -37,7 +37,7 @@ const DeliveryBlock: FC = () => {
                     </div>
                     <Text className={styles.Decription} size="md">доставим в течении 24 часов</Text>
                 </div>
-                <ButtonPrimary className={styles.Btn} type="SecondaryArrowed">Оформить</ButtonPrimary>
+                <ButtonPrimary className={styles.Btn} extraType="SecondaryArrowed">Оформить</ButtonPrimary>
             </div>
             <div className={styles.Image}>
                 <img src={fish} alt="fish" />

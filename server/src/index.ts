@@ -1,4 +1,3 @@
-
 import express, { Application, json } from "express";
 import cors from "cors";
 import { config } from "dotenv";
@@ -6,6 +5,7 @@ import pathResolve from '@utils/pathResolve'
 import authRouter from "@routes/auth.routes";
 
 import cookieParser from 'cookie-parser'
+import createDb from "@models/db";
 
 config({
   path: pathResolve('.env')
@@ -29,4 +29,10 @@ const start = () => {
   app.listen(PORT, () => console.log(`Server start on port - ${PORT}`));
 };
 
+const pool = createDb()
+
 start();
+
+
+export default pool 
+

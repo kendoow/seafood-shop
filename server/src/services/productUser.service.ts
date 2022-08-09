@@ -1,4 +1,4 @@
-import pool from '@models/db'
+import pool from 'index';
 import tokenService from './token.service'
 
 

@@ -21,7 +21,7 @@ const MainBlock: FC = () => {
                     <Text className={styles.Decription} size="md">
                         Сотни довольных клиентов
                     </Text>
-                    <ButtonPrimary className={styles.Btn} type="Secondary">К продукции</ButtonPrimary>
+                    <ButtonPrimary className={styles.Btn} extraType="Secondary">К продукции</ButtonPrimary>
                 </div>
 
                 <div className={styles.Image}>

@@ -23,7 +23,7 @@ const ProductItem: FC = () => {
                 657 ₽
                 </div>
                 <div className={styles.Btns}>
-                    <ButtonPrimary type="PrimaryMin">В корзину</ButtonPrimary>
+                    <ButtonPrimary extraType="PrimaryMin">В корзину</ButtonPrimary>
                     <AddButton>1</AddButton>
                 </div>
             </div>

@@ -11,7 +11,7 @@ const CartModal: FC<CartModalProps> = ({ active, setActive }) => {
 
     return (
         <div onClick={() => setActive(false)} className={active ? styles.Active : styles.Container}>
-            <div onClick={(e) => e.stopPropagation()} className={styles.Content}>
+            <div onClick={(e) => e.stopPropagation()} className={active ? styles.Content : styles.Empty}>
 
                 <div className={styles.Text}>
 
@@ -22,7 +22,6 @@ const CartModal: FC<CartModalProps> = ({ active, setActive }) => {
                     />
 
                     <div className={styles.Products}>
-                        <CartItem />
                         <CartItem />
                         <CartItem />
                         <CartItem />

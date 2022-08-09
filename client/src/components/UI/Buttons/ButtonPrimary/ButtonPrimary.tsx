@@ -4,17 +4,18 @@ import { ButtonPrimaryProps } from './ButtonPrimary.types'
 import cn from 'classnames'
 
 const ButtonPrimary: FC<ButtonPrimaryProps> = ({
-    children, className, disabled, type = 'Primary', ...props
+    children, className, disabled, extraType = 'Primary', type, ...props
 }) => {
     return (
         <button
             {...props}
             disabled={disabled}
+            type={type}
             className={cn(className, styles.Btn, {
-                [styles.Primary]: type === 'Primary',
-                [styles.PrimaryMin]: type === 'PrimaryMin',
-                [styles.Secondary]: type === 'Secondary',
-                [styles.SecondaryArrowed]: type === 'SecondaryArrowed',
+                [styles.Primary]: extraType === 'Primary',
+                [styles.PrimaryMin]: extraType === 'PrimaryMin',
+                [styles.Secondary]: extraType === 'Secondary',
+                [styles.SecondaryArrowed]: extraType === 'SecondaryArrowed',
             })}
         >
             {children}

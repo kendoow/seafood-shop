@@ -1,66 +1,126 @@
 .Container {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
 
-  .Navigation {
-    display: grid;
-    align-items: center;
-    justify-content: center;
+	.Navigation {
+		display: grid;
+		align-items: center;
+		justify-content: center;
 
-    width: 30vw;
-    height: 100vh;
+		width: 100%;
+		height: 100vh;
 
-    background-color: #000;
+		background-color: #000;
 
-    .NavItem {
-      margin-left: 20px;
+		.NavItem {
+			margin-left: 20px;
 
-      transition: all 0.3s;
-      transform: scale(1);
-      text-transform: lowercase;
+			transition: all 0.3s;
+			transform: scale(1);
+			text-transform: lowercase;
 
-      color: #fff;
-      border-bottom: 1px solid #fff;
+			color: #FFF;
 
-      font-size: 48px;
-      font-weight: 500;
-      line-height: 56px;
-    }
+			font-size: 48px;
+			font-weight: 500;
+			line-height: 56px;
 
-    .Active {
-      transition: all 0.3s;
-      transform: scale(1.1);
-      text-transform: lowercase;
+			&:hover {
+				transition: all 0.3s;
+				transform: scale(1.02);
+			}
+		}
 
-      color: #fff;
-      border-bottom: 1px solid #fff;
+		.NavItemContainer {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
 
-      font-size: 48px;
-      font-weight: 500;
-      line-height: 56px;
-    }
-  }
-  .Btn{
-	width: 209px;
-	height: 76px;
-  }
-  .BtnLight {
-    background-color: #fff;
-    color: #000;
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 42px;
-    text-align: center;
-    width: 209px;
-	height: 76px;
-	text-transform: lowercase;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	transition: all 0.3s;
-	&:hover{
-		transition: all 0.3s;
-		transform: scale(1.02);
+			width: 100%;
+			height: 200px;
+
+			transition: all 0.3s;
+		}
+
+		.Active {
+			margin-right: 10px;
+			margin-left: 10px;
+
+			transition: all 0.3s;
+
+			text-transform: lowercase;
+
+			color: #FFF;
+
+			font-size: 48px;
+			font-weight: 500;
+			line-height: 56px;
+
+			&:hover {
+				transition: all 0.3s;
+				transform: scale(1.02);
+			}
+		}
 	}
-  }
+
+	.Btn {
+		width: 209px;
+		height: 76px;
+	}
+
+	.BtnLight {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 209px;
+		height: 76px;
+
+		transition: all 0.3s;
+		text-align: center;
+		text-transform: lowercase;
+
+		color: #000;
+		background-color: #FFF;
+
+		font-size: 36px;
+		font-weight: 500;
+		line-height: 42px;
+
+		&:hover {
+			transition: all 0.3s;
+			transform: scale(1.02);
+		}
+	}
+}
+
+.Content {
+	.CloseBtn {
+		position: absolute;
+		top: 50px;
+		right: 75px;
+
+		cursor: pointer;
+
+		&::before,
+		&::after {
+			position: absolute;
+
+			width: 40px;
+			height: 4px;
+
+			content: "";
+
+			border-radius: 5px;
+			background: #000;
+		}
+
+		&::before {
+			transform: rotate(45deg);
+		}
+
+		&::after {
+			transform: rotate(-45deg);
+		}
+	}
 }

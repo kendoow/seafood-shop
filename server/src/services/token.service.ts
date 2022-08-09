@@ -1,5 +1,5 @@
 import jsonwebtoken from "jsonwebtoken"
-import pool from '@models/db'
+import pool from 'index';
 import { IJwtPayload } from "@interfaces/auth.interface"
 
 class TokenService {

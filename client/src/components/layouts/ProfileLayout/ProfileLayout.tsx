@@ -18,23 +18,25 @@ const ProfileLayout: FC<ProfileLayoutProps> = ({ children }) => {
     return (
         <div className={styles.Container}>
             <div className={styles.Navigation}>
-                <NavLink to="/profile" className={(navData) => (navData.isActive ? styles.Active : styles.NavItem)}>
-                    Личный кабинет
-                </NavLink>
-                <NavLink to="/profile" className={(navData) => (navData.isActive ? styles.Active : styles.NavItem)}>
-                    избранное
-                </NavLink>
-                <NavLink to="/profile" className={(navData) => (navData.isActive ? styles.Active : styles.NavItem)}>
-                    доставка
-                </NavLink>
-
+                <div className={styles.NavItemContainer}>
+                    <NavLink to="/profile" className={(navData) => (navData.isActive ? styles.Active : styles.NavItem)}>
+                        Личный кабинет
+                    </NavLink>
+                </div>
+                <div className={styles.NavItemContainer}>
+                    <NavLink to="/favorite" className={(navData) => (navData.isActive ? styles.Active : styles.NavItem)}>
+                        избранное
+                    </NavLink>
+                </div>
                 {isAuth ?
 
-                    <ButtonPrimary onClick={LogoutHandler} className={styles.Btn} type="Secondary">Выйти</ButtonPrimary>
+                    <ButtonPrimary onClick={LogoutHandler} className={styles.Btn} extraType="Secondary">Выйти</ButtonPrimary>
                     : <Link className={styles.BtnLight} to="/login">Войти</Link>}
 
             </div>
             <div className={styles.Content}>
+
+                <Link to="/" className={styles.CloseBtn} />
                 {children}
             </div>
         </div>

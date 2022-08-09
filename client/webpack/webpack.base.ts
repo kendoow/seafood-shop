@@ -20,6 +20,7 @@ const webpackConfigBase: Configuration = {
                 test: /\.ts|\.tsx$/,
                 exclude: /node_modules/,
                 use: 'babel-loader',
+               
             },
 
             {

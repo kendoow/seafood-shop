@@ -4,11 +4,11 @@ import styles from './Input.module.scss'
 import cn from 'classnames'
 
 const Input: FC<InputProps> = ({
-    type, onChange, value, onBlur, placeholder, className
+    type, onChange, value, onBlur, placeholder, className, name
 }) => {
     return (
         <div>
-            <input className={cn(className, styles.Input)} type={type} onChange={onChange} value={value} onBlur={onBlur} placeholder={placeholder} />
+            <input className={cn(className, styles.Input)} name={name} type={type} onChange={onChange} value={value} onBlur={onBlur} placeholder={placeholder} />
         </div>
     )
 }
