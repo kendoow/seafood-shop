@@ -1,6 +1,6 @@
-import pool from '@models/db'
-import authService from '@services/auth.service'
 import { Request, Response } from 'express'
+import authService from '@services/auth.service'
+
 
 class AuthController {
     async registration(req:Request, res:Response){

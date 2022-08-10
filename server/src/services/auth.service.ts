@@ -1,5 +1,5 @@
 import { hashSync, compareSync } from 'bcrypt'
-import { IUser } from './../interfaces/auth.interface';
+import { IJwtPayload, IUser } from './../interfaces/auth.interface';
 import pool from 'index';
 import { ApiError } from 'exceptions/apiError';
 import tokenService from './token.service';
@@ -65,6 +65,22 @@ class AuthService{
         const token = await tokenService.delete(refreshToken)
         return token;
     } 
+    async check(refreshToken: string){
+        try {
+            if(!refreshToken){
+                throw new Error('Нет refreshToken')
+            }
+            const jwtPayload: IJwtPayload = tokenService.validRefreshToken(refreshToken)
+
+            const userConfirm = await pool.query('SELECT * FROM user_account where id = $1',[jwtPayload.id])
+            if(!userConfirm){
+                throw new Error('Пользователь не зарегестрирован')
+            }
+            return userConfirm
+        } catch (e) {
+            throw e
+        }
+    }
 
     async refresh(refreshToken:string){
         try{

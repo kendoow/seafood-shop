@@ -6,7 +6,9 @@ import styles from './CommentsBlock.module.scss'
 const CommentsBlock: FC = () => {
     return (
         <div className={styles.Container}>
-           1
+            <CommentsSlider>
+                {/* <CommentsItem title="1" image="1" description="1" /> */}
+            </CommentsSlider>
         </div>
     )
 }

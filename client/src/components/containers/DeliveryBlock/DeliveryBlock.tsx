@@ -9,7 +9,7 @@ import cash from '@assets/cash.png'
 
 const DeliveryBlock: FC = () => {
     return (
-        <div className={styles.Container}>
+        <div id="delivery" className={styles.Container}>
             <div className={styles.Text}>
                 <Text className={styles.Title} textTransform="lowercase" size="lg">Доставка</Text>
                 <div className={styles.DecrBlock}>

@@ -1,6 +1,10 @@
-import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
-import Text from '@components/UI/Text/Text'
 import { FC } from 'react'
+import { Link as AnimatedLink, animateScroll as scroll } from 'react-scroll'
+
+import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
+
+import Text from '@components/UI/Text/Text'
+
 import styles from './MainBlock.module.scss'
 import Arrow from '@assets/downArrow.svg'
 import mainBg from '@assets/mainFish.png'
@@ -28,7 +32,15 @@ const MainBlock: FC = () => {
                     <img src={mainBg} alt="fish" />
                 </div>
             </div>
-            <img className={styles.Arrow} src={Arrow} alt="arrow" />
+            <AnimatedLink
+                to="products"
+                smooth
+                offset={-70}
+                duration={500}
+                className={styles.NavItem}
+            >
+                <img className={styles.Arrow} src={Arrow} alt="arrow" />
+            </AnimatedLink>
         </div>
     )
 }

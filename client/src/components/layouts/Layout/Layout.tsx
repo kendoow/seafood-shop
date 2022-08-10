@@ -11,6 +11,7 @@ import telegram from '@assets/telegram.svg'
 import whatsapp from '@assets/whatsapp.svg'
 import useTypedSelector from '@hooks/useTypedSelector'
 import authSelector from '@redux/slices/auth/auth.selector'
+import { Link as AnimatedLink, animateScroll as scroll } from 'react-scroll'
 
 const Layout: FC<LayoutProps> = ({ children }) => {
     const [activeModal, setActiveModal] = useState<boolean>(false)
@@ -28,12 +29,24 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                 </Link>
                 <div className={styles.Nav}>
                     <div className={styles.NavItems}>
-                        <div className={styles.NavItem}>
+                        <AnimatedLink
+                            to="products"
+                            smooth
+                            offset={-70}
+                            duration={500}
+                            className={styles.NavItem}
+                        >
                             Продукция
-                        </div>
-                        <div className={styles.NavItem}>
+                        </AnimatedLink>
+                        <AnimatedLink
+                            to="delivery"
+                            smooth
+                            offset={0}
+                            duration={500}
+                            className={styles.NavItem}
+                        >
                             Доставка
-                        </div>
+                        </AnimatedLink>
                     </div>
                     <CartModal active={activeModal} setActive={setActiveModal} />
                     <div className={styles.Icons}>
@@ -83,10 +96,10 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                         <>
                             {' '}
                             <Link to="/registration" className={styles.FooterNavItem}>
-                            регистрация
+                                регистрация
                             </Link>
                             <Link to="/login" className={styles.FooterNavItem}>
-                            вход
+                                вход
                             </Link>
                         </>}
 

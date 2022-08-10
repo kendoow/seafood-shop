@@ -1,6 +1,6 @@
 import { Pool } from "pg";
 
-const ProsuctsSchema = (pool: Pool) => {
+const ProductsSchema = (pool: Pool) => {
   pool.query('create TABLE if not exists products(\n\
     id SERIAL PRIMARY KEY,\n\
     img VARCHAR(255),\n\
@@ -11,4 +11,4 @@ const ProsuctsSchema = (pool: Pool) => {
   );
 };
 
-export default ProsuctsSchema;
+export default ProductsSchema;

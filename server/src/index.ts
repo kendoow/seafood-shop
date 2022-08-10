@@ -3,9 +3,13 @@ import cors from "cors";
 import { config } from "dotenv";
 import pathResolve from '@utils/pathResolve'
 import authRouter from "@routes/auth.routes";
-
+import formidableMiddleware from 'express-formidable'
 import cookieParser from 'cookie-parser'
 import createDb from "@models/db";
+import productsRouter from "@routes/products.routes";
+import fileUpload from "express-fileupload";
+import favoriteRouter from "@routes/favorite.routes";
+
 
 config({
   path: pathResolve('.env')
@@ -13,8 +17,14 @@ config({
 const PORT = process.env.PORT || 5000;
 
 const app: Application = express();
+
 app.use(json());
+
 app.use(cookieParser())
+app.use(express.static(pathResolve('../static')))
+app.use(fileUpload({}))
+
+
 app.use(
   cors({
     credentials: true,
@@ -23,7 +33,8 @@ app.use(
 );
 
 app.use('/auth', authRouter)
-
+app.use('/products', productsRouter)
+app.use('/favorite', favoriteRouter)
 
 const start = () => {
   app.listen(PORT, () => console.log(`Server start on port - ${PORT}`));

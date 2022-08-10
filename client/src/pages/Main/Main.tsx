@@ -11,7 +11,7 @@ const Main = () => (
         <MainBlock />
         <ProductsBlock />
         <DeliveryBlock />
-        <CommentsBlock />
+        {/* <CommentsBlock /> */}
     </Layout>
 
 )

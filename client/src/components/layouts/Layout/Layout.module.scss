@@ -29,7 +29,14 @@
 		font-size: 30px;
 		gap: 40px;
 	}
-
+	.NavItem{
+		transition: all 0.3s;
+		cursor: pointer;
+		&:hover {
+			transition: all 0.3s;
+			transform: scale(1.05);
+		}
+	}
 	.Icons {
 		display: grid;
 		align-items: center;
