@@ -11,28 +11,31 @@ import { ProfileLayoutProps } from './ProfileLayout.types'
 const ProfileLayout: FC<ProfileLayoutProps> = ({ children }) => {
     const dispatch = useTypedDispatch()
     const { isAuth } = useTypedSelector(authSelector)
+
     const LogoutHandler = () => {
         dispatch(authLogout())
     }
-    console.log(isAuth)
+
     return (
         <div className={styles.Container}>
             <div className={styles.Navigation}>
-                <div className={styles.NavItemContainer}>
-                    <NavLink to="/profile" className={(navData) => (navData.isActive ? styles.Active : styles.NavItem)}>
-                        Личный кабинет
-                    </NavLink>
-                </div>
-                <div className={styles.NavItemContainer}>
-                    <NavLink to="/favorite" className={(navData) => (navData.isActive ? styles.Active : styles.NavItem)}>
-                        избранное
-                    </NavLink>
-                </div>
-                {isAuth ?
+                <div className={styles.NavItems}>
+                    <div className={styles.NavItemContainer}>
+                        <NavLink to="/profile" className={(navData) => (navData.isActive ? styles.Active : styles.NavItem)}>
+                            Личный кабинет
+                        </NavLink>
+                    </div>
+                    <div className={styles.NavItemContainer}>
+                        <NavLink to="/favorite" className={(navData) => (navData.isActive ? styles.Active : styles.NavItem)}>
+                            избранное
+                        </NavLink>
+                    </div>
+                    {isAuth ?
 
-                    <ButtonPrimary onClick={LogoutHandler} className={styles.Btn} extraType="Secondary">Выйти</ButtonPrimary>
-                    : <Link className={styles.BtnLight} to="/login">Войти</Link>}
+                        <ButtonPrimary onClick={LogoutHandler} className={styles.Btn} extraType="Secondary">Выйти</ButtonPrimary>
+                        : <Link className={styles.BtnLight} to="/login">Войти</Link>}
 
+                </div>
             </div>
             <div className={styles.Content}>
 

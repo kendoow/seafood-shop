@@ -32,7 +32,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                         <AnimatedLink
                             to="products"
                             smooth
-                            offset={-70}
+                            offset={-150}
                             duration={500}
                             className={styles.NavItem}
                         >
@@ -53,9 +53,9 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                         <div onClick={menuHandler}>
                             <img src={cart} alt="cart" />
                         </div>
-                        <div>
+                        <Link to="/favorite">
                             <img src={heart} alt="heart" />
-                        </div>
+                        </Link>
                         {
                             isAuth ? <Link to="/profile"><img src={user} alt="user" /></Link> : <Link to="/login" className={styles.Btn}>войти</Link>
                         }

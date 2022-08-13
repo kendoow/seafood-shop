@@ -3,12 +3,12 @@ import cors from "cors";
 import { config } from "dotenv";
 import pathResolve from '@utils/pathResolve'
 import authRouter from "@routes/auth.routes";
-import formidableMiddleware from 'express-formidable'
 import cookieParser from 'cookie-parser'
 import createDb from "@models/db";
 import productsRouter from "@routes/products.routes";
 import fileUpload from "express-fileupload";
 import favoriteRouter from "@routes/favorite.routes";
+import cartRouter from "@routes/cart.routes";
 
 
 config({
@@ -35,6 +35,7 @@ app.use(
 app.use('/auth', authRouter)
 app.use('/products', productsRouter)
 app.use('/favorite', favoriteRouter)
+app.use('/cart', cartRouter)
 
 const start = () => {
   app.listen(PORT, () => console.log(`Server start on port - ${PORT}`));

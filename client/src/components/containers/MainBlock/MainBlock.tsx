@@ -35,7 +35,7 @@ const MainBlock: FC = () => {
             <AnimatedLink
                 to="products"
                 smooth
-                offset={-70}
+                offset={-110}
                 duration={500}
                 className={styles.NavItem}
             >

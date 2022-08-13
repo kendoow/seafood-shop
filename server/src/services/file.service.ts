@@ -5,7 +5,7 @@ import pathResolve from '@utils/pathResolve'
 
 class FileService {
     createdFile(file: UploadedFile) {
-        console.log(file)
+
         const expansion = `${file.name.split('.').pop()}`
         const fileName = `${uuid.v4()}.${expansion}`
         const filePath = pathResolve(`../static/${fileName}`)

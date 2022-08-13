@@ -7,7 +7,7 @@ const favoriteRouter = Router()
 
 favoriteRouter.get('', favoriteController.get)
 favoriteRouter.post('', favoriteController.create)
-favoriteRouter.put('', favoriteController.update)
+favoriteRouter.delete('/:id', favoriteController.delete)
 
 
 export default favoriteRouter;

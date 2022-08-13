@@ -1,13 +1,24 @@
-import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
+import useTypedDispatch from '@hooks/useTypedDispatch'
+import useTypedSelector from '@hooks/useTypedSelector'
+import { fetchCart } from '@redux/slices/cart/cart.actions'
+import cartSelector from '@redux/slices/cart/cart.selector'
+import { IProduct } from '@redux/slices/product/products.interface'
 import { FC, useEffect } from 'react'
 import CartItem from '../CartItem/CartItem'
 import styles from './CartModal.module.scss'
 import { CartModalProps } from './CartModal.types'
 
 const CartModal: FC<CartModalProps> = ({ active, setActive }) => {
+    const dispatch = useTypedDispatch()
+    const { cart, totalPrice } = useTypedSelector(cartSelector)
+    console.log(cart)
     useEffect(() => {
         document.body.style.overflow = active ? 'hidden' : 'auto'
     }, [active])
+
+    useEffect(() => {
+        !cart?.length && dispatch(fetchCart())
+    }, [totalPrice])
 
     return (
         <div onClick={() => setActive(false)} className={active ? styles.Active : styles.Container}>
@@ -22,14 +33,21 @@ const CartModal: FC<CartModalProps> = ({ active, setActive }) => {
                     />
 
                     <div className={styles.Products}>
-                        <CartItem />
-                        <CartItem />
-                        <CartItem />
+                        {
+                            !!cart?.length && cart.map((product: IProduct) => <CartItem
+                                id={product.id}
+                                key={product.title}
+                                title={product.title}
+                                gramms={product.gramms}
+                                price={product.price}
+                                img={product.img}
+                            />)
+                        }
                     </div>
                 </div>
 
                 <div className={styles.Btn}>
-                    <button className={styles.BtnElement}>В магазин</button>
+                    <button className={styles.BtnElement}>{totalPrice}</button>
                 </div>
             </div>
         </div>

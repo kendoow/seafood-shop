@@ -22,7 +22,7 @@ class ProductsController{
     }
 
     async create(req: Request, res: Response) {
-        console.log(req.body)
+       
         try {
             
             const createdProduct = await productsService.create(req.body, req.files?.img as UploadedFile)

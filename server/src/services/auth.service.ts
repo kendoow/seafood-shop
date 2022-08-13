@@ -28,7 +28,7 @@ class AuthService{
 
 
     async login(user: IUser) {
-
+        
         try {
             const userConfirmed = await pool.query('SELECT * FROM user_account where email = $1',[user.email])
             if(!user){
@@ -65,13 +65,13 @@ class AuthService{
         const token = await tokenService.delete(refreshToken)
         return token;
     } 
+
     async check(refreshToken: string){
         try {
             if(!refreshToken){
                 throw new Error('Нет refreshToken')
             }
             const jwtPayload: IJwtPayload = tokenService.validRefreshToken(refreshToken)
-
             const userConfirm = await pool.query('SELECT * FROM user_account where id = $1',[jwtPayload.id])
             if(!userConfirm){
                 throw new Error('Пользователь не зарегестрирован')

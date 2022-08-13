@@ -1,29 +1,29 @@
-import api from '@http/index'
+import { defaultApi } from '@http/index'
+
 import { IProduct } from '@redux/slices/product/products.interface'
 
 class ProductService {
     async get() {
         try {
-            const response = await api.get<IProduct[]>('/products')
-            console.log(response.data)
+            const response = await defaultApi.get<IProduct[]>('/products')
             return response.data
         } catch (e) {
             throw e
         }
     }
 
-    async create(product: IProduct) {
+    async create(product: IProduct) { // не использую
         try {
-            const response = await api.post<IProduct[]>('/products', product)
+            const response = await defaultApi.post<IProduct[]>('/products', product)
             return response.data
         } catch (e) {
             throw e
         }
     }
 
-    async update(product: IProduct) {
+    async update(product: IProduct) { // не использую
         try {
-            const response = await api.put<IProduct[]>('/products', product)
+            const response = await defaultApi.put<IProduct[]>('/products', product)
             return response.data
         } catch (e) {
             throw e

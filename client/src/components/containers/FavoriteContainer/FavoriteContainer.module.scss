@@ -1,0 +1,25 @@
+.Container {
+    margin-left: 400px;
+  .Title {
+    border-bottom: 1px solid #000;
+    font-weight: 600;
+    font-size: 72px;
+    line-height: 75px;
+    text-transform: lowercase;
+    display: flex;
+    align-items: center;
+    padding: 50px 0;
+    p {
+      margin-left: 10%;
+    }
+    img {
+      margin-left: 20px;
+    }
+  }
+  .Favorites{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-items: center;
+    gap: 20px;
+  }
+}

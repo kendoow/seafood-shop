@@ -6,6 +6,11 @@ const api = axios.create({
     baseURL: API_URL,
 })
 
+export const defaultApi = axios.create({
+    withCredentials: true,
+    baseURL: API_URL,
+})
+
 api.interceptors.request.use((config: AxiosRequestConfig) => {
     if (config && config.headers) {
         config.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`
