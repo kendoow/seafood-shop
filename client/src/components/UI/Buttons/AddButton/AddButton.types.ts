@@ -4,6 +4,6 @@ export interface AddButtonProps extends DetailedHTMLProps<HTMLAttributes<HTMLDiv
     children: ReactNode,
     className?: string,
     disabled?:boolean,
-    initialCounter: number,
+    counter: number,
     id: number
 }

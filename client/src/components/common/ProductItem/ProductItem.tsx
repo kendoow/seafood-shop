@@ -19,8 +19,9 @@ import styles from './ProductItem.module.scss'
 import heartFilled from '@assets/heartFilled.svg'
 import heart from '@assets/heartDark.svg'
 import { ICartProduct } from '@redux/slices/cart/cart.interface'
+import { IProductItemProps } from './ProductItem.interface'
 
-const ProductItem: FC<IProduct> = ({
+const ProductItem: FC<IProductItemProps> = ({
     img, title, gramms, price, id
 }) => {
     const dispatch = useTypedDispatch()
@@ -28,7 +29,7 @@ const ProductItem: FC<IProduct> = ({
     const { cart } = useTypedSelector(cartSelector)
     const [activeCart, setActiveCart] = useState<boolean>(false)
     const [activeFavorite, setActiveFavorite] = useState<boolean>(false)
-    const [counter, setCounter] = useState<number>(1)
+    const [counter, setCounter] = useState<number>()
 
     useEffect(() => {
         const productCartIndex = cart.findIndex((cartItem: ICartProduct) => cartItem.id === id)
@@ -92,11 +93,11 @@ const ProductItem: FC<IProduct> = ({
 
                 {activeCart ?
                     <div className={styles.Btns}>
-                        <ButtonPrimary className={styles.DeleteButton} onClick={cartHandler} extraType="SecondaryReversed">Удалить</ButtonPrimary>
-                        <AddButton id={id} initialCounter={counter as number}>{counter}</AddButton>
+                        <ButtonPrimary className={styles.DeleteButton} onClick={() => cartHandler()} extraType="SecondaryReversed">Удалить</ButtonPrimary>
+                        <AddButton counter={counter} setCounter={setCounter} id={id} initialCounter={counter as number}>{counter}</AddButton>
                     </div>
                     :
-                    <ButtonPrimary className={styles.AddButton} onClick={cartHandler} extraType="Primary">в корзину</ButtonPrimary>}
+                    <ButtonPrimary className={styles.AddButton} onClick={() => cartHandler()} extraType="Primary">в корзину</ButtonPrimary>}
             </div>
         </div>
     )

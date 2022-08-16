@@ -5,8 +5,8 @@ const ProductsSchema = (pool: Pool) => {
     id SERIAL PRIMARY KEY,\n\
     img VARCHAR(255),\n\
     title VARCHAR(255),\n\
-    price VARCHAR(255),\n\
-    weight VARCHAR(255)\n\
+    price INT NOT NULL,\n\
+    gramms INT NOT NULL\n\
     )'
   );
 };

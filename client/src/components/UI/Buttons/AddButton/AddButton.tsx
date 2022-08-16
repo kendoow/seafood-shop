@@ -3,18 +3,22 @@ import styles from './AddButton.module.scss'
 import { AddButtonProps } from './AddButton.types'
 import cn from 'classnames'
 import useTypedDispatch from '@hooks/useTypedDispatch'
-import { updateCart } from '@redux/slices/cart/cart.actions'
+import { deleteCart, updateCart } from '@redux/slices/cart/cart.actions'
 
 const AddButton: FC<AddButtonProps> = ({
-    children, disabled, className, id, initialCounter, ...props
+    children, disabled, className, id, counter, ...props
 }) => {
     const dispatch = useTypedDispatch()
-    const [counter, setCounter] = useState<number>(initialCounter)
 
     const updateHandler = (type: 'plus' | 'minus') => {
-        if (type === 'plus') setCounter(counter + 1)
-        else setCounter(counter - 1)
-        dispatch(updateCart({ productId: id, counter }))
+        if (type === 'plus') dispatch(updateCart({ productId: id, counter: counter + 1 }))
+        else {
+            if (counter - 1 === 0) {
+                dispatch(deleteCart(id))
+                return
+            }
+            dispatch(updateCart({ productId: id, counter: counter - 1 }))
+        }
     }
 
     return (

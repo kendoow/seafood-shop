@@ -10,7 +10,6 @@ class CartService {
         try {
             const user = await authService.check(refreshToken)
             const cartOwner = await pool.query<ICart>('SELECT * FROM cart where user_id = $1', [user.rows[0].id])
-            console.log(cartOwner.rows)
             if(cartOwner.rows.length){
                 const cartIdArray = cartOwner.rows.map((value) => value.product_id)
                 const cartProducts = await pool.query(`SELECT * FROM products where id IN (${cartIdArray})`)

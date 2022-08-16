@@ -83,8 +83,8 @@ const CartItem: FC<CartItemProps> = ({
                     {price}
                 </div>
                 <div className={styles.Btns}>
-                    <ButtonPrimary onClick={cartHandler} extraType="SecondaryReversed">Удалить</ButtonPrimary>
-                    <AddButton id={id} initialCounter={counter}>{counter}</AddButton>
+                    <ButtonPrimary onClick={() => cartHandler()} extraType="SecondaryReversed">Удалить</ButtonPrimary>
+                    <AddButton id={id} counter={counter}>{counter}</AddButton>
                 </div>
 
             </div>
