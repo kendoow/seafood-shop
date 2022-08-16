@@ -1,20 +1,33 @@
 import { FC, useEffect, useState } from 'react'
-import styles from './CartItem.module.scss'
-import heart from '@assets/heartDark.svg'
-import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
-import AddButton from '@components/UI/Buttons/AddButton/AddButton'
-import { IProduct } from '@redux/slices/product/products.interface'
-import imageLoad from '@utils/imageLoad'
-import cartSelector from '@redux/slices/cart/cart.selector'
-import useTypedSelector from '@hooks/useTypedSelector'
+
 import useTypedDispatch from '@hooks/useTypedDispatch'
+import useTypedSelector from '@hooks/useTypedSelector'
+
+import { createFavorite, deleteFavorite } from '@redux/slices/favorite/favorite.actions'
 import { createCart, deleteCart } from '@redux/slices/cart/cart.actions'
 import favoriteSelector from '@redux/slices/favorite/favorite.selector'
-import heartFilled from '@assets/heartFilled.svg'
-import { createFavorite, deleteFavorite } from '@redux/slices/favorite/favorite.actions'
+import cartSelector from '@redux/slices/cart/cart.selector'
 
-const CartItem: FC<IProduct> = ({
-    img, title, gramms, price, id
+import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
+import AddButton from '@components/UI/Buttons/AddButton/AddButton'
+
+import { IProduct } from '@redux/slices/product/products.interface'
+import CartItemProps from './CartItem.interface'
+
+import styles from './CartItem.module.scss'
+
+import imageLoad from '@utils/imageLoad'
+
+import heart from '@assets/heartDark.svg'
+import heartFilled from '@assets/heartFilled.svg'
+
+const CartItem: FC<CartItemProps> = ({
+    id,
+    counter,
+    title,
+    img,
+    price,
+    gramms,
 }) => {
     const dispatch = useTypedDispatch()
     const { favorite } = useTypedSelector(favoriteSelector)
@@ -50,7 +63,7 @@ const CartItem: FC<IProduct> = ({
             ? dispatch(deleteFavorite(id))
             : dispatch(createFavorite(id))
     }
-    
+
     return (
         <div className={styles.Container}>
             <div className={styles.Image}>
@@ -63,15 +76,15 @@ const CartItem: FC<IProduct> = ({
                         <p className={styles.Weight}>{gramms}</p>
                     </div>
                     <button onClick={favouriteHandler}>
-                    <img width={30} height={30} src={activeFavorite ? heartFilled : heart} alt="heart" />
+                        <img width={30} height={30} src={activeFavorite ? heartFilled : heart} alt="heart" />
                     </button>
                 </div>
                 <div className={styles.Price}>
                     {price}
                 </div>
                 <div className={styles.Btns}>
-                    <ButtonPrimary onClick={cartHandler} extraType="PrimaryMin">Удалить</ButtonPrimary>
-                    <AddButton>1</AddButton>
+                    <ButtonPrimary onClick={cartHandler} extraType="SecondaryReversed">Удалить</ButtonPrimary>
+                    <AddButton id={id} initialCounter={counter}>{counter}</AddButton>
                 </div>
 
             </div>

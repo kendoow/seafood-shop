@@ -3,7 +3,7 @@ import {
 } from 'react'
 
 export interface CartModalProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
-    image:string,
+    img:string,
     title:string,
     description:string
 }

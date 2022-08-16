@@ -1,6 +1,9 @@
+// react/jsx-one-expression-per-line
+import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
 import useTypedDispatch from '@hooks/useTypedDispatch'
 import useTypedSelector from '@hooks/useTypedSelector'
 import { fetchCart } from '@redux/slices/cart/cart.actions'
+import { ICartProduct } from '@redux/slices/cart/cart.interface'
 import cartSelector from '@redux/slices/cart/cart.selector'
 import { IProduct } from '@redux/slices/product/products.interface'
 import { FC, useEffect } from 'react'
@@ -11,7 +14,7 @@ import { CartModalProps } from './CartModal.types'
 const CartModal: FC<CartModalProps> = ({ active, setActive }) => {
     const dispatch = useTypedDispatch()
     const { cart, totalPrice } = useTypedSelector(cartSelector)
-    console.log(cart)
+
     useEffect(() => {
         document.body.style.overflow = active ? 'hidden' : 'auto'
     }, [active])
@@ -34,20 +37,37 @@ const CartModal: FC<CartModalProps> = ({ active, setActive }) => {
 
                     <div className={styles.Products}>
                         {
-                            !!cart?.length && cart.map((product: IProduct) => <CartItem
+                            !!cart?.length && cart.map((product: ICartProduct) => <CartItem
                                 id={product.id}
                                 key={product.title}
                                 title={product.title}
                                 gramms={product.gramms}
                                 price={product.price}
                                 img={product.img}
+                                counter={product.counter}
                             />)
                         }
                     </div>
                 </div>
 
                 <div className={styles.Btn}>
-                    <button className={styles.BtnElement}>{totalPrice}</button>
+                    {
+                        totalPrice === 0 ?
+                            <button onClick={() => setActive(false)} className={styles.BtnElement}>В магазин!</button>
+                            :
+                            <div className={styles.BtnWrapper}>
+                                <div className={styles.TotalPrice}>
+                                    <div>Итого:</div>
+                                    <div>
+                                        {totalPrice}
+                                        {' '}
+₽
+                                    </div>
+                                </div>
+                                <ButtonPrimary className={styles.BtnRounded} extraType="Rounded">оформить заказ</ButtonPrimary>
+                            </div>
+                    }
+
                 </div>
             </div>
         </div>

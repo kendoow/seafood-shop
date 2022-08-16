@@ -16,6 +16,8 @@ const ButtonPrimary: FC<ButtonPrimaryProps> = ({
                 [styles.PrimaryMin]: extraType === 'PrimaryMin',
                 [styles.Secondary]: extraType === 'Secondary',
                 [styles.SecondaryArrowed]: extraType === 'SecondaryArrowed',
+                [styles.SecondaryReversed]: extraType === 'SecondaryReversed',
+                [styles.Rounded]: extraType === 'Rounded'
             })}
         >
             {children}

@@ -1,8 +1,14 @@
-import { fetchCart, deleteCart, createCart } from './cart.actions'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { ICartState } from './cart.interface'
-import { IProduct } from '../product/products.interface'
+
+import {
+    fetchCart,
+    deleteCart,
+    createCart,
+    updateCart
+} from './cart.actions'
+
 import calcTotalPrice from '@utils/calcTotalPrice'
+import { ICartState, ICartProduct } from './cart.interface'
 
 const initialState: ICartState = {
     loading: false,
@@ -20,11 +26,11 @@ const cartSlice = createSlice({
             state.loading = true
             state.error = null
         },
-        [fetchCart.fulfilled.type]: (state, action: PayloadAction<IProduct[]>) => {
+        [fetchCart.fulfilled.type]: (state, action: PayloadAction<ICartProduct[]>) => {
             state.loading = false
             state.error = null
-            state.totalPrice = calcTotalPrice(state.cart)
             state.cart = action.payload
+            state.totalPrice = calcTotalPrice(state.cart)
         },
         [fetchCart.rejected.type]: (state, action: PayloadAction<string>) => {
             state.loading = false
@@ -39,6 +45,16 @@ const cartSlice = createSlice({
             state.error = null
         },
         [createCart.rejected.type]: (state, action: PayloadAction<string>) => {
+            state.error = action.payload
+        },
+
+        [updateCart.pending.type]: (state) => {
+            state.error = null
+        },
+        [updateCart.fulfilled.type]: (state) => {
+            state.error = null
+        },
+        [updateCart.rejected.type]: (state, action: PayloadAction<string>) => {
             state.error = action.payload
         },
 

@@ -1,1 +1,12 @@
-// @import url('../../../../../node_modules/swiper/swiper.min.css');
+@import url('../../../../../node_modules/slick-carousel/slick/slick.css');
+@import url('../../../../../node_modules/slick-carousel/slick/slick-theme.css');
+
+.slick-prev:before,
+  .slick-next:before {
+    display: none;
+  }
+ .center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ } 

@@ -14,10 +14,19 @@ class CartController{
     }
 
     async create(req: Request, res: Response) {
-        
         try {
             const { refreshToken } = req.cookies
             const CartOwner = await cartService.create(refreshToken as string, req.body.productId)
+            res.json(CartOwner)
+        } catch (e) {
+            res.status(402).json({ message: `CartController Error - ${e}` })
+        }
+    }
+
+    async update(req: Request, res: Response) {
+        try {
+            const { refreshToken } = req.cookies
+            const CartOwner = await cartService.update(refreshToken as string, req.body.productId, req.body.counter)
             res.json(CartOwner)
         } catch (e) {
             res.status(402).json({ message: `CartController Error - ${e}` })

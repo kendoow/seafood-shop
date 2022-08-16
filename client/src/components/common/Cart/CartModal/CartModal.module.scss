@@ -37,8 +37,7 @@
 
   .Content {
     position: relative;
-    animation-name: CartModalOpen;
-    animation-duration: 0.3s;
+    
 
     display: flex;
     overflow-x: hidden;
@@ -112,7 +111,7 @@
     .Products {
       width: 650px;
       padding-right: 2%;
-
+      overflow-y: scroll;
       font-size: 36px;
       font-weight: 500;
       line-height: 42px;
@@ -121,7 +120,7 @@
     .Btn {
       display: flex;
       justify-content: flex-start;
-
+      height: 180px;
       width: 100%;
 
       background-color: #000;
@@ -137,7 +136,7 @@
 
         color: #fff;
         border: none;
-        background: url("@assets/arrowRight.png") no-repeat right 20% top 50%;
+        background: url("@assets/right-arrow.svg") no-repeat right 20% top 50%;
         background-color: transparent;
 
         font-size: 36px;
@@ -149,10 +148,31 @@
 
           transition: all 0.3s;
 
-          background: url("@assets/arrowRight.png") no-repeat right 15% top 50%;
+          background: url("@assets/right-arrow.svg") no-repeat right 15% top 50%;
         }
       }
     }
   }
+  .BtnWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    .TotalPrice {
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 42px;
+      margin-top: 30px;
+      color: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      width: 85%;
+      margin-bottom: 30px;
+    }
+    .BtnRounded{
+      margin-bottom: 20px;
+    }
+  }
+  
 }
-

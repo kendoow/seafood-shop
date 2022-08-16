@@ -5,6 +5,7 @@ import UserSchema from "./user.query"
 import ProductsSchema from "./products.query"
 import FavoriteSchema from './favorite.query'
 import CartSchema from './cart.query'
+import CommentsSchema from './comments.query'
 
 const initialTables = (pool:Pool) => {
     TokenSchema(pool)
@@ -12,6 +13,7 @@ const initialTables = (pool:Pool) => {
     ProductsSchema(pool)
     FavoriteSchema(pool)
     CartSchema(pool)
+    CommentsSchema(pool)
 }
 
 export default initialTables

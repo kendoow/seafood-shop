@@ -1,15 +1,16 @@
 .Container {
-	width: fit-content;
 	max-width: 1000px;
-	padding: 0 calc(50% - 650px);
-
+	margin-top: 90px !important;
+	margin-bottom: 100px !important;
+	margin: 0 auto;
+	background-color: #000;
 	.Slider {
 		display: flex;
 		overflow: hidden;
 		align-items: center;
 		justify-content: center;
 
-		height: 300px;
+
 
 		cursor: pointer;
 

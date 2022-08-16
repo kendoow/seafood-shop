@@ -1,7 +1,9 @@
+import { ICartProduct } from '@redux/slices/cart/cart.interface'
 import { defaultApi } from '@http/index'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import cartService from '../../../services/cart.service'
 import { IProduct } from '../product/products.interface'
+import { ICart } from './cart.interface'
 
 export const fetchCart = createAsyncThunk(
     'cart/fetch',
@@ -20,6 +22,19 @@ export const createCart = createAsyncThunk(
     async (productId:number, { rejectWithValue, dispatch }) => {
         try {
             await cartService.create(productId)
+            dispatch(fetchCart())
+        } catch (e) {
+            return rejectWithValue(`Error Create Cart - ${e}`)
+        }
+    }
+)
+
+export const updateCart = createAsyncThunk(
+    'cart/update',
+    async (cartItem: ICart, { rejectWithValue, dispatch }) => {
+        const { counter, productId } = cartItem
+        try {
+            await defaultApi.put<ICartProduct[]>(`/cart/${productId}`, { productId, counter })
             dispatch(fetchCart())
         } catch (e) {
             return rejectWithValue(`Error Create Cart - ${e}`)

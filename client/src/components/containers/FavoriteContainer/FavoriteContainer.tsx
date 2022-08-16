@@ -21,8 +21,8 @@ const FavoriteContainer: FC = () => {
     return (
         <div className={styles.Container}>
             <div className={styles.Title}>
-            <p>Избранное</p>
-            <img src={heartFilled} alt="heart" />
+                <p>Избранное</p>
+                <img src={heartFilled} alt="heart" />
             </div>
             <div className={styles.Favorites}>
                 {

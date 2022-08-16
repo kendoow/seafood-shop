@@ -1,18 +1,24 @@
 import { FC, useEffect, useState } from 'react'
-import styles from './ProductItem.module.scss'
 
-import heart from '@assets/heartDark.svg'
-import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
-import AddButton from '@components/UI/Buttons/AddButton/AddButton'
-import { IProduct } from '@redux/slices/product/products.interface'
-import imageLoad from '@utils/imageLoad'
 import useTypedDispatch from '@hooks/useTypedDispatch'
 import useTypedSelector from '@hooks/useTypedSelector'
+
 import favoriteSelector from '@redux/slices/favorite/favorite.selector'
-import { deleteFavorite, createFavorite } from '@redux/slices/favorite/favorite.actions'
-import heartFilled from '@assets/heartFilled.svg'
-import cartSelector from '@redux/slices/cart/cart.selector'
 import { createCart, deleteCart } from '@redux/slices/cart/cart.actions'
+import { IProduct } from '@redux/slices/product/products.interface'
+import cartSelector from '@redux/slices/cart/cart.selector'
+import { deleteFavorite, createFavorite } from '@redux/slices/favorite/favorite.actions'
+
+import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
+import AddButton from '@components/UI/Buttons/AddButton/AddButton'
+
+import imageLoad from '@utils/imageLoad'
+
+import styles from './ProductItem.module.scss'
+
+import heartFilled from '@assets/heartFilled.svg'
+import heart from '@assets/heartDark.svg'
+import { ICartProduct } from '@redux/slices/cart/cart.interface'
 
 const ProductItem: FC<IProduct> = ({
     img, title, gramms, price, id
@@ -22,6 +28,14 @@ const ProductItem: FC<IProduct> = ({
     const { cart } = useTypedSelector(cartSelector)
     const [activeCart, setActiveCart] = useState<boolean>(false)
     const [activeFavorite, setActiveFavorite] = useState<boolean>(false)
+    const [counter, setCounter] = useState<number>(1)
+
+    useEffect(() => {
+        const productCartIndex = cart.findIndex((cartItem: ICartProduct) => cartItem.id === id)
+        if (productCartIndex >= 0) {
+            setCounter(cart[productCartIndex].counter)
+        }
+    }, [cart])
 
     useEffect(() => {
         if (favorite.find((value: IProduct) => value.id === id)) {
@@ -63,15 +77,26 @@ const ProductItem: FC<IProduct> = ({
                     <p className={styles.Name}>
                         {title}
                     </p>
-                    <p className={styles.Weight}>{gramms}</p>
+                    <p className={styles.Weight}>
+                        {' '}
+                        {gramms}
+                        {' '}
+                        гр
+                    </p>
                 </div>
                 <div className={styles.Price}>
                     {price}
+                    {' '}
+                    ₽
                 </div>
-                <div className={styles.Btns}>
-                    <ButtonPrimary onClick={cartHandler} extraType="PrimaryMin">{activeCart ? 'Удалить' : 'В корзину'}</ButtonPrimary>
-                    <AddButton>1</AddButton>
-                </div>
+
+                {activeCart ?
+                    <div className={styles.Btns}>
+                        <ButtonPrimary className={styles.DeleteButton} onClick={cartHandler} extraType="SecondaryReversed">Удалить</ButtonPrimary>
+                        <AddButton id={id} initialCounter={counter as number}>{counter}</AddButton>
+                    </div>
+                    :
+                    <ButtonPrimary className={styles.AddButton} onClick={cartHandler} extraType="Primary">в корзину</ButtonPrimary>}
             </div>
         </div>
     )

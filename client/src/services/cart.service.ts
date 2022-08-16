@@ -1,10 +1,10 @@
 import { defaultApi } from '@http/index'
-import { IProduct } from '@redux/slices/product/products.interface'
+import { ICartProduct } from '@redux/slices/cart/cart.interface'
 
 class CartService {
     async get() {
         try {
-            const response = await defaultApi.get<IProduct[]>('/cart')  
+            const response = await defaultApi.get<ICartProduct[]>('/cart')
             return response.data
         } catch (e) {
             throw e
@@ -13,8 +13,18 @@ class CartService {
 
     async create(productId: number) {
         try {
-            const response = await defaultApi.post<IProduct[]>('/cart', { productId })
-            console.log(response.data)
+            const response = await defaultApi.post<ICartProduct[]>('/cart', {
+                productId,
+            })
+            return response.data
+        } catch (e) {
+            throw e
+        }
+    }
+
+    async update(productId: number, counter: number) {
+        try {
+            const response = await defaultApi.put<ICartProduct[]>(`/cart/${productId}`, { productId, counter })
             return response.data
         } catch (e) {
             throw e

@@ -6,9 +6,8 @@ import { fetchFavorite } from '@redux/slices/favorite/favorite.actions'
 import { fetchProducts } from '@redux/slices/product/products.actions'
 import { IProduct } from '@redux/slices/product/products.interface'
 import productsSelector from '@redux/slices/product/products.selector'
-import React, { FC, useEffect } from 'react'
+import { FC, useEffect } from 'react'
 import styles from './ProductsBlock.module.scss'
-
 
 const ProductsBlock: FC = () => {
     const dispatch = useTypedDispatch()
