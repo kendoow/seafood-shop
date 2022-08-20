@@ -1,0 +1,57 @@
+.Container {
+  padding: 0 calc(50% - 650px);
+
+  background-color: #000;
+  height: 100vh;
+
+  position: relative;
+  .Main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 90vh;
+    .Title {
+      font-weight: 500;
+      font-size: 64px;
+      line-height: 75px;
+      text-align: center;
+
+      color: #ffffff;
+    }
+    .Description {
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 42px;
+      text-align: center;
+      padding-top: 100px;
+      color: #ffffff;
+    }
+    .Img {
+      position: absolute;
+      top: 400px;
+      right: 0;
+    }
+  }
+  .Exit {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 5px;
+    transition: all 0.3s;
+    &:hover {
+      transition: all 0.3s;
+      margin-left: 0;
+    }
+
+    .Link {
+      margin-left: 20px;
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 38px;
+
+      color: #ffffff;
+      transition: all 0.3s;
+    }
+  }
+}

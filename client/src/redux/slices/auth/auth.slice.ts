@@ -4,9 +4,10 @@ import {
     authLogin,
     authLogout,
     authRefresh,
-    authRegistration
+    authRegistration,
+    userUpdate
 } from './auth.actions'
-import { IAuthState, IUser } from './auth.interface'
+import { IAuthState, IUpdatedUser, IUser } from './auth.interface'
 
 const initialState: IAuthState = {
     loading: false,
@@ -78,6 +79,23 @@ const authSlice = createSlice({
             state.isAuth = true
         },
         [authRefresh.rejected.type]: (state, action: PayloadAction<string>) => {
+            state.loading = false
+            state.error = action.payload
+            state.user = {} as IUser
+            state.isAuth = false
+        },
+
+        [userUpdate.pending.type]: (state) => {
+            state.loading = true
+            state.error = null
+        },
+        [userUpdate.fulfilled.type]: (state, action: PayloadAction<IUpdatedUser>) => {
+            state.loading = false
+            state.error = null
+            state.user = action.payload
+            state.isAuth = true
+        },
+        [userUpdate.rejected.type]: (state, action: PayloadAction<string>) => {
             state.loading = false
             state.error = action.payload
             state.user = {} as IUser

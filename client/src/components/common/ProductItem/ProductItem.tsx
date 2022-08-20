@@ -4,7 +4,7 @@ import useTypedDispatch from '@hooks/useTypedDispatch'
 import useTypedSelector from '@hooks/useTypedSelector'
 
 import favoriteSelector from '@redux/slices/favorite/favorite.selector'
-import { createCart, deleteCart } from '@redux/slices/cart/cart.actions'
+import { createCart, deleteCartItem } from '@redux/slices/cart/cart.actions'
 import { IProduct } from '@redux/slices/product/products.interface'
 import cartSelector from '@redux/slices/cart/cart.selector'
 import { deleteFavorite, createFavorite } from '@redux/slices/favorite/favorite.actions'
@@ -63,7 +63,7 @@ const ProductItem: FC<IProductItemProps> = ({
 
     const cartHandler = () => {
         setActiveCart(!activeCart)
-        activeCart ? dispatch(deleteCart(id)) : dispatch(createCart(id))
+        activeCart ? dispatch(deleteCartItem(id)) : dispatch(createCart(id))
     }
     return (
         <div className={styles.Container}>

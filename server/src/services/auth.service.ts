@@ -1,3 +1,5 @@
+
+
 import { hashSync, compareSync } from 'bcrypt'
 import { IJwtPayload, IUser } from './../interfaces/auth.interface';
 import pool from 'index';
@@ -14,8 +16,8 @@ class AuthService{
                     throw ApiError.BadRequest(`Пользователь с почтовым адресом ${user.email} уже существует `)
                 }   
                 const hashPassword = hashSync(user.password, 3)
-                const createdUser  = await pool.query('INSERT INTO user_account(name, email, password, adress, phone, card) values ($1,$2, $3, $4, $5, $6) RETURNING *', 
-                [user.name, user.email, hashPassword, user.adress, user.phone, user.card])  
+                const createdUser  = await pool.query('INSERT INTO user_account(name, email, password) values ($1,$2, $3) RETURNING *', 
+                [user.name, user.email, hashPassword ])  
                 const tokens = tokenService.create(String(createdUser.rows[0].id), createdUser.rows[0].email)
 
                 await tokenService.save(String(createdUser.rows[0].id), tokens.refreshToken)    
@@ -105,6 +107,18 @@ class AuthService{
         throw e        
         }
         
+    }
+
+    async update(refreshToken:string, adress:string, phone:string){
+        try {
+            
+            const user = await this.check(refreshToken)
+            const PersonalInfo = pool.query('UPDATE user_account SET adress = $1 , phone = $2 WHERE id = $3 RETURNING *', 
+            [adress, phone, user.rows[0].id ])
+            return PersonalInfo
+        } catch (e) {
+            throw e  
+        }
     }
 }
 

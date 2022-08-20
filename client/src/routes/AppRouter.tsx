@@ -4,7 +4,8 @@ import Favorite from '@pages/Favorite/Favorite'
 import Login from '@pages/Forms/Login/Login'
 import Registration from '@pages/Forms/Registration/Registration'
 import Main from '@pages/Main/Main'
-import Profile from '@pages/Profile/Profile'
+import Order from '@pages/Order/Order'
+import OrderPassed from '@pages/OrderPassed/OrderPassed'
 import { authRefresh } from '@redux/slices/auth/auth.actions'
 import authSelector from '@redux/slices/auth/auth.selector'
 
@@ -23,16 +24,16 @@ const AppRouter: FC = () => {
         <Routes>
             <Route path="/" element={<Main />} />
 
-            <Route path="/profile" element={<Profile />} />
             <Route path="/favorite" element={<Favorite />} />
             {isAuth ?
                 <>
-
+                    <Route path="/order" element={<Order />} />
+                    <Route path="/order_passed" element={<OrderPassed />} />
                 </>
                 : <>
                     <Route path="/login" element={<Login />} />
                     <Route path="/registration" element={<Registration />} />
-                  </>}
+                </>}
             <Route path="*" element={<Main />} />
         </Routes>
     )

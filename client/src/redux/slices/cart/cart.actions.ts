@@ -42,11 +42,23 @@ export const updateCart = createAsyncThunk(
     }
 )
 
-export const deleteCart = createAsyncThunk(
-    'cart/delete',
+export const deleteCartItem = createAsyncThunk(
+    'cart/deleteOne',
     async (productId:number, { rejectWithValue, dispatch }) => {
         try {
             await defaultApi.delete<IProduct[]>(`/cart/${productId}`)
+            dispatch(fetchCart())
+        } catch (e) {
+            return rejectWithValue(`Error Create Cart - ${e}`)
+        }
+    }
+)
+
+export const deleteCartAll = createAsyncThunk(
+    'cart/deleteOne',
+    async (_, { rejectWithValue, dispatch }) => {
+        try {
+            await defaultApi.delete<IProduct[]>('/cart')
             dispatch(fetchCart())
         } catch (e) {
             return rejectWithValue(`Error Create Cart - ${e}`)

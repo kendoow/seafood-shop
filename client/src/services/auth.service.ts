@@ -40,6 +40,15 @@ class AuthService {
             throw e
         }
     }
+
+    async update(adress:string, phone:string) {
+        try {
+            const response = await api.put<IAuthResponse>('auth/update', { adress, phone })
+            return response.data
+        } catch (e) {
+            throw e
+        }
+    }
 }
 
 export default new AuthService()

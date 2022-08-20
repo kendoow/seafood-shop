@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import {
     fetchCart,
-    deleteCart,
+    deleteCartItem,
     createCart,
     updateCart
 } from './cart.actions'
@@ -58,13 +58,13 @@ const cartSlice = createSlice({
             state.error = action.payload
         },
 
-        [deleteCart.pending.type]: (state) => {
+        [deleteCartItem.pending.type]: (state) => {
             state.error = null
         },
-        [deleteCart.fulfilled.type]: (state) => {
+        [deleteCartItem.fulfilled.type]: (state) => {
             state.error = null
         },
-        [deleteCart.rejected.type]: (state, action: PayloadAction<string>) => {
+        [deleteCartItem.rejected.type]: (state, action: PayloadAction<string>) => {
             state.error = action.payload
         },
     }

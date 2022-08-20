@@ -42,7 +42,7 @@ class CartService {
         }
     }
 
-    async delete(refreshToken: string, productId:number){
+    async deleteOne(refreshToken: string, productId:number){
         try {
             const user = await authService.check(refreshToken)
             const deletedCart = await pool.query('DELETE FROM cart where user_id = $1 and product_id = $2 RETURNING *', [user.rows[0].id, productId])
@@ -51,6 +51,15 @@ class CartService {
             throw e
         }
     } 
+
+    async deleteAll(refreshToken: string) {
+        try {
+            const user = await authService.check(refreshToken)
+            await pool.query('DELETE FROM cart where user_id = $1', [user.rows[0].id])
+        } catch (e) {
+            throw e
+        } 
+    }
 }
 
 export default new CartService()

@@ -26,7 +26,7 @@ const DeliveryBlock: FC = () => {
                         <img src={cash} alt="car" />
                     </div>
                     <Text className={styles.Decription} size="md">
-                        500 ₽, а при сумме заказа более 5000 ₽-
+                        500 ₽, а при сумме заказа более 5000 ₽ -
                         бесплатно
                         {' '}
                     </Text>

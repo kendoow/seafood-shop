@@ -18,5 +18,6 @@ authRouter.post(
 );
 authRouter.post("/logout", authContoller.logout);
 authRouter.get("/refresh", authContoller.refresh);
+authRouter.put("/update", authContoller.update)
 
 export default authRouter;

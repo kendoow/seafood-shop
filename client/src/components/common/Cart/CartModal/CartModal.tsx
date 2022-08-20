@@ -7,6 +7,7 @@ import { ICartProduct } from '@redux/slices/cart/cart.interface'
 import cartSelector from '@redux/slices/cart/cart.selector'
 import { IProduct } from '@redux/slices/product/products.interface'
 import { FC, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import CartItem from '../CartItem/CartItem'
 import styles from './CartModal.module.scss'
 import { CartModalProps } from './CartModal.types'
@@ -61,10 +62,12 @@ const CartModal: FC<CartModalProps> = ({ active, setActive }) => {
                                     <div>
                                         {totalPrice}
                                         {' '}
-₽
+                                        ₽
                                     </div>
                                 </div>
-                                <ButtonPrimary className={styles.BtnRounded} extraType="Rounded">оформить заказ</ButtonPrimary>
+                                <Link className={styles.BtnOrder} to="/order">
+                                    <ButtonPrimary onClick={() => setActive(false)} className={styles.BtnRounded} extraType="Rounded">оформить заказ</ButtonPrimary>
+                                </Link>
                             </div>
                     }
 

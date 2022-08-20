@@ -136,3 +136,21 @@
 		transform: scale(1.02);
 	}
 }
+.RoundedReversed {
+	width: 85%;
+	height: 75px;
+	transition: all 0.3s;
+	text-align: center;
+	text-transform: lowercase;
+	border-radius: 30px;
+	color: #fff;
+	background-color: #000;
+
+	font-size: 32px;
+	font-weight: 500;
+
+	&:hover {
+		transition: all 0.3s;
+		transform: scale(1.02);
+	}
+}

@@ -1,37 +1,33 @@
-.Container{
-    padding-top: 100px;
-  padding-left: 15%;
-    padding-right: 5%;
-  background-color: #000;   
+.Container {
+  padding-top: 100px !important;
+  padding: 0 calc(50% - 650px);
+  background-color: #000;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  .Title{
+  .Title {
     margin-bottom: 50px;
     font-weight: bold;
   }
-  .DecrBlock{
+  .DecrBlock {
     display: flex;
     max-width: 800px;
     align-items: center;
     justify-content: flex-start;
     margin-bottom: 30px;
-    .ImgBlock{
+    .ImgBlock {
       align-items: center;
       display: flex;
       justify-content: flex-start;
-     
+
       margin-right: 30px;
     }
   }
-  .Decription{
-    
-  }
-  .Btn{
+
+  .Btn {
     margin-top: 70px;
     margin-bottom: 230px;
   }
-  .Image{
+  .Image {
     // overflow: hidden;
-    
   }
 }

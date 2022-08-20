@@ -10,6 +10,7 @@ import fileUpload from "express-fileupload";
 import favoriteRouter from "@routes/favorite.routes";
 import cartRouter from "@routes/cart.routes";
 import commentsRouter from "@routes/comments.routes";
+import orderRouter from "@routes/order.routes";
 
 
 config({
@@ -38,6 +39,7 @@ app.use('/products', productsRouter)
 app.use('/favorite', favoriteRouter)
 app.use('/cart', cartRouter)
 app.use('/comments', commentsRouter)
+app.use('/order', orderRouter)
 
 const start = () => {
   app.listen(PORT, () => console.log(`Server start on port - ${PORT}`));

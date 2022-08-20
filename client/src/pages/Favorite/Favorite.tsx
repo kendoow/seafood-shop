@@ -1,14 +1,15 @@
 import FavoriteContainer from '@components/containers/FavoriteContainer/FavoriteContainer'
-import ProfileLayout from '@components/layouts/ProfileLayout/ProfileLayout'
+import Header from '@components/layouts/Layout/Header/Header'
+
 import { FC } from 'react'
 import styles from './Favorite.module.scss'
 
 const Favorite: FC = () => {
     return (
-        <ProfileLayout>
+        <>
+            <Header />
             <FavoriteContainer />
-            {/* </FavoriteContainer> */}
-        </ProfileLayout>
+        </>
     )
 }
 

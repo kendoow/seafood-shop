@@ -2,7 +2,12 @@ export interface IUser {
     name:string,
     password: string,
     email: string,
-    id: string
+    id: number
+}
+
+export interface IUpdatedUser extends IUser {
+    adress:string,
+    phone:string
 }
 
 export interface IUserLogin {

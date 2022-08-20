@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import authService from '@services/auth.service'
-import { IUserLogin, IUserRegistration } from './auth.interface'
+import { IUpdatedUser, IUserLogin, IUserRegistration } from './auth.interface'
 
 export const authRegistration = createAsyncThunk(
     'auth/registration',
@@ -46,6 +46,20 @@ export const authRefresh = createAsyncThunk(
         try {
             const user = await authService.refresh()
             return user
+        } catch (e) {
+            return rejectWithValue(`Error Auth Refresh - ${e}`)
+        }
+    }
+)
+
+export const userUpdate = createAsyncThunk(
+    'user/update',
+    async (user:IUpdatedUser, { rejectWithValue }) => {
+        console.log(user)
+        try {
+            const { adress, phone } = user
+            const updatedUSer = await authService.update(adress, phone)
+            return updatedUSer
         } catch (e) {
             return rejectWithValue(`Error Auth Refresh - ${e}`)
         }

@@ -1,9 +1,9 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import styles from './AddButton.module.scss'
 import { AddButtonProps } from './AddButton.types'
 import cn from 'classnames'
 import useTypedDispatch from '@hooks/useTypedDispatch'
-import { deleteCart, updateCart } from '@redux/slices/cart/cart.actions'
+import { deleteCartItem, updateCart } from '@redux/slices/cart/cart.actions'
 
 const AddButton: FC<AddButtonProps> = ({
     children, disabled, className, id, counter, ...props
@@ -14,7 +14,7 @@ const AddButton: FC<AddButtonProps> = ({
         if (type === 'plus') dispatch(updateCart({ productId: id, counter: counter + 1 }))
         else {
             if (counter - 1 === 0) {
-                dispatch(deleteCart(id))
+                dispatch(deleteCartItem(id))
                 return
             }
             dispatch(updateCart({ productId: id, counter: counter - 1 }))

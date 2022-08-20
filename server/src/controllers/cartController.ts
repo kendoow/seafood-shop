@@ -33,12 +33,22 @@ class CartController{
         }
     }
 
-    async delete(req:Request, res:Response){
+    async deleteOne(req:Request, res:Response){
         try{
             const {refreshToken} = req.cookies
-            const CartOwner = await cartService.delete(refreshToken as string, +req.params.id)
+            const CartOwner = await cartService.deleteOne(refreshToken as string, +req.params.id)
             res.json(CartOwner)
         } catch (e){
+            res.status(402).json({ message: `CartController Error - ${e}` })
+        }
+    }
+
+    async deleteAll(req:Request, res:Response){
+        try {
+            const {refreshToken} = req.cookies
+            const CartOwner = await cartService.deleteAll(refreshToken as string)
+            res.json(CartOwner) 
+        } catch (e) {
             res.status(402).json({ message: `CartController Error - ${e}` })
         }
     }

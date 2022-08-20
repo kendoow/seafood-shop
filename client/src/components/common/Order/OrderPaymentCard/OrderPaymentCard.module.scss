@@ -1,0 +1,46 @@
+.PaymentCard {
+  background: #ffffff;
+
+  border: 2px solid #000000;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 214px;
+  .Type {
+    margin-top: 15px;
+    display: flex;
+    justify-content: flex-start;
+   
+    align-items:center;
+    margin-bottom: 15px;
+    .Circle{
+        margin-left: 5%;
+        width: 16px;
+        height: 16px;
+        border: 2px solid #000000;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    h4{
+        margin-left: 5%;
+        color: #000;
+        font-weight: 700;
+        font-size: 20px;
+       
+        text-transform: lowercase;
+    }
+  }
+  .Description{
+    font-weight: 500;
+    font-size: 16px;
+    
+    color: #677489;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 15px;
+  }
+}

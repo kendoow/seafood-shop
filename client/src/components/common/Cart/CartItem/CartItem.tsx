@@ -4,7 +4,7 @@ import useTypedDispatch from '@hooks/useTypedDispatch'
 import useTypedSelector from '@hooks/useTypedSelector'
 
 import { createFavorite, deleteFavorite } from '@redux/slices/favorite/favorite.actions'
-import { createCart, deleteCart } from '@redux/slices/cart/cart.actions'
+import { createCart, deleteCartItem } from '@redux/slices/cart/cart.actions'
 import favoriteSelector from '@redux/slices/favorite/favorite.selector'
 import cartSelector from '@redux/slices/cart/cart.selector'
 
@@ -54,7 +54,7 @@ const CartItem: FC<CartItemProps> = ({
 
     const cartHandler = () => {
         setActiveCart(!activeCart)
-        activeCart ? dispatch(deleteCart(id)) : dispatch(createCart(id))
+        activeCart ? dispatch(deleteCartItem(id)) : dispatch(createCart(id))
     }
 
     const favouriteHandler = () => {
@@ -73,7 +73,12 @@ const CartItem: FC<CartItemProps> = ({
                 <div className={styles.Main}>
                     <div className={styles.MainText}>
                         <p className={styles.Name}>{title}</p>
-                        <p className={styles.Weight}>{gramms}</p>
+                        <p className={styles.Weight}>
+                            {gramms}
+                            {' '}
+гр
+                            {' '}
+                        </p>
                     </div>
                     <button onClick={favouriteHandler}>
                         <img width={30} height={30} src={activeFavorite ? heartFilled : heart} alt="heart" />
@@ -81,6 +86,8 @@ const CartItem: FC<CartItemProps> = ({
                 </div>
                 <div className={styles.Price}>
                     {price}
+                    {' '}
+₽
                 </div>
                 <div className={styles.Btns}>
                     <ButtonPrimary onClick={() => cartHandler()} extraType="SecondaryReversed">Удалить</ButtonPrimary>

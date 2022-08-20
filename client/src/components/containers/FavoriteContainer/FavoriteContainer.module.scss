@@ -1,7 +1,8 @@
 .Container {
-    margin-left: 400px;
+  padding-top: 95px !important;
+  padding: 0 calc(50% - 650px);
   .Title {
-    border-bottom: 1px solid #000;
+
     font-weight: 600;
     font-size: 72px;
     line-height: 75px;
@@ -10,7 +11,7 @@
     align-items: center;
     padding: 50px 0;
     p {
-      margin-left: 10%;
+      // margin-left: 10%;
     }
     img {
       margin-left: 20px;

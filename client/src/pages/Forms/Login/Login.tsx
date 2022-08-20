@@ -20,7 +20,6 @@ const Login: FC = () => {
     const [hidePassword, setHidePassword] = useState<boolean>(true)
 
     const { error } = useTypedSelector(authSelector)
-    const [logginError, setLogginError] = useState<boolean>(false)
     const dispatch = useTypedDispatch()
 
     const validationSchema = yup.object().shape({
@@ -55,7 +54,7 @@ const Login: FC = () => {
                     validationSchema={validationSchema}
                 >
                     {({
-                        values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty
+                        values, errors, touched, handleChange, handleBlur, handleSubmit,
                     }) => (
                         <div className={styles.InputsWrapper}>
                             {touched.email && errors.email && <p className={styles.Error}>{errors.email}</p>}
