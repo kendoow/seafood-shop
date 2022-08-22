@@ -6,7 +6,12 @@ export interface IUser {
 }
 
 export interface IUpdatedUser extends IUser {
-    adress:string,
+    address:string,
+    phone:string
+}
+
+export interface IUserPersonal {
+    address:string,
     phone:string
 }
 

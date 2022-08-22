@@ -11,9 +11,9 @@ class OrderService {
         }
     }
 
-    async create() {
+    async create(totalPrice:number) {
         try {
-            const response = await defaultApi.post<ICartProduct[]>('/order')
+            const response = await defaultApi.post<ICartProduct[]>('/order', { totalPrice })
             return response.data
         } catch (e) {
             throw e

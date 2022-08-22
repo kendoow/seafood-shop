@@ -1,14 +1,20 @@
 .Header {
-	display: grid;
-	align-items: center;
-	padding: 0 calc(50% - 650px);
-	padding-top: 20px;
-	padding-bottom: 20px;
-	width: 100%;
-	background-color: #000;
-	grid-template-columns: 1fr 1fr;
 	position: fixed;
 	z-index: 10;
+
+	display: grid;
+	align-items: center;
+
+	width: 100%;
+	padding: 0 calc(50% - 650px);
+	padding-top: 20px;
+
+	padding-bottom: 20px;
+
+
+	background-color: #000;
+	grid-template-columns: 1fr 1fr;
+
 	.Nav {
 		display: grid;
 		align-items: center;
@@ -28,26 +34,75 @@
 		font-size: 30px;
 		gap: 40px;
 	}
-	.NavItem{
-		transition: all 0.3s;
+
+	.NavItem {
 		cursor: pointer;
+		transition: all 0.3s;
+
 		&:hover {
 			transition: all 0.3s;
 			transform: scale(1.05);
 		}
 	}
+
+	.BurgerMenu > span,
+	.BurgerMenu > span::before,
+	.BurgerMenu > span::after {
+		position: relative;
+
+		display: none;
+
+		width: 30px;
+		height: 3px;
+
+		cursor: pointer;
+
+		border-radius: 15px;
+		background-color: #FFF;
+	}
+
+	.BurgerMenu > span::before {
+		position: absolute;
+		top: -10px;
+
+		content: "";
+
+		border-radius: 15px;
+	}
+
+	.BurgerMenu > span::after {
+		position: absolute;
+		top: 10px;
+
+		content: "";
+
+		border-radius: 15px;
+	}
+
 	.Icons {
 		display: grid;
 		align-items: center;
 		justify-self: self-end;
 		grid-auto-flow: column;
 
-        .IconItem{
-            margin-left: 3vh;
-        }
-		img {
-			
+		.UserIcon {
+			transition: all 0.3s;
 
+			color: #FFF;
+
+			font-size: 30px;
+
+			&:hover {
+				transition: all 0.3s;
+				transform: scale(1.05);
+			}
+		}
+
+		.IconItem {
+			margin-right: 3vh;
+		}
+
+		img {
 			cursor: pointer;
 			transition: all 0.3s;
 
@@ -59,20 +114,10 @@
 
 		.Btn {
 			margin-right: 10px;
-
-			transition: all 0.3s;
-
-			color: #FFF;
-
-			font-size: 30px;
-
-			&:hover {
-				transition: all 0.3s;
-				transform: scale(1.1);
-			}
 		}
 	}
 }
+
 .Logo {
 	width: fit-content;
 	margin-left: 10px;
@@ -83,6 +128,35 @@
 		&:hover {
 			transition: all 0.3s;
 			transform: scaleY(1.2);
+		}
+	}
+}
+
+// meida requsets
+@media (max-width: 768px) {
+	.Header {
+		padding-top: 10px;
+
+	padding-bottom: 10px;
+
+		.NavItem {
+			display: none;
+		}
+
+		.UserIcon {
+			display: none;
+		}
+
+		.BurgerWrapper {
+			height: 100%;
+		}
+
+		.BurgerMenu > span,
+		.BurgerMenu > span::before,
+		.BurgerMenu > span::after {
+			display: block;
+
+			margin-right: 5px;
 		}
 	}
 }

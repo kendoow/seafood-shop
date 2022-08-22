@@ -22,7 +22,7 @@ class AuthService{
 
                 await tokenService.save(String(createdUser.rows[0].id), tokens.refreshToken)    
 
-                return {...tokens, user: createdUser}
+                return {...tokens, user: createdUser.rows[0]}
             } catch (e) {
                 throw e
             }
@@ -50,7 +50,7 @@ class AuthService{
             const tokens = tokenService.create(user.email, userConfirmed?.rows[0].id as string)
             await tokenService.save(String(userConfirmed?.rows[0].id), tokens.refreshToken)
             return {
-                user: userConfirmed,    
+                user: userConfirmed.rows[0],    
                 ...tokens
             }
         } catch (e) {
@@ -78,7 +78,7 @@ class AuthService{
             if(!userConfirm){
                 throw new Error('Пользователь не зарегестрирован')
             }
-            return userConfirm
+            return userConfirm.rows[0]
         } catch (e) {
             throw e
         }
@@ -100,7 +100,7 @@ class AuthService{
             const tokens = tokenService.create(user?.rows[0].email as string, String(user?.rows[0].id))
             await tokenService.save(String(user?.rows[0].id), tokens.refreshToken)
             return {
-                user,
+                user: user.rows[0],
                 ...tokens
             }
         } catch(e) {
@@ -109,13 +109,13 @@ class AuthService{
         
     }
 
-    async update(refreshToken:string, adress:string, phone:string){
+    async update(refreshToken:string, address:string, phone:string){
         try {
             
             const user = await this.check(refreshToken)
-            const PersonalInfo = pool.query('UPDATE user_account SET adress = $1 , phone = $2 WHERE id = $3 RETURNING *', 
-            [adress, phone, user.rows[0].id ])
-            return PersonalInfo
+            const PersonalInfo = await pool.query('UPDATE user_account SET address = $1 , phone = $2 WHERE id = $3 RETURNING *', 
+            [address, phone, user.id ])
+            return PersonalInfo.rows[0]
         } catch (e) {
             throw e  
         }

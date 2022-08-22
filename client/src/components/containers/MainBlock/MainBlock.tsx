@@ -8,8 +8,16 @@ import Text from '@components/UI/Text/Text'
 import styles from './MainBlock.module.scss'
 import Arrow from '@assets/downArrow.svg'
 import mainBg from '@assets/mainFish.png'
+import useTypedDispatch from '@hooks/useTypedDispatch'
+import { authLogout } from '@redux/slices/auth/auth.actions'
 
 const MainBlock: FC = () => {
+    const dispatch = useTypedDispatch()
+
+    const logoutHandler = () => {
+        dispatch(authLogout())
+    }
+
     return (
         <div className={styles.Container}>
             <Text className={styles.Title} size="lg" textTransform="lowercase">Свежая икра</Text>
@@ -25,7 +33,7 @@ const MainBlock: FC = () => {
                     <Text className={styles.Decription} size="md">
                         Сотни довольных клиентов
                     </Text>
-                    <ButtonPrimary className={styles.Btn} extraType="Secondary">К продукции</ButtonPrimary>
+                    <ButtonPrimary className={styles.Btn} onClick={logoutHandler} extraType="Secondary">К продукции</ButtonPrimary>
                 </div>
 
                 <div className={styles.Image}>
@@ -35,7 +43,7 @@ const MainBlock: FC = () => {
             <AnimatedLink
                 to="products"
                 smooth
-                offset={-110}
+                offset={-200}
                 duration={500}
                 className={styles.NavItem}
             >

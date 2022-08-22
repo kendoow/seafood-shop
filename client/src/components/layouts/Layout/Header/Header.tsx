@@ -9,13 +9,19 @@ import heart from '@assets/heart.svg'
 import user from '@assets/user.svg'
 import useTypedSelector from '@hooks/useTypedSelector'
 import authSelector from '@redux/slices/auth/auth.selector'
+import BurgerMenu from '@components/common/BurgerMenu/BurgerMenu'
 
 const Header: FC = () => {
     const [activeModal, setActiveModal] = useState<boolean>(false)
+    const [activeBurger, setActiveBurger] = useState<boolean>(false)
 
     const { isAuth } = useTypedSelector(authSelector)
     const menuHandler = () => {
         setActiveModal(true)
+    }
+
+    const burgerHandler = () => {
+        setActiveBurger(true)
     }
 
     return (
@@ -28,7 +34,7 @@ const Header: FC = () => {
                     <AnimatedLink
                         to="products"
                         smooth
-                        offset={-150}
+                        offset={-200}
                         duration={500}
                         className={styles.NavItem}
                     >
@@ -38,7 +44,7 @@ const Header: FC = () => {
                     <AnimatedLink
                         to="delivery"
                         smooth
-                        offset={0}
+                        offset={-90}
                         duration={500}
                         className={styles.NavItem}
                     >
@@ -47,16 +53,22 @@ const Header: FC = () => {
                     </AnimatedLink>
 
                 </div>
+                <BurgerMenu active={activeBurger} setActive={setActiveBurger} />
                 <CartModal active={activeModal} setActive={setActiveModal} />
                 <div className={styles.Icons}>
-                    <div className={styles.IconItem} onClick={menuHandler}>
+                    <button className={styles.IconItem} onClick={menuHandler}>
                         <img src={cart} alt="cart" />
-                    </div>
+                    </button>
                     <Link className={styles.IconItem} to="/favorite">
                         <img src={heart} alt="heart" />
                     </Link>
+                    <button className={styles.BurgerWrapper} onClick={burgerHandler}>
+                        <div className={styles.BurgerMenu}>
+                            <span />
+                        </div>
+                    </button>
                     {
-                        isAuth ? <Link className={styles.IconItem} to="/order"><img src={user} alt="user" /></Link> : <Link to="/login" className={styles.Btn}>войти</Link>
+                        isAuth ? <Link className={styles.UserIcon} to="/order"><img src={user} alt="user" /></Link> : <Link to="/login" className={styles.UserIcon}>войти</Link>
                     }
 
                 </div>

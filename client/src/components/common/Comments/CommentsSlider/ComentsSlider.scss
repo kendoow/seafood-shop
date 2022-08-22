@@ -1,12 +1,13 @@
-@import url('../../../../../node_modules/slick-carousel/slick/slick.css');
-@import url('../../../../../node_modules/slick-carousel/slick/slick-theme.css');
+@import "../../../../../node_modules/slick-carousel/slick/slick.css";
+@import "../../../../../node_modules/slick-carousel/slick/slick-theme.css";
 
-.slick-prev:before,
-  .slick-next:before {
-    display: none;
-  }
- .center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
- } 
+.slick-prev::before,
+.slick-next::before {
+	display: none;
+}
+
+.center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

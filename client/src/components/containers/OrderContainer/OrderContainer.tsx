@@ -17,151 +17,168 @@ import * as yup from 'yup'
 import MaskedInput from 'react-text-mask'
 import { userUpdate } from '@redux/slices/auth/auth.actions'
 import { createOrder } from '@redux/slices/order/order.actions'
+import authSelector from '@redux/slices/auth/auth.selector'
+
+const phoneNumberMask = [
+    [8],
+    '(',
+    /[1-9]/,
+    /\d/,
+    /\d/,
+    ')',
+    ' ',
+    /\d/,
+    /\d/,
+    /\d/,
+    '-',
+    /\d/,
+    /\d/,
+    '-',
+    /\d/,
+    /\d/
+]
+
+const validationSchema = yup.object().shape({
+    phone: yup.string().required('Это поле обязательно').min(8, 'Номер не валидный'),
+    address: yup.string().required('Это поле обязательно').min(4, 'Ведите корректный адресс')
+})
 
 const OrderContainer: FC = () => {
     const dispatch = useTypedDispatch()
+
+    const { user } = useTypedSelector(authSelector)
+
     const { cart, totalPrice } = useTypedSelector(cartSelector)
     const navigate = useNavigate()
+
     useEffect(() => {
         !cart?.length && dispatch(fetchCart())
     }, [totalPrice])
 
-    const OrderHandler = (adress:string, phone:string) => {
-        dispatch(deleteCartAll())
-        dispatch(userUpdate({ adress, phone} ))
-        dispatch(createOrder())
-        navigate('/order_passed')
-    }
-    const phoneNumberMask = [
-        [8],
-        '(',
-        /[1-9]/,
-        /\d/,
-        /\d/,
-        ')',
-        ' ',
-        /\d/,
-        /\d/,
-        /\d/,
-        '-',
-        /\d/,
-        /\d/,
-        '-',
-        /\d/,
-        /\d/
-    ]
+    const FinalPrice = totalPrice > 5000 ? totalPrice : totalPrice + 500
 
-    const validationSchema = yup.object().shape({
-        phone: yup.string().required('Это поле обязательно').min(8, 'Номер не валидный'),
-        adress: yup.string().required('Это поле обязательно').min(4, 'Ведите корректный адресс')
-    })
+    const OrderHandler = (address: string, phone: string) => {
+        dispatch(userUpdate({ address, phone }))
+        dispatch(createOrder(FinalPrice)).unwrap()
+            .then(() => {
+                dispatch(deleteCartAll())
+                navigate('/order_passed')
+            })
+    }
 
     return (
         <Formik
             initialValues={{
                 phone: '',
-                adress: ''
+                address: ''
             }}
             validateOnBlur
-            onSubmit={(values) => OrderHandler(values.adress, values.phone)}
+            onSubmit={(values) => OrderHandler(values.address, values.phone)}
             validationSchema={validationSchema}
         >
             {({
-                values, errors, touched, handleChange, handleBlur, handleSubmit
-            }) => (
-                <div className={styles.Container}>
-                    <div className={styles.PaymentBlock}>
-                        <h3 className={styles.Title}>оплата</h3>
-                        <div className={styles.Adress}>
-                            <h4>Адрес</h4>
-                            {touched.adress && errors.adress && <p className={styles.Error}>{errors.adress}</p>}
-                            <Input   
-                                onBlur={handleBlur}
-                                onChange={handleChange}
-                                value={values.adress}
-                                name="adress"
-                                type="text"
-                                className={touched.adress && errors.adress && styles.ErrorValid}
-                                placeholder="Начните вводить..." />
-                            <OrderMap />
-                        </div>
+                values, errors, touched, handleChange, handleBlur, handleSubmit, setValues
+            }) => {
+                useEffect(() => {
+                    Object.keys(user).length && setValues({ phone: user.phone, address: user.adress })
+                }, [user])
+                return (
+                    <div className={styles.Container}>
+                        <div className={styles.PaymentBlock}>
+                            <h3 className={styles.Title}>оплата</h3>
+                            <div className={styles.Address}>
+                                <h4>Адрес</h4>
+                                {touched.address && errors.address && <p className={styles.Error}>{errors.address}</p>}
+                                <Input
+                                    minLength={8}
+                                    onBlur={handleBlur}
+                                    onChange={handleChange}
+                                    value={values.address}
+                                    name="address"
+                                    type="text"
+                                    className={touched.address && errors.address && styles.ErrorValid}
+                                    placeholder="Начните вводить..."
+                                />
+                                <OrderMap />
+                            </div>
 
-                        <div className={styles.Phone}>
+                            <div className={styles.Phone}>
 
-                            <h4>Номер телефона</h4>
-                            {touched.phone && errors.phone && <p className={styles.Error}>{errors.phone}</p>}
-                            <Field
-                                render={({ field }) => (
-                                    <MaskedInput
-                                        {...field}
-                                        name="phone"
-                                        mask={phoneNumberMask}
-                                        placeholder="Введите номер телефона"
-                                        type="phone"
-                                        value={values.phone}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        className={touched.phone && errors.phone ? styles.ErrorValid : styles.Input}
-                                    />
-                                )}
-                            />
+                                <h4>Номер телефона</h4>
+                                {touched.phone && errors.phone && <p className={styles.Error}>{errors.phone}</p>}
+                                <Field
+                                    render={({ field }) => (
+                                        <MaskedInput
+                                            {...field}
+                                            name="phone"
+                                            mask={phoneNumberMask}
+                                            placeholder="Введите номер телефона"
+                                            type="phone"
+                                            value={values.phone}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            className={touched.phone && errors.phone ? styles.ErrorValid : styles.Input}
+                                        />
+                                    )}
+                                />
+                            </div>
+                            <div className={styles.Payment}>
+                                <div className={styles.PaymentType}>
+                                    <h4>Способ оплаты</h4>
+                                    <div className={styles.AddPayment}>
+                                        <img src={add} alt="add" />
+                                        добавить новую карту
+                                    </div>
+                                </div>
+                                <OrderPaymentCart title="Наличные" description="курьеру при получении" />
+                            </div>
                         </div>
-                        <div className={styles.Payment}>
-                            <div className={styles.PaymentType}>
-                                <h4>Способ оплаты</h4>
-                                <div className={styles.AddPayment}>
-                                    <img src={add} alt="add" />
-                                    добавить новую карту
+                        <div className={styles.Order}>
+                            <div className={styles.OrderTitle}>
+                                <h4>Ваш заказ</h4>
+                                <Link className={styles.ChangeOrder} to="/">изменить</Link>
+                            </div>
+                            <div className={styles.Products}>
+                                {
+                                    !!cart?.length && cart.map((product: ICartProduct) => <CartItem
+                                        id={product.id}
+                                        key={product.title}
+                                        title={product.title}
+                                        gramms={product.gramms}
+                                        price={product.price}
+                                        img={product.img}
+                                        counter={product.counter}
+                                    />)
+                                }
+                            </div>
+                            <div className={styles.OrderPrices}>
+                                <div className={styles.OrderPriceItem}>
+                                    <h4>Сумма заказа</h4>
+                                    <h3>
+                                        {totalPrice}
+                                        {' '}
+                                        ₽
+                                    </h3>
+                                </div>
+                                <div className={styles.OrderPriceItem}>
+                                    <h4>Доставка</h4>
+                                    <h3>{totalPrice > 5000 ? 'Бесплатно' : '500 ₽ '}</h3>
+                                </div>
+                                <div className={styles.TotalPrice}>
+                                    <h4>Итого:</h4>
+                                    <h3>
+                                        {FinalPrice}
+                                        {' '}
+                                        ₽
+                                    </h3>
                                 </div>
                             </div>
-                            <OrderPaymentCart title="Наличные" description="курьеру при получении" />
-                        </div>
-                    </div>
-                    <div className={styles.Order}>
-                        <div className={styles.OrderTitle}>
-                            <h4>Ваш заказ</h4>
-                            <Link className={styles.ChangeOrder} to="/">изменить</Link>
-                        </div>
-                        <div className={styles.Products}>
-                            {
-                                !!cart?.length && cart.map((product: ICartProduct) => <CartItem
-                                    id={product.id}
-                                    key={product.title}
-                                    title={product.title}
-                                    gramms={product.gramms}
-                                    price={product.price}
-                                    img={product.img}
-                                    counter={product.counter}
-                                />)
-                            }
-                        </div>
-                        <div className={styles.OrderPrices}>
-                            <div className={styles.OrderPriceItem}>
-                                <h4>Сумма заказа</h4>
-                                <h3>
-                                    {totalPrice}
-                                    {' '}
-                                    ₽
-                                </h3>
-                            </div>
-                            <div className={styles.OrderPriceItem}>
-                                <h4>Доставка</h4>
-                                <h3>{totalPrice > 5000 ? 'Бесплатно' : '500 ₽ '}</h3>
-                            </div>
-                            <div className={styles.TotalPrice}>
-                                <h4>Итого:</h4>
-                                <h3>
-                                    {totalPrice > 5000 ? totalPrice : totalPrice + 500}
-                                    {' '}
-                                    ₽
-                                </h3>
+                            <div className={styles.OrderBtn}>
+                                <ButtonPrimary type="submit" onClick={() => handleSubmit()} extraType="RoundedReversed">подтвердить оформление</ButtonPrimary>
                             </div>
                         </div>
-                        <div className={styles.OrderBtn}>
-                            <ButtonPrimary type="submit" onClick={() => handleSubmit()} extraType="RoundedReversed">подтвердить оформление</ButtonPrimary>
-                        </div>
-                    </div>
-                </div>)}
+                    </div>)
+            }}
 
         </Formik>
     )

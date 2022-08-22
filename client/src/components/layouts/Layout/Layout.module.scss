@@ -1,104 +1,144 @@
-
-
 .Container {
-	padding-top: 95px;
+  padding-top: 95px;
 }
 
 .Footer {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-	height: 350px;
-	padding: 0 calc(50% - 650px);
+  height: 350px;
+  padding: 0 calc(50% - 650px);
 
-	background-color: #000;
+  background-color: #000;
+  padding-right: 15px;
+  padding-left: 15px;
+  .Contacts {
+    &Title {
+      margin-bottom: 10px;
 
-	.Contacts {
-		&Title {
-			margin-bottom: 10px;
+      text-transform: lowercase;
 
-			text-transform: lowercase;
+      color: #fff;
 
-			color: #FFF;
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 42px;
+    }
 
-			font-size: 36px;
-			font-weight: 500;
-			line-height: 42px;
-		}
+    .FooterLinks {
+      display: flex;
+      flex-direction: column;
 
-		.FooterLinks {
-			display: flex;
-			flex-direction: column;
+      margin-bottom: 15px;
 
-			margin-bottom: 15px;
+      a {
+        margin-bottom: 10px;
 
-			a {
-				margin-bottom: 10px;
+        transition: all 0.3s;
+        text-transform: lowercase;
 
-				transition: all 0.3s;
-				text-transform: lowercase;
+        color: #fff;
 
-				color: #FFF;
+        font-size: 32px;
+        font-weight: 400;
+        line-height: 38px;
 
-				font-size: 32px;
-				font-weight: 400;
-				line-height: 38px;
+        &:hover {
+          transition: all 0.3s;
+          transform: scale(1.05);
+        }
+      }
+    }
 
-				&:hover {
-					transition: all 0.3s;
-					transform: scale(1.05);
-				}
-			}
-		}
+    .FooterIcons {
+      img {
+        margin-right: 25px;
 
-		.FooterIcons {
-			img {
-				margin-right: 25px;
+        transition: all 0.3s;
 
-				transition: all 0.3s;
+        &:hover {
+          transition: all 0.3s;
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
 
-				&:hover {
-					transition: all 0.3s;
-					transform: scale(1.05);
-				}
-			}
-		}
-	}
+  .FooterNav {
+    display: flex;
+    flex-direction: column;
 
-	.FooterNav {
-		display: flex;
-		flex-direction: column;
+    .FooterNavItem {
+      transition: all 0.3s;
+      text-align: right;
+      text-transform: lowercase;
 
-		.FooterNavItem {
-			transition: all 0.3s;
-			text-align: right;
-			text-transform: lowercase;
+      color: #fff;
 
-			color: #FFF;
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 42px;
 
-			font-size: 36px;
-			font-weight: 500;
-			line-height: 42px;
-
-			&:hover {
-				transition: all 0.3s;
-				transform: scale(1.05);
-			}
-		}
-	}
+      &:hover {
+        transition: all 0.3s;
+        transform: scale(1.05);
+      }
+    }
+  }
 }
 
 .Logo {
-	width: fit-content;
-	margin-left: 10px;
+  width: fit-content;
+  margin-left: 10px;
 
-	img {
-		transition: all 0.3s;
+  img {
+    transition: all 0.3s;
 
-		&:hover {
-			transition: all 0.3s;
-			transform: scaleY(1.2);
+    &:hover {
+      transition: all 0.3s;
+      transform: scaleY(1.2);
+    }
+  }
+}
+
+// meida requsets
+@media (max-width: 768px) {
+  .Container {
+    padding-top: 75px;
+  }
+}
+
+@media (max-width: 576px) {
+  .Container {
+    padding-top: 75px;
+  }
+  .Footer {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .FooterLinks {
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+	.Contacts {
+		&Title{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 		}
 	}
+	.FooterIcons{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.FooterNav{
+		display: none;
+	}
+  }
+  .Logo{
+	display: none;
+  }
 }

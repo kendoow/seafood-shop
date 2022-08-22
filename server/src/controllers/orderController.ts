@@ -13,13 +13,24 @@ class OrderController{
         }
     }
 
+    async getOne(req: Request, res: Response) {
+        try {
+            const { refreshToken } = req.cookies
+            const orderId = +req.params.id
+            const productOrder = await orderService.getOne(refreshToken, orderId)
+            res.json(productOrder)
+        } catch (e) {
+            res.status(402).json({ message: `OrderController Error - ${e}` })
+        }
+    }
+
     async create(req: Request, res: Response) {
         try {
             const { refreshToken } = req.cookies
-            const CartOwner = await orderService.create(refreshToken as string)
-            res.json(CartOwner)
+            const OrderOwner = await orderService.create(refreshToken as string, req.body.totalPrice)
+            res.json(OrderOwner)
         } catch (e) {
-            res.status(401).json({ message: `OrderController Error - ${e}` })
+            res.status(402).json({ message: `OrderController Error - ${e}` })
         }
     }
 
@@ -38,6 +49,16 @@ class OrderController{
             const {refreshToken} = req.cookies
             const CartOwner = await orderService.deleteAll(refreshToken as string)
             res.json(CartOwner) 
+        } catch (e) {
+            res.status(402).json({ message: `CartController Error - ${e}` })
+        }
+    }
+    async sendEmailOrder(req:Request, res:Response){
+        try {
+            const {refreshToken} = req.cookies
+            console.log(refreshToken)
+            const orderData = await orderService.sendEmailOrder(refreshToken as string)
+            res.json(orderData) 
         } catch (e) {
             res.status(402).json({ message: `CartController Error - ${e}` })
         }

@@ -2,7 +2,7 @@ export interface IUser {
   name: string;
   email: string;
   password: string;
-  adress: string;
+  address: string;
   phone: string;
   card: string;
 }

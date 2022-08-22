@@ -51,7 +51,7 @@ class AuthController {
     async update( req:Request, res:Response    ){
         try {
             const {refreshToken} = req.cookies;
-            const updatedUserInfo = await authService.update(refreshToken, req.body.adress, req.body.phone)
+            const updatedUserInfo = await authService.update(refreshToken, req.body.address, req.body.phone)
             return res.json(updatedUserInfo)
         } catch (e) {
             res.status(401).json({ message: `Auth Controller Error - ${e}` })

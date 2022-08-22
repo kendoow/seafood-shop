@@ -11,14 +11,14 @@ import { fetchComments } from '@redux/slices/comments/comments.actions'
 const CommentsBlock: FC = () => {
     const dispatch = useTypedDispatch()
 
-    const { loading, error, comments } = useTypedSelector(commentsSelector)
+    const { comments } = useTypedSelector(commentsSelector)
 
     useEffect(() => {
         dispatch(fetchComments())
     }, [])
 
     return (
-        <div className={styles.Container}>
+        <div id="comments" className={styles.Container}>
             <CommentsSlider>
                 {
                     !!comments?.length && comments.map((comment: IComment) => <CommentsItem

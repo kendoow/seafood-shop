@@ -1,74 +1,102 @@
 .Container {
-	position: relative;
+  position: relative;
 
-	width: 350px;
-	height: 470px;
+  width: 350px;
+  height: 470px;
 
-	background-color: #FFF;
-	filter: drop-shadow(8px 8px 10px rgb(0 0 0 / 25%));
+  background-color: #fff;
+  filter: drop-shadow(8px 8px 10px rgb(0 0 0 / 25%));
 
-	.Image {
-		display: flex;
-		justify-content: center;
+  .Image {
+    display: flex;
+    justify-content: center;
 
-		padding-top: 15px;
-		.MainImage{
-			width: 300px;
-			height: 200px;
-		}
-		.Heart {
-			position: absolute;
-			top: 22px;
-			right: 22px;
+    padding-top: 15px;
 
-			cursor: pointer;
-			transition: all 0.2s;
+    .MainImage {
+      width: 300px;
+      height: 200px;
+    }
 
-			&:hover {
-				transition: all 0.2s;
-				transform: scale(1.02);
-			}
-		}
-	}
+    .Heart {
+      position: absolute;
+      top: 22px;
+      right: 22px;
 
-	.Text {
-		margin-right: 5%;
-		margin-left: 5%;
+      cursor: pointer;
+      transition: all 0.2s;
 
-		.Description {
-			display: flex;
-			align-items: flex-end;
-			justify-content: space-between;
+      &:hover {
+        transition: all 0.2s;
+        transform: scale(1.02);
+      }
+    }
+  }
 
-			margin-top: 25px;
-			margin-bottom: 60px;
+  .Text {
+    margin-right: 5%;
+    margin-left: 5%;
 
-			.Name {
-				font-size: 32px;
-				font-weight: 500;
-			}
+    .Description {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
 
-			.Weight {
-				font-size: 24px;
-				font-weight: 500;
-			}
-		}
+      margin-top: 25px;
+      margin-bottom: 60px;
 
-		.Price {
-			margin-bottom: 20px;
+      .Name {
+        font-size: 32px;
+        font-weight: 500;
+      }
 
-			font-size: 36px;
-			font-weight: 500;
-		}
+      .Weight {
+        font-size: 24px;
+        font-weight: 500;
+      }
+    }
 
-		.Btns {
-			display: flex;
-			justify-content: space-between;
-		}
-		.AddButton{
-			height:55px;
-			width: 100%;
-			font-size: 24px;
-		}
-	}
+    .Price {
+      margin-bottom: 20px;
+
+      font-size: 36px;
+      font-weight: 500;
+    }
+
+    .Btns {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .AddButton {
+      width: 100%;
+      height: 55px;
+
+      font-size: 24px;
+    }
+  }
 }
+
+// media requests
+@media (max-width: 1200px) {
+  .Container {
+    position: relative;
+
+    width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+	.Container {
+		position: relative;
+	  }
+}
+
+
+@media (max-width: 576px) {
+	.Container {
+	  position: relative;
+  
+	  width: 330px;
+	}
+  }

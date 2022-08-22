@@ -1,4 +1,4 @@
-import { IOrderProduct, IOrderState } from './order.interface';
+import { IOrderProduct, IOrderState } from './order.interface'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import {
@@ -66,7 +66,7 @@ const orderSlice = createSlice({
         },
         [deleteOrderAll.rejected.type]: (state, action: PayloadAction<string>) => {
             state.error = action.payload
-        },
+        }
     }
 })
 

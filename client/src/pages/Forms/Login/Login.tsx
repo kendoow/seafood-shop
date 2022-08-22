@@ -15,18 +15,26 @@ import useTypedDispatch from '@hooks/useTypedDispatch'
 
 import hidden from '@assets/hidden.svg'
 import show from '@assets/show.svg'
+import { IUserLogin } from '@redux/slices/auth/auth.interface'
 
 const Login: FC = () => {
     const [hidePassword, setHidePassword] = useState<boolean>(true)
+    const [errorLogin, setErrorLogin] = useState<null | string>(null)
 
     const { error } = useTypedSelector(authSelector)
     const dispatch = useTypedDispatch()
 
     const validationSchema = yup.object().shape({
         email: yup.string().email('Введите верный email').required('Это поле обязательно'),
-        password: yup.string().typeError('Должно быть строкой').min(3, 'Минимальная длина поля - 5 символов').max(20, 'Максимальная длина поля - 20 символов')
+        password: yup.string().typeError('Должно быть строкой').min(5, 'Минимальная длина поля - 5 символов').max(20, 'Максимальная длина поля - 20 символов')
             .required('Это поле обязательно'),
     })
+
+    const submitHandler = (values: IUserLogin) => {
+        dispatch(authLogin(values)).unwrap()
+            .then(() => console.log('redirect'))
+            .catch((e: string) => e.includes('...') && setErrorLogin('...'))
+    }
 
     return (
         <FormLayout>
@@ -50,7 +58,7 @@ const Login: FC = () => {
 
                     }}
                     validateOnBlur
-                    onSubmit={(values) => dispatch(authLogin(values))}
+                    onSubmit={(values) => submitHandler(values)}
                     validationSchema={validationSchema}
                 >
                     {({

@@ -7,12 +7,15 @@
 	height: 55px;
 	padding-right: 23px;
 	padding-left: 23px;
+
 	background-color: #000;
 
 	.PlusContainer {
 		cursor: pointer;
 		transform: all 0.3s;
-		color: #fff;
+
+		color: #FFF;
+
 		font-size: 24px;
 
 		&:hover {
@@ -25,7 +28,9 @@
 	.MinusContainer {
 		cursor: pointer;
 		transform: all 0.3s;
-color: #fff;
+
+		color: #FFF;
+
 		font-size: 24px;
 
 		&:hover {
@@ -36,7 +41,8 @@ color: #fff;
 	}
 
 	.Amount {
-		color: #fff;
+		color: #FFF;
+
 		font-size: 24px;
 		font-weight: 500;
 	}

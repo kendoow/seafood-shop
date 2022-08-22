@@ -93,13 +93,10 @@ const authSlice = createSlice({
             state.loading = false
             state.error = null
             state.user = action.payload
-            state.isAuth = true
         },
         [userUpdate.rejected.type]: (state, action: PayloadAction<string>) => {
             state.loading = false
             state.error = action.payload
-            state.user = {} as IUser
-            state.isAuth = false
         },
     }
 })

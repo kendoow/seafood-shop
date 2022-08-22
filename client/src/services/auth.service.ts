@@ -41,9 +41,9 @@ class AuthService {
         }
     }
 
-    async update(adress:string, phone:string) {
+    async update(address:string, phone:string) {
         try {
-            const response = await api.put<IAuthResponse>('auth/update', { adress, phone })
+            const response = await api.put<IAuthResponse>('auth/update', { address, phone })
             return response.data
         } catch (e) {
             throw e

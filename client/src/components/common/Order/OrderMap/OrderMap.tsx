@@ -1,14 +1,12 @@
-import { FC, useState } from 'react'
+import { FC, useRef, useState } from 'react'
 
-import { Map, Placemark, YMaps } from 'react-yandex-maps'
+import {
+    Map, Placemark, YMaps, SearchControl
+} from 'react-yandex-maps'
 import styles from './OrderMap.module.scss'
 
 const OrderMap: FC = () => {
     const [coordinates, setCoordinates] = useState(null)
-
-    const clickOnMap = (e) => {
-        console.log(e)
-    }
 
     // function getAddress(coords) {
     //     myPlacemark.properties.set('iconCaption', 'поиск...');
@@ -29,17 +27,29 @@ const OrderMap: FC = () => {
     //             });
     //     });
     // }
-    // console.log(coordinates)
+    console.log(coordinates)
+
+    const ref1 = useRef(null)
+    if (ref1.current?.events) {
+        ref1.current.events.add('click', (e) => {
+            const coords = e.get('coords')
+            console.log(coords)
+        })
+    }
+
     return (
         <div className={styles.Container}>
             <YMaps onApiAvaliable={(ymaps) => console.log(ymaps)}>
                 <Map
                     modules={['geocode']}
-                    onClick={clickOnMap}
+                    // onClick={clickOnMap}
+                    instanceRef={(ref) => {
+                        if (ref) ref1.current = ref
+                    }}
                     width="95%"
                     height="40vh"
                     defaultState={{ center: [55.751592, 37.621389], zoom: 12 }}
-                    searchControlProvider="yandex#search"
+                    searchControlrovider="yandex#search"
 
                 >
                     {

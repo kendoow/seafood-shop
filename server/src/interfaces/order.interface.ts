@@ -1,5 +1,10 @@
+export interface IProductOrder {
+    id: number,
+    counter: number
+}
+
 export interface IOrder{
     counter:number,
-    product_id:number,
+    products: IProductOrder[],
     user_id:number
 }

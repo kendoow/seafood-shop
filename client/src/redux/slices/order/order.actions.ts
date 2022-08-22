@@ -19,9 +19,9 @@ export const fetchOrder = createAsyncThunk(
 
 export const createOrder = createAsyncThunk(
     'order/create',
-    async (_, { rejectWithValue, dispatch }) => {
+    async (totalPrice:number, { rejectWithValue, dispatch }) => {
         try {
-            await OrderService.create()
+            await OrderService.create(totalPrice)
             dispatch(fetchOrder())
         } catch (e) {
             return rejectWithValue(`Error Create Order - ${e}`)

@@ -98,7 +98,7 @@
 	}
 }
 
-.SecondaryReversed{
+.SecondaryReversed {
 	width: 160px;
 	height: 55px;
 
@@ -108,7 +108,7 @@
 
 	color: #000;
 	border: 1px solid #000;
-	background-color: #fff;
+	background-color: #FFF;
 
 	font-size: 24px;
 	font-weight: 500;
@@ -118,15 +118,18 @@
 		transform: scale(1.02);
 	}
 }
-.Rounded{
+
+.Rounded {
 	width: 85%;
 	height: 75px;
+
 	transition: all 0.3s;
 	text-align: center;
 	text-transform: lowercase;
-	border-radius: 30px;
+
 	color: #000;
-	background-color: #fff;
+	border-radius: 30px;
+	background-color: #FFF;
 
 	font-size: 32px;
 	font-weight: 500;
@@ -136,14 +139,17 @@
 		transform: scale(1.02);
 	}
 }
+
 .RoundedReversed {
 	width: 85%;
 	height: 75px;
+
 	transition: all 0.3s;
 	text-align: center;
 	text-transform: lowercase;
+
+	color: #FFF;
 	border-radius: 30px;
-	color: #fff;
 	background-color: #000;
 
 	font-size: 32px;
@@ -152,5 +158,20 @@
 	&:hover {
 		transition: all 0.3s;
 		transform: scale(1.02);
+	}
+}
+
+// meida requests
+
+@media (max-width: 992px) {
+	.Secondary{
+		max-width: 300px;
+		height: 100px;
+		font-size: 32px;
+	}
+	.SecondaryArrowed{
+		max-width: 300px;
+		height: 100px;
+		font-size: 32px;
 	}
 }

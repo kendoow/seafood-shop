@@ -10,7 +10,7 @@ import { FC, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import CartItem from '../CartItem/CartItem'
 import styles from './CartModal.module.scss'
-import { CartModalProps } from './CartModal.types'
+import { CartModalProps } from './CartModal.interface'
 
 const CartModal: FC<CartModalProps> = ({ active, setActive }) => {
     const dispatch = useTypedDispatch()

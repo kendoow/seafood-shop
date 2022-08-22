@@ -1,46 +1,58 @@
 .PaymentCard {
-  background: #ffffff;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 
-  border: 2px solid #000000;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  max-width: 214px;
-  .Type {
-    margin-top: 15px;
-    display: flex;
-    justify-content: flex-start;
-   
-    align-items:center;
-    margin-bottom: 15px;
-    .Circle{
-        margin-left: 5%;
-        width: 16px;
-        height: 16px;
-        border: 2px solid #000000;
-        border-radius: 50%;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    h4{
-        margin-left: 5%;
-        color: #000;
-        font-weight: 700;
-        font-size: 20px;
-       
-        text-transform: lowercase;
-    }
-  }
-  .Description{
-    font-weight: 500;
-    font-size: 16px;
-    
-    color: #677489;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 15px;
-  }
+	max-width: 214px;
+
+	border: 2px solid #000;
+	border-radius: 12px;
+	background: #FFF;
+
+	.Type {
+		display: flex;
+
+		align-items: center;
+		justify-content: flex-start;
+
+		margin-top: 15px;
+		margin-bottom: 15px;
+
+		.Circle {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			width: 16px;
+			height: 16px;
+			margin-left: 5%;
+
+			cursor: pointer;
+
+			border: 2px solid #000;
+			border-radius: 50%;
+		}
+
+		h4 {
+			margin-left: 5%;
+
+			text-transform: lowercase;
+
+			color: #000;
+
+			font-size: 20px;
+			font-weight: 700;
+		}
+	}
+
+	.Description {
+		margin-right: 5%;
+		margin-bottom: 15px;
+		margin-left: 5%;
+
+		color: #677489;
+
+		font-size: 16px;
+		font-weight: 500;
+	}
 }

@@ -1,43 +1,173 @@
 .Container {
-	height: 90.6vh;
-	padding: 0 calc(50% - 650px);
-	padding-top: 50px !important;
+  height: 90.6vh;
+  padding: 0 calc(50% - 650px);
+  padding-top: 50px !important;
 
-	background-color: #000;
+  background-color: #000;
 
-	.Grid {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-	}
+  .Grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
 
-	.Title {
-		margin-bottom: 60px;
+  .Title {
+    margin-bottom: 60px;
+    margin-left: 15px;
+    font-weight: bold;
+  }
 
-		font-weight: bold;
-	}
+  .Decription {
+    margin-top: 40px;
+    margin-left: 15px;
+  }
 
-	.Decription {
-		margin-top: 40px;
-	}
+  .Btn {
+    margin-top: 60px;
+    margin-left: 15px;
+  }
 
-	.Btn {
-		margin-top: 60px;
-	}
+  .Arrow {
+    display: block;
 
+    margin-top: 8%;
+    margin-right: auto;
+    margin-left: auto;
+
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      margin-top: 10%;
+
+      transition: all 0.3s;
+    }
+  }
+}
+
+// media requests
+@media (max-width: 1200px) {
+  .Container {
+    .Grid {
+      padding-bottom: 40px;
+    }
+    .Title {
+      margin-bottom: 30px;
+      font-size: 100px;
+      font-weight: bold;
+    }
+    .Decription {
+      margin-top: 50px;
+      font-size: 32px;
+    }
+
+    .Image {
+      img {
+        width: 550px;
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .Container {
+    .Grid {
+      padding-bottom: 100px;
+    }
+    .Title {
+      margin-bottom: 30px;
+      font-size: 100px;
+      font-weight: bold;
+    }
+    .Decription {
+      margin-top: 30px;
+      font-size: 30px;
+    }
+    .Image {
+      img {
+        width: 430px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .Container {
+    .Grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      padding-bottom: 0;
+    }
+    .Title {
+      font-size: 80px;
+    }
+    .Btn {
+      display: none;
+    }
+    .Image {
+      margin: 0 auto;
+      margin-top: 70px;
+      img {
+        width: 450px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .Container {
+	padding-top: 30px !important;
+    .Grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding-bottom: 0;
+    }
+    .Title {
+      font-size: 60px;
+    }
+    .Decription {
+      font-size: 28px;
+    }
+    .Btn {
+      display: none;
+    }
+    .Image {
+      margin: 0 auto;
+      margin-top: 120px;
+      margin-bottom: 60px;
+      img {
+        width: 350px;
+      }
+    }
 	.Arrow {
 		display: block;
-
-		margin-top: 2%;
-		margin-right: auto;
-		margin-left: auto;
-
-		cursor: pointer;
-		transition: all 0.3s;
-
+	
+		width: 40px;
+		margin-top: 0%;
 		&:hover {
-			margin-top: 4%;
-
-			transition: all 0.3s;
+		  margin-top: 4%;
+	
+		  transition: all 0.3s;
 		}
-	}
+	  }
+  }
+}
+
+@media (max-width: 400px) {
+  .Container {
+    .Title {
+      font-size: 50px;
+	  margin-bottom: 0;
+    }
+	.Decription {
+		font-size: 24px;
+	  }
+	  .Image {
+		margin-top: 20px;
+		img {
+		  width: 320px;
+		}
+	  }
+  }
 }

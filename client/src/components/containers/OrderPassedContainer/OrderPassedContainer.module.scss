@@ -1,57 +1,74 @@
 .Container {
-  padding: 0 calc(50% - 650px);
 
-  background-color: #000;
-  height: 100vh;
+	position: relative;
 
-  position: relative;
-  .Main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 90vh;
-    .Title {
-      font-weight: 500;
-      font-size: 64px;
-      line-height: 75px;
-      text-align: center;
+	height: 100vh;
+	padding: 0 calc(50% - 650px);
 
-      color: #ffffff;
-    }
-    .Description {
-      font-weight: 500;
-      font-size: 36px;
-      line-height: 42px;
-      text-align: center;
-      padding-top: 100px;
-      color: #ffffff;
-    }
-    .Img {
-      position: absolute;
-      top: 400px;
-      right: 0;
-    }
-  }
-  .Exit {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-left: 5px;
-    transition: all 0.3s;
-    &:hover {
-      transition: all 0.3s;
-      margin-left: 0;
-    }
+	background-color: #000;
 
-    .Link {
-      margin-left: 20px;
-      font-weight: 500;
-      font-size: 32px;
-      line-height: 38px;
+	.Main {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
 
-      color: #ffffff;
-      transition: all 0.3s;
-    }
-  }
+		height: 90vh;
+
+		.Title {
+			text-align: center;
+
+			color: #FFF;
+
+			font-size: 64px;
+			font-weight: 500;
+			line-height: 75px;
+		}
+
+		.Description {
+			padding-top: 100px;
+
+			text-align: center;
+
+			color: #FFF;
+
+			font-size: 36px;
+			font-weight: 500;
+			line-height: 42px;
+		}
+
+		.Img {
+			position: absolute;
+			top: 400px;
+			right: 0;
+		}
+	}
+
+	.Exit {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+
+		margin-left: 5px;
+
+		transition: all 0.3s;
+
+		&:hover {
+			margin-left: 0;
+
+			transition: all 0.3s;
+		}
+
+		.Link {
+			margin-left: 20px;
+
+			transition: all 0.3s;
+
+			color: #FFF;
+
+			font-size: 32px;
+			font-weight: 500;
+			line-height: 38px;
+		}
+	}
 }
