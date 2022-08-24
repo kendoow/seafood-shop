@@ -6,6 +6,7 @@ import Registration from '@pages/Forms/Registration/Registration'
 import Main from '@pages/Main/Main'
 import Order from '@pages/Order/Order'
 import OrderPassed from '@pages/OrderPassed/OrderPassed'
+import OrderInfo from '@pages/OrderInfo/OrderInfo'
 import { authRefresh } from '@redux/slices/auth/auth.actions'
 import authSelector from '@redux/slices/auth/auth.selector'
 
@@ -29,6 +30,7 @@ const AppRouter: FC = () => {
                 <>
                     <Route path="/order" element={<Order />} />
                     <Route path="/order_passed" element={<OrderPassed />} />
+                    <Route path="/orderinfo" element={<OrderInfo />} />
                 </>
                 : <>
                     <Route path="/login" element={<Login />} />

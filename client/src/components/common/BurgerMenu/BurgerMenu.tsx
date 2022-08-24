@@ -32,7 +32,6 @@ const BurgerMenu: FC<BurgerMenuProps> = ({ active, setActive }) => {
                         className={styles.CloseBtn}
                     />
 
-
                     <AnimatedLink
                         onClick={() => setActive(false)}
                         to="delivery"
@@ -67,6 +66,7 @@ const BurgerMenu: FC<BurgerMenuProps> = ({ active, setActive }) => {
                         Отзывы
 
                     </AnimatedLink>
+                    <Link className={styles.BurgerItem} to="/orderinfo">ваши заказы</Link>
                 </div>
                 {
                     isAuth ? <button className={styles.BurgerItem} onClick={() => dispatch(authLogout())}>Выйти</button> : <Link className={styles.BurgerItem} to="/login">Войти</Link>

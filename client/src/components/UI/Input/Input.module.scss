@@ -1,15 +1,23 @@
 .Input {
-	width: 350px;
-	height: 55px;
-	margin-bottom: 20px;
-	padding: 16px 19px;
+  width: 350px;
+  height: 55px;
+  margin-bottom: 20px;
+  padding: 16px 19px;
 
-	border: 1px solid #000;
-	background-color: transparent;
+  border: 1px solid #000;
+  background-color: transparent;
 
-	font-size: 20px;
+  font-size: 20px;
 
-	&::placeholder {
-		color: #949494;
-	}
+  &::placeholder {
+    color: #949494;
+  }
+}
+
+// meida requests
+
+@media (max-width: 576px) {
+  .Input {
+    width: 320px;
+  }
 }

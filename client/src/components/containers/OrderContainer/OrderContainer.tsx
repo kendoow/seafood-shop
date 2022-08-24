@@ -1,8 +1,11 @@
+import { FC, useEffect } from 'react'
+import { Field, Formik } from 'formik'
+import * as yup from 'yup'
+import MaskedInput from 'react-text-mask'
+
 import OrderMap from '@components/common/Order/OrderMap/OrderMap'
 import Input from '@components/UI/Input/Input'
-import { FC, useEffect } from 'react'
-import styles from './OrderContainer.module.scss'
-import add from '@assets/add.svg'
+
 import OrderPaymentCart from '@components/common/Order/OrderPaymentCard/OrderPaymentCard'
 import { Link, useNavigate } from 'react-router-dom'
 import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
@@ -12,12 +15,16 @@ import useTypedDispatch from '@hooks/useTypedDispatch'
 import { deleteCartAll, fetchCart } from '@redux/slices/cart/cart.actions'
 import { ICartProduct } from '@redux/slices/cart/cart.interface'
 import CartItem from '@components/common/Cart/CartItem/CartItem'
-import { Field, Formik } from 'formik'
-import * as yup from 'yup'
-import MaskedInput from 'react-text-mask'
+
 import { userUpdate } from '@redux/slices/auth/auth.actions'
 import { createOrder } from '@redux/slices/order/order.actions'
 import authSelector from '@redux/slices/auth/auth.selector'
+import EmptySpace from '@components/common/EmptySpace/EmptySpace'
+
+import boxIcon from '@assets/boxIcon.png'
+
+
+import styles from './OrderContainer.module.scss'
 
 const phoneNumberMask = [
     [8],
@@ -80,7 +87,7 @@ const OrderContainer: FC = () => {
                 values, errors, touched, handleChange, handleBlur, handleSubmit, setValues
             }) => {
                 useEffect(() => {
-                    Object.keys(user).length && setValues({ phone: user.phone, address: user.adress })
+                    Object.keys(user).length && setValues({ phone: user.phone, address: user.address })
                 }, [user])
                 return (
                     <div className={styles.Container}>
@@ -125,10 +132,10 @@ const OrderContainer: FC = () => {
                             <div className={styles.Payment}>
                                 <div className={styles.PaymentType}>
                                     <h4>Способ оплаты</h4>
-                                    <div className={styles.AddPayment}>
+                                    {/* <div className={styles.AddPayment}>
                                         <img src={add} alt="add" />
                                         добавить новую карту
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <OrderPaymentCart title="Наличные" description="курьеру при получении" />
                             </div>
@@ -140,15 +147,16 @@ const OrderContainer: FC = () => {
                             </div>
                             <div className={styles.Products}>
                                 {
-                                    !!cart?.length && cart.map((product: ICartProduct) => <CartItem
-                                        id={product.id}
-                                        key={product.title}
-                                        title={product.title}
-                                        gramms={product.gramms}
-                                        price={product.price}
-                                        img={product.img}
-                                        counter={product.counter}
-                                    />)
+                                    totalPrice ?
+                                        !!cart?.length && cart.map((product: ICartProduct) => <CartItem
+                                            id={product.id}
+                                            key={product.title}
+                                            title={product.title}
+                                            gramms={product.gramms}
+                                            price={product.price}
+                                            img={product.img}
+                                            counter={product.counter}
+                                        />) : <EmptySpace title="Сложите в корзину нужные товары" img={boxIcon} btnText="в магазин!" />
                                 }
                             </div>
                             <div className={styles.OrderPrices}>

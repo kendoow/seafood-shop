@@ -6,11 +6,10 @@
 	align-items: center;
 
 	width: 100%;
-	padding: 0 calc(50% - 650px);
+	padding: calc(50% - 650px);
 	padding-top: 20px;
 
 	padding-bottom: 20px;
-
 
 	background-color: #000;
 	grid-template-columns: 1fr 1fr;
@@ -135,12 +134,16 @@
 // meida requsets
 @media (max-width: 768px) {
 	.Header {
-		padding-top: 10px;
-
-	padding-bottom: 10px;
-
+		padding-left: 10px;
+		padding-right: 10px;
 		.NavItem {
 			display: none;
+		}
+
+		.Nav {
+			.NavItems {
+				margin-right: 60px;
+			}
 		}
 
 		.UserIcon {

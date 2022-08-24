@@ -3,11 +3,12 @@
 	overflow: hidden;
 	grid-template-columns: 1fr 1fr;
 
-	max-height: 100vh;
+	min-height: 100vh;
 	padding: 0 calc(50% - 650px);
 	padding-top: 95px !important;
 
 	.PaymentBlock {
+		margin-left: 10px;
 		.Title {
 			margin-top: 25px;
 
@@ -87,6 +88,7 @@
 	}
 
 	.Order {
+		margin-right: 10px;
 		.OrderTitle {
 			display: flex;
 			align-items: center;
@@ -209,5 +211,20 @@
 
 	&::placeholder {
 		color: rgb(255 121 121);
+	}
+}
+
+// media requests
+
+@media (max-width: 768px){
+	.Container{
+		grid-template-columns: 1fr;
+		.Title {
+			text-align: center;
+		}
+		.Order {
+			margin-left: 10px;
+			margin-right: 10px;
+		}
 	}
 }

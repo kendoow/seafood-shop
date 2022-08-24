@@ -13,6 +13,7 @@ const ButtonPrimary: FC<ButtonPrimaryProps> = ({
             type={type}
             className={cn(className, styles.Btn, {
                 [styles.Primary]: extraType === 'Primary',
+                [styles.PrimaryBig]: extraType === 'PrimaryBig',
                 [styles.PrimaryMin]: extraType === 'PrimaryMin',
                 [styles.Secondary]: extraType === 'Secondary',
                 [styles.SecondaryArrowed]: extraType === 'SecondaryArrowed',

@@ -5,6 +5,6 @@ export interface ButtonPrimaryProps extends DetailedHTMLProps<HTMLAttributes<HTM
     type?:string,
     className?: string,
     disabled?:boolean,
-    extraType?: 'Primary' | 'Secondary' | 'SecondaryArrowed' |'PrimaryMin' | 'SecondaryReversed' | 'Rounded' | 'RoundedReversed'
+    extraType?: 'Primary' | 'PrimaryBig' | 'Secondary' | 'SecondaryArrowed' |'PrimaryMin' | 'SecondaryReversed' | 'Rounded' | 'RoundedReversed'
 
 }

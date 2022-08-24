@@ -6,8 +6,9 @@ import favoriteSelector from '@redux/slices/favorite/favorite.selector'
 import { IProduct } from '@redux/slices/product/products.interface'
 import React, { FC, useEffect } from 'react'
 import styles from './FavoriteContainer.module.scss'
-import heartFilled from '@assets/heartFilledHuge.svg'
+import heartFilled from '@assets/favoriteBig.png'
 import ProductItem from '@components/common/ProductItem/ProductItem'
+import EmptySpace from '@components/common/EmptySpace/EmptySpace'
 
 const FavoriteContainer: FC = () => {
     const { favorite } = useTypedSelector(favoriteSelector)
@@ -22,20 +23,22 @@ const FavoriteContainer: FC = () => {
         <div className={styles.Container}>
             <div className={styles.Title}>
                 <p>Избранное</p>
-                <img src={heartFilled} alt="heart" />
+
             </div>
-            <div className={styles.Favorites}>
-                {
-                    !!favorite?.length && favorite.map((product: IProduct) => <ProductItem
+
+            {favorite.length ?
+                <div className={styles.Favorites}>
+                    {favorite.map((product: IProduct) => <ProductItem
                         key={product.id}
                         id={product.id}
                         title={product.title}
                         price={product.price}
                         img={product.img}
                         gramms={product.gramms}
-                    />)
-                }
-            </div>
+
+                    />)}
+                </div> : <EmptySpace img={heartFilled} title="Здесь ничего нет..." btnText="В магазин!" />}
+
         </div>
     )
 }

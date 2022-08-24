@@ -1,49 +1,61 @@
 .Container {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-	width: 130px;
-	height: 55px;
-	padding-right: 23px;
-	padding-left: 23px;
+  width: 130px;
+  height: 55px;
+  padding-right: 23px;
+  padding-left: 23px;
 
-	background-color: #000;
+  background-color: #000;
 
-	.PlusContainer {
-		cursor: pointer;
-		transform: all 0.3s;
+  .PlusContainer {
+    cursor: pointer;
+    transform: all 0.3s;
 
-		color: #FFF;
+    color: #fff;
 
-		font-size: 24px;
+    font-size: 24px;
 
-		&:hover {
-			transition: all 0.3s;
+    &:hover {
+      transition: all 0.3s;
 
-			opacity: 0.8;
-		}
-	}
+      opacity: 0.8;
+    }
+  }
 
-	.MinusContainer {
-		cursor: pointer;
-		transform: all 0.3s;
+  .MinusContainer {
+    cursor: pointer;
+    transform: all 0.3s;
 
-		color: #FFF;
+    color: #fff;
 
-		font-size: 24px;
+    font-size: 24px;
 
-		&:hover {
-			transform: all 0.3s;
+    &:hover {
+      transform: all 0.3s;
 
-			opacity: 0.8;
-		}
-	}
+      opacity: 0.8;
+    }
+  }
 
-	.Amount {
-		color: #FFF;
+  .Amount {
+    color: #fff;
 
-		font-size: 24px;
-		font-weight: 500;
-	}
+    font-size: 24px;
+    font-weight: 500;
+  }
 }
+
+// meida requests
+@media (max-width: 768px) {
+  .Container {
+    width: 120px;
+    height: 50px;
+
+    font-size: 24px;
+  }
+}
+
+

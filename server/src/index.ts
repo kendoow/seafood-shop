@@ -49,6 +49,5 @@ const pool = createDb()
 
 start();
 
-
 export default pool 
 

@@ -1,20 +1,16 @@
-import { IOrderProduct, IOrderState } from './order.interface'
+import { IOrder, IOrderState } from './order.interface'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import {
-    fetchOrder,
     deleteOrderAll,
     createOrder,
-    updateOrder
+    fetchOneOrder
 } from './order.actions'
-
-import calcTotalPrice from '@utils/calcTotalPrice'
 
 const initialState: IOrderState = {
     loading: false,
     error: null,
-    order: [],
-    totalPrice: 0
+    order: {} as IOrder,
 }
 
 const orderSlice = createSlice({
@@ -22,20 +18,19 @@ const orderSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: {
-        [fetchOrder.pending.type]: (state) => {
+        [fetchOneOrder.pending.type]: (state) => {
             state.loading = true
             state.error = null
         },
-        [fetchOrder.fulfilled.type]: (state, action: PayloadAction<IOrderProduct[]>) => {
+        [fetchOneOrder.fulfilled.type]: (state, action: PayloadAction<IOrder>) => {
             state.loading = false
             state.error = null
             state.order = action.payload
-            state.totalPrice = calcTotalPrice(state.order)
         },
-        [fetchOrder.rejected.type]: (state, action: PayloadAction<string>) => {
+        [fetchOneOrder.rejected.type]: (state, action: PayloadAction<string>) => {
             state.loading = false
             state.error = action.payload
-            state.order = []
+            state.order = {} as IOrder
         },
 
         [createOrder.pending.type]: (state) => {
@@ -45,16 +40,6 @@ const orderSlice = createSlice({
             state.error = null
         },
         [createOrder.rejected.type]: (state, action: PayloadAction<string>) => {
-            state.error = action.payload
-        },
-
-        [updateOrder.pending.type]: (state) => {
-            state.error = null
-        },
-        [updateOrder.fulfilled.type]: (state) => {
-            state.error = null
-        },
-        [updateOrder.rejected.type]: (state, action: PayloadAction<string>) => {
             state.error = action.payload
         },
 

@@ -1,0 +1,26 @@
+.Container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+
+	max-width: 550px;
+	margin: 0 auto;
+	margin-top: 40px;
+	margin-bottom: 40px;
+
+	text-align: center;
+
+	.Title {
+		margin-top: 30px;
+		margin-bottom: 30px;
+
+		font-size: 36px;
+		font-weight: 500;
+		line-height: 38px;
+	}
+
+	.Btn{
+
+	}
+}

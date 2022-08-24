@@ -140,3 +140,21 @@
 		color: red;
 	}
 }
+
+
+// media requests
+@media (max-width: 576px) {
+	.Container {
+	  width: 100vw;
+	  height: 100vh;
+	  .Exit {
+		left: 0;
+		top: 25px;
+	  }
+	  .Redirect{
+		padding-left: 10px;
+		padding-right: 10px;
+	  }
+	}
+  }
+  

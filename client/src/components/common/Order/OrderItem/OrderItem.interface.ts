@@ -1,6 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react'
 
-export interface CartItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+export interface OrderItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     counter: number,
     id: number,
     img: string,
@@ -9,4 +9,4 @@ export interface CartItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivE
     price: number,
 }
 
-export default CartItemProps
+export default OrderItemProps

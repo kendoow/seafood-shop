@@ -3,21 +3,22 @@ import { Request, Response } from 'express'
 
 
 class OrderController{
-    async get(req: Request, res: Response) {
-        try {
-            const { refreshToken } = req.cookies
-            const CartOwner = await orderService.getAll(refreshToken as string)
-            res.json(CartOwner)
-        } catch (e) {
-            res.status(402).json({ message: `OrderController Error - ${e}` })
-        }
-    }
 
     async getOne(req: Request, res: Response) {
         try {
             const { refreshToken } = req.cookies
             const orderId = +req.params.id
             const productOrder = await orderService.getOne(refreshToken, orderId)
+            res.json(productOrder)
+        } catch (e) {
+            res.status(402).json({ message: `OrderController Error - ${e}` })
+        }
+    }
+
+    async getLast(req: Request, res: Response) {
+        try {
+            const { refreshToken } = req.cookies
+            const productOrder = await orderService.getLast(refreshToken)
             res.json(productOrder)
         } catch (e) {
             res.status(402).json({ message: `OrderController Error - ${e}` })
@@ -56,7 +57,7 @@ class OrderController{
     async sendEmailOrder(req:Request, res:Response){
         try {
             const {refreshToken} = req.cookies
-            console.log(refreshToken)
+
             const orderData = await orderService.sendEmailOrder(refreshToken as string)
             res.json(orderData) 
         } catch (e) {

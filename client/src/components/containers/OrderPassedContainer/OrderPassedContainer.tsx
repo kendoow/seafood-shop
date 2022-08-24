@@ -13,8 +13,9 @@ const OrderPassedContainer: FC = () => {
                     магазина!
                 </div>
                 <div className={styles.Description}>
-Ваш заказ успешно принят
-                    и готовится к отправке
+                    <p>Ваш заказ успешно принят и готовится к отправке.</p>
+
+                    <p>В ближайшее время наш спецалист свяжется с вами!</p>
                 </div>
                 <img className={styles.Img} src={OrderPassedImage} alt="orderpassed" />
             </div>

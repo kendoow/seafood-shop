@@ -1,7 +1,7 @@
 export interface IProductNoImage {
     title:string,
-    price:string,
-    gramms:string
+    price:number,
+    gramms:number
 }
 export interface IProduct extends IProductNoImage{
     img:string,

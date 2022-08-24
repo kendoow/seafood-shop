@@ -1,0 +1,140 @@
+.Container {
+	display: grid;
+	overflow: hidden;
+	grid-template-columns: 1fr 2fr;
+
+	min-height: 100vh;
+	padding: 0 calc(50% - 650px);
+	padding-top: 95px !important;
+	padding-bottom: 40px !important;
+
+	.Text {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		margin-top: 50px;
+		margin-left: 10px;
+
+		.OrderId {
+
+			margin-bottom: 60px;
+
+			color: #000;
+
+			font-size: 48px;
+			font-weight: 500;
+			line-height: 42px;
+		}
+
+		.OrderBlock {
+			margin-bottom: 40px;
+
+			.OrderTitle {
+				margin-bottom: 10px;
+
+				color: #000;
+
+				font-size: 32px;
+				font-weight: 700;
+			}
+
+			.OrderInfo {
+				font-size: 26px;
+				font-weight: 500;
+			}
+		}
+
+		.Btn {
+			width: 90%;
+		}
+	}
+
+	.OrderItems {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		margin-top: 50px;
+		margin-right: 20px;
+
+		.OrderItemsContainer {
+			overflow-y: scroll;
+
+			max-height: 550px;
+		}
+
+		&Title {
+
+			color: #000;
+
+			font-size: 32px;
+			font-weight: 500;
+			line-height: 38px;
+		}
+
+		.OrderPrices {
+			.OrderPriceItem {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+
+				margin-top: 10px;
+				margin-bottom: 10px;
+
+				h4 {
+					color: #000;
+
+					font-size: 26px;
+					font-weight: 500;
+				}
+
+				h3 {
+					color: #000;
+
+					font-size: 28px;
+					font-weight: 500;
+				}
+			}
+
+			.TotalPrice {
+				display: flex;
+				justify-content: space-between;
+
+				margin-top: 20px;
+
+				h4 {
+					color: #000;
+
+					font-size: 36px;
+
+					font-weight: 500;
+				}
+
+				h3 {
+					color: #000;
+
+					font-size: 36px;
+
+					font-weight: 500;
+				}
+			}
+		}
+	}
+}
+
+
+// media requests
+
+
+@media (max-width:768px) {
+	.Container {
+		grid-template-columns: 1fr;
+		.Text{
+			text-align: center;
+		}
+		.OrderItems {
+			margin-left: 20px;
+		}
+	}
+}

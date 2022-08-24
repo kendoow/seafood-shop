@@ -1,6 +1,6 @@
 import OrderPassedContainer from '@components/containers/OrderPassedContainer/OrderPassedContainer'
 import Header from '@components/layouts/Layout/Header/Header'
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 const OrderPassed:FC = () => {
     return (

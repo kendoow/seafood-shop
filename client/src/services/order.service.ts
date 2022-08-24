@@ -2,7 +2,7 @@ import { defaultApi } from '@http/index'
 import { ICartProduct } from '@redux/slices/cart/cart.interface'
 
 class OrderService {
-    async get() {
+    async getLast() {
         try {
             const response = await defaultApi.get<ICartProduct[]>('/order')
             return response.data

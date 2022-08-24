@@ -5,9 +5,10 @@ export interface IOrderProduct extends IProduct {
 }
 
 export interface IOrder {
-  Order?: IOrderProduct[];
-  counter: number;
-  productId:number;
+  products: IOrderProduct[];
+  date:string;
+  totalPrice:number;
+  deliverDate:string;
 }
 
 export interface ICartUserAdd extends IOrder {
@@ -16,6 +17,5 @@ export interface ICartUserAdd extends IOrder {
 export interface IOrderState {
   loading: boolean;
   error: null | string;
-  totalPrice:number;
-  order: IOrderProduct[];
+  order: IOrder;
 }

@@ -1,177 +1,217 @@
 .Primary {
-	width: 200px;
-	height: 75px;
+  width: 200px;
+  height: 75px;
 
-	transition: all 0.3s;
-	text-align: center;
-	text-transform: lowercase;
+  transition: all 0.3s;
+  text-align: center;
+  text-transform: lowercase;
 
-	color: #FFF;
-	background-color: #000;
+  color: #fff;
+  background-color: #000;
 
-	font-size: 36px;
-	font-weight: 500;
+  font-size: 36px;
+  font-weight: 500;
 
-	&:disabled {
-		&:hover {
-			transform: none;
-		}
-	}
+  &:disabled {
+    &:hover {
+      transform: none;
+    }
+  }
 
-	&:hover {
-		transition: all 0.3s;
-		transform: scale(1.02);
-	}
+  &:hover {
+    transition: all 0.3s;
+    transform: scale(1.02);
+  }
+}
+
+.PrimaryBig {
+  width: 341px;
+  height: 112px;
+
+  transition: all 0.3s;
+  text-align: center;
+  text-transform: lowercase;
+
+  color: #fff;
+  background-color: #000;
+
+  font-size: 48px;
+  font-weight: 500;
+
+  &:disabled {
+    &:hover {
+      transform: none;
+    }
+  }
+
+  &:hover {
+    transition: all 0.3s;
+    transform: scale(1.02);
+  }
 }
 
 .Secondary {
-	width: 360px;
-	height: 110px;
+  width: 360px;
+  height: 110px;
 
-	transition: all 0.3s;
-	text-align: center;
-	text-transform: lowercase;
+  transition: all 0.3s;
+  text-align: center;
+  text-transform: lowercase;
 
-	color: #FFF;
-	border: 1px solid #FFF;
-	background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  background-color: transparent;
 
-	font-size: 36px;
-	font-weight: 500;
+  font-size: 36px;
+  font-weight: 500;
 
-	&:hover {
-		transition: all 0.3s;
-		transform: scale(1.02);
-	}
+  &:hover {
+    transition: all 0.3s;
+    transform: scale(1.02);
+  }
 }
 
 .SecondaryArrowed {
-	width: 360px;
-	height: 110px;
-	padding-left: 40px;
+  width: 360px;
+  height: 110px;
+  padding-left: 40px;
 
-	transition: all 0.3s;
-	text-align: left;
-	text-transform: lowercase;
+  transition: all 0.3s;
+  text-align: left;
+  text-transform: lowercase;
 
-	color: #FFF;
-	border: 1px solid #FFF;
-	background: url("@assets/right-arrow.svg") no-repeat right 10% top 50%;
-	background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  background: url("@assets/right-arrow.svg") no-repeat right 10% top 50%;
+  background-color: transparent;
 
-	font-size: 36px;
-	font-weight: 500;
+  font-size: 36px;
+  font-weight: 500;
 
-	&:hover {
-		padding-left: 50px;
+  &:hover {
+    padding-left: 50px;
 
-		transition: all 0.3s;
-		transform: scale(1.02);
+    transition: all 0.3s;
+    transform: scale(1.02);
 
-		background: url("@assets/right-arrow.svg") no-repeat right 8% top 50%;
-	}
+    background: url("@assets/right-arrow.svg") no-repeat right 8% top 50%;
+  }
 }
 
 .PrimaryMin {
-	width: 160px;
-	height: 55px;
+  width: 160px;
+  height: 55px;
 
-	transition: all 0.3s;
-	text-align: center;
-	text-transform: lowercase;
+  transition: all 0.3s;
+  text-align: center;
+  text-transform: lowercase;
 
-	color: #FFF;
-	background-color: #000;
+  color: #fff;
+  background-color: #000;
 
-	font-size: 24px;
-	font-weight: 500;
+  font-size: 24px;
+  font-weight: 500;
 
-	&:disabled {
-		&:hover {
-			transform: none;
-		}
-	}
+  &:disabled {
+    &:hover {
+      transform: none;
+    }
+  }
 
-	&:hover {
-		transition: all 0.3s;
-		transform: scale(1.02);
-	}
+  &:hover {
+    transition: all 0.3s;
+    transform: scale(1.02);
+  }
 }
 
 .SecondaryReversed {
-	width: 160px;
-	height: 55px;
+  width: 160px;
+  height: 55px;
 
-	transition: all 0.3s;
-	text-align: center;
-	text-transform: lowercase;
+  transition: all 0.3s;
+  text-align: center;
+  text-transform: lowercase;
 
-	color: #000;
-	border: 1px solid #000;
-	background-color: #FFF;
+  color: #000;
+  border: 1px solid #000;
+  background-color: #fff;
 
-	font-size: 24px;
-	font-weight: 500;
+  font-size: 24px;
+  font-weight: 500;
 
-	&:hover {
-		transition: all 0.3s;
-		transform: scale(1.02);
-	}
+  &:hover {
+    transition: all 0.3s;
+    transform: scale(1.02);
+  }
 }
 
 .Rounded {
-	width: 85%;
-	height: 75px;
+  width: 85%;
+  height: 75px;
 
-	transition: all 0.3s;
-	text-align: center;
-	text-transform: lowercase;
+  transition: all 0.3s;
+  text-align: center;
+  text-transform: lowercase;
 
-	color: #000;
-	border-radius: 30px;
-	background-color: #FFF;
+  color: #000;
+  border-radius: 30px;
+  background-color: #fff;
 
-	font-size: 32px;
-	font-weight: 500;
+  font-size: 32px;
+  font-weight: 500;
 
-	&:hover {
-		transition: all 0.3s;
-		transform: scale(1.02);
-	}
+  &:hover {
+    transition: all 0.3s;
+    transform: scale(1.02);
+  }
 }
 
 .RoundedReversed {
-	width: 85%;
-	height: 75px;
+  width: 85%;
+  height: 75px;
 
-	transition: all 0.3s;
-	text-align: center;
-	text-transform: lowercase;
+  transition: all 0.3s;
+  text-align: center;
+  text-transform: lowercase;
 
-	color: #FFF;
-	border-radius: 30px;
-	background-color: #000;
+  color: #fff;
+  border-radius: 30px;
+  background-color: #000;
 
-	font-size: 32px;
-	font-weight: 500;
+  font-size: 32px;
+  font-weight: 500;
 
-	&:hover {
-		transition: all 0.3s;
-		transform: scale(1.02);
-	}
+  &:hover {
+    transition: all 0.3s;
+    transform: scale(1.02);
+  }
 }
 
 // meida requests
-
 @media (max-width: 992px) {
-	.Secondary{
-		max-width: 300px;
-		height: 100px;
-		font-size: 32px;
-	}
-	.SecondaryArrowed{
-		max-width: 300px;
-		height: 100px;
-		font-size: 32px;
-	}
+  .Secondary {
+    max-width: 300px;
+    height: 100px;
+
+    font-size: 32px;
+  }
+
+  .SecondaryArrowed {
+    max-width: 300px;
+    height: 100px;
+
+    font-size: 32px;
+  }
 }
+
+@media (max-width: 768px) {
+  .SecondaryReversed {
+    width: 120px;
+    height: 50px;
+
+    font-size: 24px;
+    margin-right: 10px;
+  }
+}
+
+

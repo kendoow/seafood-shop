@@ -12,7 +12,7 @@
 	height: 100vh;
 
 	transition: all 0.3s;
-	transform: translateX(100%);
+	transform: translateX(120%);
 	backdrop-filter: blur(15px);
 }
 
@@ -186,6 +186,19 @@
 
 			width: 85%;
 			margin-bottom: 20px;
+		}
+	}
+}
+
+// media requests
+@media (max-width: 576px) {
+	.Content {
+		.Btn {
+			.BtnElement {
+				padding: 20px !important;
+
+				background: url("@assets/right-arrow.svg") no-repeat right 10% top 50% !important;
+			}
 		}
 	}
 }

@@ -1,17 +1,12 @@
-import { FC, useState } from 'react'
+import { FC } from 'react'
 import styles from './Layout.module.scss'
 import logo from '@assets/logo.svg'
-import cart from '@assets/shopping-cart.svg'
-import heart from '@assets/heart.svg'
-import user from '@assets/user.svg'
 import { LayoutProps } from './Layout.interface'
 import { Link } from 'react-router-dom'
-import CartModal from '@components/common/Cart/CartModal/CartModal'
 import telegram from '@assets/telegram.svg'
 import whatsapp from '@assets/whatsapp.svg'
 import useTypedSelector from '@hooks/useTypedSelector'
 import authSelector from '@redux/slices/auth/auth.selector'
-import { Link as AnimatedLink, animateScroll as scroll } from 'react-scroll'
 import Header from './Header/Header'
 
 const Layout: FC<LayoutProps> = ({ children }) => {

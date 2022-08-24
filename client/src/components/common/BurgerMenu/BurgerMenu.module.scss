@@ -12,7 +12,7 @@
 	height: 100vh;
 
 	transition: all 0.3s;
-	transform: translateX(100%);
+	transform: translateX(120%);
 	backdrop-filter: blur(15px);
 }
 
@@ -43,7 +43,6 @@
 		align-items: flex-start;
 		flex-direction: column;
 		justify-content: space-between;
-
 
 		width: 100vw;
 		height: 100%;

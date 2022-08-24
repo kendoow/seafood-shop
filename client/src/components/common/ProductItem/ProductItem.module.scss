@@ -1,102 +1,101 @@
 .Container {
-  position: relative;
+	position: relative;
 
-  width: 350px;
-  height: 470px;
+	width: 350px;
+	height: 470px;
 
-  background-color: #fff;
-  filter: drop-shadow(8px 8px 10px rgb(0 0 0 / 25%));
+	background-color: #FFF;
+	filter: drop-shadow(8px 8px 10px rgb(0 0 0 / 25%));
 
-  .Image {
-    display: flex;
-    justify-content: center;
+	.Image {
+		display: flex;
+		justify-content: center;
 
-    padding-top: 15px;
+		padding-top: 15px;
 
-    .MainImage {
-      width: 300px;
-      height: 200px;
-    }
+		.MainImage {
+			width: 300px;
+			height: 200px;
+		}
 
-    .Heart {
-      position: absolute;
-      top: 22px;
-      right: 22px;
+		.Heart {
+			position: absolute;
+			top: 22px;
+			right: 22px;
 
-      cursor: pointer;
-      transition: all 0.2s;
+			cursor: pointer;
+			transition: all 0.2s;
 
-      &:hover {
-        transition: all 0.2s;
-        transform: scale(1.02);
-      }
-    }
-  }
+			&:hover {
+				transition: all 0.2s;
+				transform: scale(1.02);
+			}
+		}
+	}
 
-  .Text {
-    margin-right: 5%;
-    margin-left: 5%;
+	.Text {
+		margin-right: 5%;
+		margin-left: 5%;
 
-    .Description {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
+		.Description {
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
 
-      margin-top: 25px;
-      margin-bottom: 60px;
+			margin-top: 25px;
+			margin-bottom: 60px;
 
-      .Name {
-        font-size: 32px;
-        font-weight: 500;
-      }
+			.Name {
+				font-size: 32px;
+				font-weight: 500;
+			}
 
-      .Weight {
-        font-size: 24px;
-        font-weight: 500;
-      }
-    }
+			.Weight {
+				font-size: 24px;
+				font-weight: 500;
+			}
+		}
 
-    .Price {
-      margin-bottom: 20px;
+		.Price {
+			margin-bottom: 20px;
 
-      font-size: 36px;
-      font-weight: 500;
-    }
+			font-size: 36px;
+			font-weight: 500;
+		}
 
-    .Btns {
-      display: flex;
-      justify-content: space-between;
-    }
+		.Btns {
+			display: flex;
+			justify-content: space-between;
+		}
 
-    .AddButton {
-      width: 100%;
-      height: 55px;
+		.AddButton {
+			width: 100%;
+			height: 55px;
 
-      font-size: 24px;
-    }
-  }
+			font-size: 24px;
+		}
+	}
 }
 
 // media requests
 @media (max-width: 1200px) {
-  .Container {
-    position: relative;
+	.Container {
+		position: relative;
 
-    width: 350px;
-  }
+		width: 350px;
+	}
 }
 
 @media (max-width: 768px) {
 	.Container {
 		position: relative;
-	  }
+	}
 }
-
 
 @media (max-width: 576px) {
 	.Container {
-	  position: relative;
-  
-	  width: 330px;
+		position: relative;
+
+		width: 330px;
 	}
-  }
+}
