@@ -94,7 +94,7 @@ const ProductItem: FC<IProductItemProps> = ({
                 {activeCart ?
                     <div className={styles.Btns}>
                         <ButtonPrimary className={styles.DeleteButton} onClick={() => cartHandler()} extraType="SecondaryReversed">Удалить</ButtonPrimary>
-                        <AddButton counter={counter} setCounter={setCounter} id={id} initialCounter={counter as number}>{counter}</AddButton>
+                        <AddButton counter={counter} setCounter={setCounter} id={id} initialсounter={counter as number}>{counter}</AddButton>
                     </div>
                     :
                     <ButtonPrimary className={styles.AddButton} onClick={() => cartHandler()} extraType="Primary">в корзину</ButtonPrimary>}

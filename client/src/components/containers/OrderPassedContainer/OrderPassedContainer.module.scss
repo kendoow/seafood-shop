@@ -1,78 +1,100 @@
 .Container {
+  position: relative;
 
-	position: relative;
+  height: 100vh;
+  padding: 0 calc(50% - 650px);
 
-	height: 100vh;
-	padding: 0 calc(50% - 650px);
+  background-color: #000;
 
-	background-color: #000;
+  .Main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 
-	.Main {
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		justify-content: center;
+    height: 90vh;
 
-		height: 90vh;
+    .Title {
+      text-align: center;
 
-		.Title {
-			text-align: center;
+      color: #fff;
 
-			color: #FFF;
+      font-size: 64px;
+      font-weight: 500;
+      line-height: 75px;
+    }
 
-			font-size: 64px;
-			font-weight: 500;
-			line-height: 75px;
-		}
+    .Description {
+      padding-top: 100px;
 
-		.Description {
-			padding-top: 100px;
+      text-align: center;
 
-			text-align: center;
+      color: #fff;
 
-			color: #FFF;
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 42px;
 
-			font-size: 36px;
-			font-weight: 500;
-			line-height: 42px;
+      p {
+        margin-bottom: 50px;
+      }
+    }
+  }
 
-			p {
-				margin-bottom: 20px;
-			}
-		}
+  .Exit {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
-		.Img {
-			position: absolute;
-			top: 400px;
-			right: 0;
-		}
-	}
+    margin-left: 15px;
 
-	.Exit {
-		display: flex;
-		align-items: center;
-		justify-content: flex-start;
+    transition: all 0.3s;
 
-		margin-left: 5px;
+    &:hover {
+      margin-left: 0;
 
-		transition: all 0.3s;
+      transition: all 0.3s;
+    }
 
-		&:hover {
-			margin-left: 0;
+    .Link {
+      margin-left: 20px;
 
-			transition: all 0.3s;
-		}
+      transition: all 0.3s;
 
-		.Link {
-			margin-left: 20px;
+      color: #fff;
 
-			transition: all 0.3s;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 38px;
+    }
+  }
+}
 
-			color: #FFF;
+// media requests
 
-			font-size: 32px;
-			font-weight: 500;
-			line-height: 38px;
-		}
-	}
+// media requests
+
+@media (max-width: 576px) {
+  .Container {
+    .Main {
+      margin: 0 auto;
+
+      .Title {
+        margin-top: 80px;
+        color: #fff;
+	
+        font-size: 38px;
+        font-weight: 500;
+        line-height: 38px;
+      }
+
+      .Description {
+        padding-top: 30px;
+
+        font-size: 30px;
+        font-weight: 500;
+        line-height: 30px;
+      }
+    }
+  }
 }

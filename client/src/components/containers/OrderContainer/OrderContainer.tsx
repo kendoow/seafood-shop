@@ -23,8 +23,8 @@ import EmptySpace from '@components/common/EmptySpace/EmptySpace'
 
 import boxIcon from '@assets/boxIcon.png'
 
-
 import styles from './OrderContainer.module.scss'
+import Spiner from '@components/UI/Spiner/Spiner'
 
 const phoneNumberMask = [
     [8],
@@ -55,7 +55,7 @@ const OrderContainer: FC = () => {
 
     const { user } = useTypedSelector(authSelector)
 
-    const { cart, totalPrice } = useTypedSelector(cartSelector)
+    const { loading, cart, totalPrice } = useTypedSelector(cartSelector)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -132,10 +132,6 @@ const OrderContainer: FC = () => {
                             <div className={styles.Payment}>
                                 <div className={styles.PaymentType}>
                                     <h4>Способ оплаты</h4>
-                                    {/* <div className={styles.AddPayment}>
-                                        <img src={add} alt="add" />
-                                        добавить новую карту
-                                    </div> */}
                                 </div>
                                 <OrderPaymentCart title="Наличные" description="курьеру при получении" />
                             </div>
@@ -146,6 +142,7 @@ const OrderContainer: FC = () => {
                                 <Link className={styles.ChangeOrder} to="/">изменить</Link>
                             </div>
                             <div className={styles.Products}>
+                                {loading && <div className={styles.Spiner}><Spiner /></div>}
                                 {
                                     totalPrice ?
                                         !!cart?.length && cart.map((product: ICartProduct) => <CartItem
@@ -182,7 +179,14 @@ const OrderContainer: FC = () => {
                                 </div>
                             </div>
                             <div className={styles.OrderBtn}>
-                                <ButtonPrimary type="submit" onClick={() => handleSubmit()} extraType="RoundedReversed">подтвердить оформление</ButtonPrimary>
+                                {
+                                    cart?.length ?
+                                        <ButtonPrimary type="submit" onClick={() => handleSubmit()} extraType="RoundedReversed">подтвердить оформление</ButtonPrimary>
+
+                                        :
+                                        <div className={styles.EmptyCart}> Добавьте товары в корзину </div>
+                                }
+
                             </div>
                         </div>
                     </div>)

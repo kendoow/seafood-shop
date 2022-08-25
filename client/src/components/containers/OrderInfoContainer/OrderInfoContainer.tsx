@@ -11,11 +11,12 @@ import EmptySpace from '@components/common/EmptySpace/EmptySpace'
 
 import boxIcon from '@assets/boxIcon.png'
 import OrderItem from '@components/common/Order/OrderItem/OrderItem'
+import Spiner from '@components/UI/Spiner/Spiner'
 
 const OrderInfoContainer: FC = () => {
     const dispatch = useTypedDispatch()
 
-    const { order } = useTypedSelector(orderSelector)
+    const { loading, order } = useTypedSelector(orderSelector)
     const { user } = useTypedSelector(authSelector)
     useEffect(() => {
         dispatch(fetchOneOrder())
@@ -52,16 +53,18 @@ const OrderInfoContainer: FC = () => {
                 <h4 className={styles.OrderItemsTitle}>Ваш заказ</h4>
                 <div className={styles.OrderItemsContainer}>
                     {
-                        order.products?.length ?
-                            order.products.map((product: ICartProduct) => <OrderItem
-                                id={product.id}
-                                key={product.title}
-                                title={product.title}
-                                gramms={product.gramms}
-                                price={product.price}
-                                img={product.img}
-                                counter={product.counter}
-                            />) : <EmptySpace title="Тут пока что пусто..." img={boxIcon} btnText="в магазин!" />
+                        loading ?
+                            <div className={styles.Spiner}><Spiner /></div> :
+                            order.products?.length ?
+                                order.products.map((product: ICartProduct) => <OrderItem
+                                    id={product.id}
+                                    key={product.title}
+                                    title={product.title}
+                                    gramms={product.gramms}
+                                    price={product.price}
+                                    img={product.img}
+                                    counter={product.counter}
+                                />) : <EmptySpace title="Тут пока что пусто..." img={boxIcon} btnText="в магазин!" />
                     }
                 </div>
                 <div className={styles.OrderPrices}>

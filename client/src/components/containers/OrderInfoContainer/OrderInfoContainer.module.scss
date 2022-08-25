@@ -57,7 +57,11 @@
 
 		margin-top: 50px;
 		margin-right: 20px;
-
+		.Spiner{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
 		.OrderItemsContainer {
 			overflow-y: scroll;
 

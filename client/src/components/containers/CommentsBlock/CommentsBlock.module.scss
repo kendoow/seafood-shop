@@ -1,45 +1,54 @@
+.Scroll {
+  &::before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 75px;
+    margin-top: -75px;
+    visibility: hidden;
+  }
+}
 .Container {
-	max-width: 1000px;
-	margin: 0 auto;
-	margin-top: 90px !important;
-	margin-bottom: 100px !important;
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 90px !important;
+  margin-bottom: 100px !important;
 
-	background-color: #000;
+  background-color: #000;
 
-	.Slider {
-		display: flex;
-		overflow: hidden;
-		align-items: center;
-		justify-content: center;
+  .Slider {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
 
-		cursor: pointer;
+    cursor: pointer;
 
-		border-radius: 10px 10px 0 0;
-	}
+    border-radius: 10px 10px 0 0;
+  }
 }
 
 // media requests
 @media (max-width: 1200px) {
-	.Container {
-		max-width: 900px;
-	}
+  .Container {
+    max-width: 900px;
+  }
 }
 
 @media (max-width: 992px) {
-	.Container {
-
-		max-width: 700px;
-	}
+  .Container {
+    max-width: 700px;
+  }
 }
 
 @media (max-width: 768px) {
-	.Container {
-		max-width: 600px;
-	}
+  .Container {
+    max-width: 600px;
+  }
 }
 
 @media (max-width: 576px) {
-	.Container {
-		max-width: 500px;
-	}
+  .Container {
+    max-width: 500px;
+  }
 }

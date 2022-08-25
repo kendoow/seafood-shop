@@ -16,7 +16,7 @@ const CommentsItem: FC<CartModalProps> = ({ img, title, description }) => {
                     {' '}
                 </div>
             </div>
-            <p className={styles.Description}>{description}</p>
+            <div className={styles.Description}>{description}</div>
         </div>
     )
 }

@@ -1,0 +1,28 @@
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 151px;
+  background-color: #fff;
+  position: absolute;
+  margin-top: 160px;
+  left: 5px;
+  .Item {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+
+    text-transform: lowercase;
+
+    color: #000000;
+    transition: all 0.3s;
+    &:hover {
+      transition: all 0.3s;
+      transform: scale(1.01);
+    }
+  }
+}
+.None{
+    display: none;
+}

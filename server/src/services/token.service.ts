@@ -11,7 +11,15 @@ class TokenService {
             refreshToken
         }
     }
-
+    async getWithUserId(userId: number) {
+        try {
+            const refreshToken = await pool.query('SELECT refreshtoken FROM tokens \n\
+            WHERE token_id = $1', [userId])
+            return refreshToken.rows[0]
+        } catch (e) {
+            throw e
+        }
+    }
     async save(userId:string, refreshToken:string){
         await pool.query('INSERT INTO tokens(token_id,refreshtoken) values ($1, $2) RETURNING *', [userId,refreshToken])
     }
@@ -24,8 +32,19 @@ class TokenService {
         const exists =  await pool.query('SELECT * FROM tokens where token_id = $1', [userId])
         
         return exists?.rows[0]?.refreshtoken
+       
         
     }
+
+    async update(userId: number, refreshToken: string) {
+        try {
+            const refreshTokenUpdated = await pool.query('UPDATE tokens SET refreshtoken = $1 WHERE token_id = $2', [refreshToken, userId])
+            return refreshTokenUpdated
+        } catch (e) {
+            throw e
+        }
+    }
+
 
     async findToken(refreshToken:string){
         const tokenData = await pool.query('SELECT * FROM tokens where refreshtoken = $1', [refreshToken])

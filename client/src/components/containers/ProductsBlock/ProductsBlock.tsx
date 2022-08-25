@@ -1,4 +1,5 @@
 import ProductItem from '@components/common/ProductItem/ProductItem'
+import Spiner from '@components/UI/Spiner/Spiner'
 import useTypedDispatch from '@hooks/useTypedDispatch'
 import useTypedSelector from '@hooks/useTypedSelector'
 import { fetchCart } from '@redux/slices/cart/cart.actions'
@@ -12,7 +13,7 @@ import styles from './ProductsBlock.module.scss'
 const ProductsBlock: FC = () => {
     const dispatch = useTypedDispatch()
 
-    const { loading, error, products } = useTypedSelector(productsSelector)
+    const { loading, products } = useTypedSelector(productsSelector)
 
     useEffect(() => {
         dispatch(fetchProducts())
@@ -21,17 +22,26 @@ const ProductsBlock: FC = () => {
     }, [])
 
     return (
-        <div id="products" className={styles.Container}>
-            {
-                !!products?.length && products.map((product:IProduct) => <ProductItem
-                    id={product.id}
-                    key={product.title}
-                    title={product.title}
-                    gramms={product.gramms}
-                    price={product.price}
-                    img={product.img}
-                />)
-            }
+        <div id="products" className={styles.Scroll}>
+
+            {loading ?
+                <div className={styles.Spiner}>
+                    <Spiner />
+                </div>
+                :
+
+                <div className={styles.Container}>
+                    {
+                        !!products?.length && products.map((product: IProduct) => <ProductItem
+                            id={product.id}
+                            key={product.title}
+                            title={product.title}
+                            gramms={product.gramms}
+                            price={product.price}
+                            img={product.img}
+                        />)
+                    }
+                </div>}
         </div>
     )
 }

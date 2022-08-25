@@ -17,7 +17,6 @@ const OrderPassedContainer: FC = () => {
 
                     <p>В ближайшее время наш спецалист свяжется с вами!</p>
                 </div>
-                <img className={styles.Img} src={OrderPassedImage} alt="orderpassed" />
             </div>
             <div className={styles.Exit}>
                 <img src={arrow} alt="arrow" />

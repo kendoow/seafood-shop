@@ -21,7 +21,7 @@ class AuthService{
                 const tokens = tokenService.create(String(createdUser.rows[0].id), createdUser.rows[0].email)
 
                 await tokenService.save(String(createdUser.rows[0].id), tokens.refreshToken)    
-
+                
                 return {...tokens, user: createdUser.rows[0]}
             } catch (e) {
                 throw e
@@ -48,7 +48,13 @@ class AuthService{
             }
             
             const tokens = tokenService.create(user.email, userConfirmed?.rows[0].id as string)
-            await tokenService.save(String(userConfirmed?.rows[0].id), tokens.refreshToken)
+
+            if (await tokenService.getWithUserId( userConfirmed?.rows[0].id)) {
+                await tokenService.update(userConfirmed?.rows[0].id, tokens.refreshToken)
+            } else {
+                await tokenService.save(String(userConfirmed?.rows[0].id), tokens.refreshToken)
+            }
+            
             return {
                 user: userConfirmed.rows[0],    
                 ...tokens

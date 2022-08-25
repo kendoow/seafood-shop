@@ -4,9 +4,7 @@ import { authLogout } from '@redux/slices/auth/auth.actions'
 import authSelector from '@redux/slices/auth/auth.selector'
 import { FC, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
-
-import { Link as AnimatedLink, animateScroll as scroll } from 'react-scroll'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { BurgerMenuProps } from './BurgerMenu.interface'
 
@@ -16,10 +14,15 @@ const BurgerMenu: FC<BurgerMenuProps> = ({ active, setActive }) => {
     const dispatch = useDispatch()
 
     const { isAuth } = useTypedSelector(authSelector)
-
+    const navigate = useNavigate()
     useEffect(() => {
         document.body.style.overflow = active ? 'hidden' : 'auto'
     }, [active])
+
+    const navigateHandler = () => {
+        navigate('/')
+        setActive(false)
+    }
 
     return (
         <div className={active ? styles.Active : styles.Container}>
@@ -32,40 +35,32 @@ const BurgerMenu: FC<BurgerMenuProps> = ({ active, setActive }) => {
                         className={styles.CloseBtn}
                     />
 
-                    <AnimatedLink
-                        onClick={() => setActive(false)}
-                        to="delivery"
-                        smooth
-                        offset={-90}
-                        duration={500}
+                    <a
+                        onClick={() => navigateHandler()}
+                        href="#delivery"
                         className={styles.BurgerItem}
                     >
                         Доставка
 
-                    </AnimatedLink>
+                    </a>
 
-                    <AnimatedLink
-                        to="products"
-                        smooth
-                        offset={-200}
-                        duration={500}
+                    <a
+                        onClick={() => navigateHandler()}
+                        href="#products"
                         className={styles.BurgerItem}
                     >
                         Продукция
-                    </AnimatedLink>
+                    </a>
                     <Link className={styles.BurgerItem} to="/favorite">избранное</Link>
 
-                    <AnimatedLink
-                        onClick={() => setActive(false)}
-                        to="comments"
-                        smooth
-                        offset={-90}
-                        duration={500}
+                    <a
+                        onClick={() => navigateHandler()}
                         className={styles.BurgerItem}
+                        href="#comments"
                     >
                         Отзывы
 
-                    </AnimatedLink>
+                    </a>
                     <Link className={styles.BurgerItem} to="/orderinfo">ваши заказы</Link>
                 </div>
                 {

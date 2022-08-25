@@ -32,16 +32,20 @@
 
 		font-size: 30px;
 		gap: 40px;
+		a {
+			color: #fff;
+			cursor: pointer;
+			transition: all 0.3s;
+	
+			&:hover {
+				transition: all 0.3s;
+				transform: scale(1.05);
+			}
+		}
 	}
 
 	.NavItem {
-		cursor: pointer;
-		transition: all 0.3s;
-
-		&:hover {
-			transition: all 0.3s;
-			transform: scale(1.05);
-		}
+		
 	}
 
 	.BurgerMenu > span,
@@ -83,10 +87,10 @@
 		align-items: center;
 		justify-self: self-end;
 		grid-auto-flow: column;
-
+position: relative;
 		.UserIcon {
+			
 			transition: all 0.3s;
-
 			color: #FFF;
 
 			font-size: 30px;

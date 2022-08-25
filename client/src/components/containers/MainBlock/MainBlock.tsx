@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import { Link as AnimatedLink, animateScroll as scroll } from 'react-scroll'
 
 import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
 
@@ -10,10 +9,11 @@ import Arrow from '@assets/downArrow.svg'
 import mainBg from '@assets/mainFish.png'
 import useTypedDispatch from '@hooks/useTypedDispatch'
 import { authLogout } from '@redux/slices/auth/auth.actions'
+import { useNavigate } from 'react-router-dom'
 
 const MainBlock: FC = () => {
     const dispatch = useTypedDispatch()
-
+    const navigate = useNavigate()
     const logoutHandler = () => {
         dispatch(authLogout())
     }
@@ -33,22 +33,29 @@ const MainBlock: FC = () => {
                     <Text className={styles.Decription} size="md">
                         Сотни довольных клиентов
                     </Text>
-                    <ButtonPrimary className={styles.Btn} onClick={logoutHandler} extraType="Secondary">К продукции</ButtonPrimary>
+                    <ButtonPrimary className={styles.Btn} extraType="Secondary">
+                        {' '}
+                        <a
+                            onClick={() => navigate('/')}
+                            href="#products"
+                            className={styles.NavItem}
+                        >
+К продукции
+                        </a>
+                    </ButtonPrimary>
                 </div>
 
                 <div className={styles.Image}>
                     <img src={mainBg} alt="fish" />
                 </div>
             </div>
-            <AnimatedLink
-                to="products"
-                smooth
-                offset={-200}
-                duration={500}
+            <a
+                onClick={() => navigate('/')}
+                href="#products"
                 className={styles.NavItem}
             >
                 <img className={styles.Arrow} src={Arrow} alt="arrow" />
-            </AnimatedLink>
+            </a>
         </div>
     )
 }

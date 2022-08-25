@@ -18,18 +18,20 @@ const CommentsBlock: FC = () => {
     }, [])
 
     return (
-        <div id="comments" className={styles.Container}>
-            <CommentsSlider>
-                {
-                    !!comments?.length && comments.map((comment: IComment) => <CommentsItem
-                        id={comment.id}
-                        key={comment.title}
-                        title={comment.title}
-                        description={comment.description}
-                        img={comment.img}
-                    />)
-                }
-            </CommentsSlider>
+        <div id="comments" className={styles.Scroll}>
+            <div className={styles.Container}>
+                <CommentsSlider>
+                    {
+                        !!comments?.length && comments.map((comment: IComment) => <CommentsItem
+                            id={comment.id}
+                            key={comment.title}
+                            title={comment.title}
+                            description={comment.description}
+                            img={comment.img}
+                        />)
+                    }
+                </CommentsSlider>
+            </div>
         </div>
     )
 }

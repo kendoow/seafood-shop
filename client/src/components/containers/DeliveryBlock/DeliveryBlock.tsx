@@ -6,6 +6,7 @@ import fish from '@assets/deliveryFish.png'
 import car from '@assets/car.png'
 import clock from '@assets/clock.png'
 import cash from '@assets/cash.png'
+import { Link } from 'react-router-dom'
 
 const DeliveryBlock: FC = () => {
     return (
@@ -38,7 +39,9 @@ const DeliveryBlock: FC = () => {
                     <Text className={styles.Decription} size="md">доставим в течении 24 часов</Text>
                 </div>
                 <div className={styles.Center}>
-                    <ButtonPrimary className={styles.Btn} extraType="SecondaryArrowed">Оформить</ButtonPrimary>
+                    <Link to="/order">
+                        <ButtonPrimary className={styles.Btn} extraType="SecondaryArrowed">Оформить</ButtonPrimary>
+                    </Link>
                 </div>
             </div>
             <div className={styles.Image}>
