@@ -21,6 +21,16 @@ let transporter = createTransport({
   secure: true,
 });
 
+export const resetMessage = (email: string,link:string ) => {
+  transporter.sendMail({
+    from: `"Ikuro" <${auth.user}>`,
+    to: `${email}`,
+    subject: `Восстановление пароля`,
+    html: `Ваша <a href =${link}>ссылка</a> для восстановления пароля`,
+  });
+}
+
+
 const orderMessage = (
   orderId: string,
   email: string,
@@ -31,7 +41,7 @@ const orderMessage = (
   phone: number
 ) => {
   transporter.sendMail({
-    from: `"Seafood" <${auth.user}>`,
+    from: `"Ikuro" <${auth.user}>`,
     to: `${auth.user}`,
     subject: `Заказ номер ${orderId} `,
     html: `<div>Заказ от ${email} на сумму ${totalPrice} был сделан в ${date}<div>

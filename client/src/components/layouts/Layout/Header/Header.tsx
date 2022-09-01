@@ -27,7 +27,7 @@ const Header: FC = () => {
     }
 
     const dropDownHandler = () => {
-        setActiveDropList(!activeDropList)
+        setActiveDropList(true)
     }
 
     const navigateHandler = () => {

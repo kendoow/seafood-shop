@@ -34,7 +34,7 @@ const ProductsBlock: FC = () => {
                     {
                         !!products?.length && products.map((product: IProduct) => <ProductItem
                             id={product.id}
-                            key={product.title}
+                            key={product.id}
                             title={product.title}
                             gramms={product.gramms}
                             price={product.price}

@@ -12,6 +12,9 @@ import authSelector from '@redux/slices/auth/auth.selector'
 
 import { FC, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import Reset from '@pages/Forms/Reset/Reset'
+import ResetPassed from '@pages/Forms/ResetPassed/ResetPassed'
+import ResetPassword from '@pages/Forms/ResetPassword/ResetPassword'
 
 const AppRouter: FC = () => {
     const dispatch = useTypedDispatch()
@@ -32,8 +35,12 @@ const AppRouter: FC = () => {
                     <Route path="/order_passed" element={<OrderPassed />} />
                     <Route path="/orderinfo" element={<OrderInfo />} />
                 </>
-                : <>
+                :
+                <>
+                    <Route path="/reset" element={<Reset />} />
+                    <Route path="/resetpassed" element={<ResetPassed />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/resetpassword/:id/:token" element={<ResetPassword />} />
                     <Route path="/registration" element={<Registration />} />
                 </>}
             <Route path="*" element={<Main />} />

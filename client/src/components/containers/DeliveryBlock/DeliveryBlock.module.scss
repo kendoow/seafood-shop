@@ -1,13 +1,12 @@
 .Container {
 	display: grid;
-	align-items: center;
 
 	padding: 0 calc(50% - 650px);
 	padding-top: 100px !important;
 
 	background-color: #000;
 	grid-template-columns: 1fr 1fr;
-
+	justify-self: space-between;
 	.Title {
 		margin-bottom: 50px;
 		margin-left: 15px;
@@ -19,7 +18,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
-
+		
 		margin-bottom: 30px;
 		margin-left: 15px;
 
@@ -31,7 +30,10 @@
 			margin-right: 30px;
 		}
 	}
-
+	.Image {
+		justify-self: flex-end;
+		margin-top: 170px;
+	}
 	.Btn {
 		margin-top: 70px;
 		margin-bottom: 230px;

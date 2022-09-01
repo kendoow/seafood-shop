@@ -17,6 +17,9 @@ authRouter.post(
   authContoller.login
 );
 authRouter.post("/logout", authContoller.logout);
+authRouter.post("/reset", authContoller.reset);
+authRouter.post("/reset/:id", authContoller.resetPassword);  
+// authRouter.get("/reset/:id", authContoller.resetPassword);  
 authRouter.get("/refresh", authContoller.refresh);
 authRouter.put("/update", authContoller.update)
 

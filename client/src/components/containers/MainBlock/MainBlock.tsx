@@ -33,16 +33,18 @@ const MainBlock: FC = () => {
                     <Text className={styles.Decription} size="md">
                         Сотни довольных клиентов
                     </Text>
-                    <ButtonPrimary className={styles.Btn} extraType="Secondary">
-                        {' '}
-                        <a
-                            onClick={() => navigate('/')}
-                            href="#products"
-                            className={styles.NavItem}
-                        >
-К продукции
-                        </a>
-                    </ButtonPrimary>
+                    <a
+                        onClick={() => navigate('/')}
+                        href="#products"
+                        className={styles.NavItem}
+                    >
+                        <ButtonPrimary className={styles.Btn} extraType="Secondary">
+                            {' '}
+
+                            К продукции
+
+                        </ButtonPrimary>
+                    </a>
                 </div>
 
                 <div className={styles.Image}>

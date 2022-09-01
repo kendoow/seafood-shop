@@ -58,7 +58,7 @@ const OrderInfoContainer: FC = () => {
                             order.products?.length ?
                                 order.products.map((product: ICartProduct) => <OrderItem
                                     id={product.id}
-                                    key={product.title}
+                                    key={product.id}
                                     title={product.title}
                                     gramms={product.gramms}
                                     price={product.price}

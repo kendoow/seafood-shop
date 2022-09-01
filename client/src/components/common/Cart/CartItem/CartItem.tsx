@@ -20,6 +20,7 @@ import imageLoad from '@utils/imageLoad'
 
 import heart from '@assets/heartDark.svg'
 import heartFilled from '@assets/heartFilled.svg'
+import authSelector from '@redux/slices/auth/auth.selector'
 
 const CartItem: FC<CartItemProps> = ({
     id,
@@ -32,7 +33,7 @@ const CartItem: FC<CartItemProps> = ({
     const dispatch = useTypedDispatch()
     const { favorite } = useTypedSelector(favoriteSelector)
     const { cart } = useTypedSelector(cartSelector)
-
+    const { isAuth } = useTypedSelector(authSelector)
     const [activeCart, setActiveCart] = useState<boolean>(false)
     const [activeFavorite, setActiveFavorite] = useState<boolean>(false)
 
@@ -45,7 +46,7 @@ const CartItem: FC<CartItemProps> = ({
     }, [favorite])
 
     useEffect(() => {
-        if (cart.find((value:IProduct) => value.id === id)) {
+        if (cart.find((value: IProduct) => value.id === id)) {
             setActiveCart(true)
         } else {
             setActiveCart(false)
@@ -67,7 +68,7 @@ const CartItem: FC<CartItemProps> = ({
     return (
         <div className={styles.Container}>
             <div className={styles.Image}>
-                <img width={200} height={200} src={imageLoad(img)} alt="item" />
+                <img width={200} src={imageLoad(img)} alt="item" />
             </div>
             <div className={styles.Text}>
                 <div className={styles.Main}>
@@ -76,18 +77,20 @@ const CartItem: FC<CartItemProps> = ({
                         <p className={styles.Weight}>
                             {gramms}
                             {' '}
-гр
+                            гр
                             {' '}
                         </p>
                     </div>
-                    <button onClick={favouriteHandler}>
-                        <img width={30} height={30} src={activeFavorite ? heartFilled : heart} alt="heart" />
-                    </button>
+                    {isAuth ?
+                        <button onClick={favouriteHandler}>
+                            <img width={30} height={30} src={activeFavorite ? heartFilled : heart} alt="heart" />
+                        </button> : <div> </div>}
+
                 </div>
                 <div className={styles.Price}>
                     {price}
                     {' '}
-₽
+                    ₽
                 </div>
                 <div className={styles.Btns}>
                     <ButtonPrimary onClick={() => cartHandler()} extraType="SecondaryReversed">Удалить</ButtonPrimary>

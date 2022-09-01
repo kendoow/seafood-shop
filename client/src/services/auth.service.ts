@@ -22,6 +22,25 @@ class AuthService {
         }
     }
 
+    async resetPassword(id:string, password:string, confirmPassword:string) {
+        try {
+            const response = await api.post<IAuthResponse>(`/auth/reset/${id}`, { password, confirmPassword })
+            console.log(response.data)
+            return response.data
+        } catch (e) {
+            throw e
+        }
+    }
+
+    async reset(email: string) {
+        try {
+            const response = await api.post<IAuthResponse>('/auth/reset', { email })
+            return response.data.user.email
+        } catch (e) {
+            throw e
+        }
+    }
+
     async logout() {
         try {
             await api.post('/auth/logout')

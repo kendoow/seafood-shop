@@ -11,6 +11,12 @@ class TokenService {
             refreshToken
         }
     }
+
+    createReset(email:string, id:string){
+        const resetToken = jsonwebtoken.sign({email, id}, process.env.SECRET_RESET_TOKEN as string, {expiresIn: '15m'})
+        return resetToken
+    }
+
     async getWithUserId(userId: number) {
         try {
             const refreshToken = await pool.query('SELECT refreshtoken FROM tokens \n\
@@ -51,6 +57,11 @@ class TokenService {
         return tokenData;
     }
 
+    validResetToken(resetToken:string){
+        const resetPayload = jsonwebtoken.verify(resetToken, process.env.SECRET_RESET_TOKEN as string)
+        return resetPayload as IJwtPayload
+    }
+    
     validRefreshToken(refreshToken: string) {
         const jwtPayload = jsonwebtoken.verify(refreshToken, process.env.SECRET_REFRESH_TOKEN as string)
         return jwtPayload as IJwtPayload

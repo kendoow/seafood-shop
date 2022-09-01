@@ -1,0 +1,54 @@
+.Container {
+  background-color: #000;
+  color: #fff;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  font-size: 52px;
+  flex-direction: column;
+  h4 {
+    font-size: 50px;
+    max-width: 1200px;
+    margin-bottom: 40px;
+  }
+  .Exit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 15px;
+
+    transition: all 0.3s;
+    box-shadow: -3px 5px 10px 13px rgba(34, 60, 80, 0.2);
+    &:hover {
+      margin-left: 0;
+
+      transition: all 0.3s;
+    }
+
+    .Link {
+      margin-left: 20px;
+      font-size: 40px;
+      transition: all 0.3s;
+
+      color: #fff;
+
+      font-weight: 500;
+      line-height: 38px;
+    }
+  }
+}
+
+// media requests
+@media (max-width: 576px) {
+  .Container {
+    h4 {
+      font-size: 36px;
+      max-width: 1200px;
+      margin-bottom: 40px;
+    }
+  }
+}

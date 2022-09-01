@@ -8,7 +8,7 @@ const CommentsItem: FC<CartModalProps> = ({ img, title, description }) => {
         <div className={styles.Container}>
             <div className={styles.Avatar}>
                 <div className={styles.Image}>
-                    <img width={90} height={90} src={imageLoad(img)} alt="userIcon" />
+                    <img src={imageLoad(img)} alt="userIcon" />
                 </div>
                 <div className={styles.Title}>
                     {' '}

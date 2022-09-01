@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { Formik } from 'formik'
 import * as yup from 'yup'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './Registration.module.scss'
 
 import { authRegistration } from '@redux/slices/auth/auth.actions'
@@ -14,12 +14,14 @@ import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
 
 import hidden from '@assets/hidden.svg'
 import show from '@assets/show.svg'
+import { IUserRegistration } from '@redux/slices/auth/auth.interface'
 
 const Registration: FC = () => {
     const [hidePassword, setHidePassword] = useState<boolean>(true)
     const [hidePasswordConfirm, setHidePasswordComfirm] = useState<boolean>(true)
-
+    const [error, setError] = useState<null | string>(null)
     const dispatch = useTypedDispatch()
+    const navigate = useNavigate()
 
     const validationSchema = yup.object().shape({
         name: yup.string().typeError('Должно быть строкой').min(3, 'Минимальная длина поля - 3 символа').max(20, 'Максимальная длина поля - 20 символов')
@@ -29,6 +31,12 @@ const Registration: FC = () => {
             .required('Это поле обязательно'),
         confirmPassword: yup.string().oneOf([yup.ref('password')], 'Пароли не совпадают').required('Это поле обязательно')
     })
+
+    const handleClick = (values: IUserRegistration) => {
+        dispatch(authRegistration(values)).unwrap()
+            .then(() => navigate('/'))
+            .catch((e: string) => e.includes('Такой пользователь уже существует') && setError('Такой пользователь уже существует'))
+    }
 
     return (
 
@@ -54,7 +62,7 @@ const Registration: FC = () => {
                         confirmPassword: ''
                     }}
                     validateOnBlur
-                    onSubmit={(values) => dispatch(authRegistration(values))}
+                    onSubmit={(values) => handleClick(values)}
                     validationSchema={validationSchema}
                 >
                     {({
@@ -120,6 +128,7 @@ const Registration: FC = () => {
                                     />
                                 </button>
                             </div>
+                            {error ? <div className={styles.Error}>{error}</div> : <> </>}
                             <div className={styles.BtnCenter}>
                                 <ButtonPrimary
                                     onClick={handleSubmit}
@@ -127,7 +136,7 @@ const Registration: FC = () => {
                                     disabled={!isValid && !dirty}
                                     type="submit"
                                 >
-                                создать
+                                    создать
                                 </ButtonPrimary>
                             </div>
                         </div>

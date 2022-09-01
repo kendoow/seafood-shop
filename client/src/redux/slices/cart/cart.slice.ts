@@ -23,7 +23,6 @@ const cartSlice = createSlice({
     reducers: {},
     extraReducers: {
         [fetchCart.pending.type]: (state) => {
-            state.loading = true
             state.error = null
         },
         [fetchCart.fulfilled.type]: (state, action: PayloadAction<ICartProduct[]>) => {

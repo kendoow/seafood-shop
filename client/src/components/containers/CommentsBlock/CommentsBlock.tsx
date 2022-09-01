@@ -24,7 +24,7 @@ const CommentsBlock: FC = () => {
                     {
                         !!comments?.length && comments.map((comment: IComment) => <CommentsItem
                             id={comment.id}
-                            key={comment.title}
+                            key={comment.id}
                             title={comment.title}
                             description={comment.description}
                             img={comment.img}

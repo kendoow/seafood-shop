@@ -5,6 +5,7 @@ import { IJwtPayload, IUser } from './../interfaces/auth.interface';
 import pool from 'index';
 import { ApiError } from 'exceptions/apiError';
 import tokenService from './token.service';
+import { resetMessage } from '@utils/nodemailer';
 
 
 class AuthService{
@@ -43,7 +44,7 @@ class AuthService{
             }
             const refreshToken = await tokenService.exist(userConfirmed?.rows[0].id)
 
-            if( !!refreshToken){  
+            if(!!refreshToken){  
                 tokenService.delete(refreshToken)
             }
             
@@ -65,6 +66,46 @@ class AuthService{
 
     }
 
+
+    async resetPassword(id:string,token:string, password:string, passwordConfirm:string){
+        try {
+            
+            
+            
+            if(tokenService.validResetToken(token) && password === passwordConfirm){
+                const hashPassword = hashSync(password, 3)
+                const UserPasswordUpdated = await pool.query('UPDATE user_account SET password = $1 WHERE id = $2 RETURNING *', 
+                [hashPassword,  id])
+    
+                return UserPasswordUpdated.rows[0]
+            }
+            
+        } catch (e) {
+            throw e
+        }
+    }
+
+    async reset(email:string){
+        try {
+            
+            const DBuser = await (await pool.query('SELECT * FROM user_account where email = $1',[email])).rows[0]
+
+            if(email !== DBuser.email){
+                throw new Error('Неверно введенные данные')
+            }
+            
+            // 15 min valid Link
+            
+            const ResetToken = tokenService.createReset(DBuser.email, DBuser.id)
+            const TokenSplited = ResetToken.split('.')[2]
+            const link = `${process.env.CLIENT_URL}/resetpassword/${DBuser.id}/${TokenSplited}`
+
+            resetMessage(DBuser.email, link)
+            return ResetToken
+        } catch (e) {
+            throw e
+        }
+    }
 
     async logout(refreshToken:string){
         if(!refreshToken){

@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 import { Formik } from 'formik'
 import * as yup from 'yup'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import FormLayout from '@components/layouts/FormLayout/FormLayout'
 import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
 import Input from '@components/UI/Input/Input'
@@ -9,8 +9,7 @@ import Input from '@components/UI/Input/Input'
 import styles from './Login.module.scss'
 
 import { authLogin } from '@redux/slices/auth/auth.actions'
-import authSelector from '@redux/slices/auth/auth.selector'
-import useTypedSelector from '@hooks/useTypedSelector'
+
 import useTypedDispatch from '@hooks/useTypedDispatch'
 
 import hidden from '@assets/hidden.svg'
@@ -20,8 +19,7 @@ import { IUserLogin } from '@redux/slices/auth/auth.interface'
 const Login: FC = () => {
     const [hidePassword, setHidePassword] = useState<boolean>(true)
     const [errorLogin, setErrorLogin] = useState<null | string>(null)
-
-    const { error } = useTypedSelector(authSelector)
+    const navigate = useNavigate()
     const dispatch = useTypedDispatch()
 
     const validationSchema = yup.object().shape({
@@ -32,8 +30,8 @@ const Login: FC = () => {
 
     const submitHandler = (values: IUserLogin) => {
         dispatch(authLogin(values)).unwrap()
-            .then(() => console.log('redirect'))
-            .catch((e: string) => e.includes('...') && setErrorLogin('...'))
+            .then(() => navigate('/'))
+            .catch((e: string) => e.includes('Ошибка логина') && setErrorLogin('Неправильный пароль'))
     }
 
     return (
@@ -50,6 +48,16 @@ const Login: FC = () => {
                     <Link className={styles.Link} to="/registration">
                         Создать
                     </Link>
+
+                </div>
+                <div className={styles.Redirect}>
+                    <div>
+                        Забыли пароль?
+                    </div>
+                    <Link className={styles.Link} to="/reset">
+                        Восстановить
+                    </Link>
+
                 </div>
                 <Formik
                     initialValues={{
@@ -93,7 +101,7 @@ const Login: FC = () => {
                                     />
                                 </button>
                             </div>
-                            {error ? <div className={styles.Error}>Неправильная почта или пароль</div> : <> </>}
+                            {errorLogin ? <div className={styles.Error}>{errorLogin}</div> : <> </>}
                             <div className={styles.BtnContainer}>
                                 <ButtonPrimary
                                     onClick={handleSubmit}

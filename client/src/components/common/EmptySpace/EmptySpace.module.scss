@@ -4,7 +4,7 @@
 	flex-direction: column;
 	justify-content: center;
 
-	max-width: 550px;
+	// max-width: 550px;
 	margin: 0 auto;
 	margin-top: 40px;
 	margin-bottom: 40px;
@@ -22,5 +22,12 @@
 
 	.Btn{
 
+	}
+}
+
+// media requests
+@media (max-width: 576px) {
+	.Container {
+		margin-bottom: 10px;
 	}
 }

@@ -1,20 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
 import authService from '@services/auth.service'
-import { IUserLogin, IUserPersonal, IUserRegistration } from './auth.interface'
-
-export const authRegistration = createAsyncThunk(
-    'auth/registration',
-    async (userRegistration: IUserRegistration, { rejectWithValue }) => {
-        try {
-            const { email, password, name } = userRegistration
-            const user = await authService.registration(name, email, password)
-            return user
-        } catch (e) {
-            return rejectWithValue(`Error Auth Registration - ${e}`)
-        }
-    }
-)
+import {
+    IUserLogin, IUserPersonal, IUserRegistration, resetData
+} from './auth.interface'
 
 export const authLogin = createAsyncThunk(
     'auth/login',
@@ -24,7 +13,46 @@ export const authLogin = createAsyncThunk(
             const user = await authService.login(email, password)
             return user
         } catch (e) {
-            return rejectWithValue(`Error Auth Login - ${e}`)
+            return rejectWithValue('Ошибка логина')
+        }
+    }
+)
+
+export const authRegistration = createAsyncThunk(
+    'auth/registration',
+    async (userRegistration: IUserRegistration, { rejectWithValue, dispatch }) => {
+        try {
+            const { email, password, name } = userRegistration
+            const user = await authService.registration(name, email, password)
+            dispatch(authLogin({ email, password }))
+            return user
+        } catch (e) {
+            return rejectWithValue('Такой пользователь уже существует')
+        }
+    }
+)
+
+export const authReset = createAsyncThunk(
+    'auth/reset',
+    async (email: string, { rejectWithValue }) => {
+        try {
+            const user = await authService.reset(email)
+            return user
+        } catch (e) {
+            return rejectWithValue(`Error Auth Reset - ${e}`)
+        }
+    }
+)
+
+export const authResetPassword = createAsyncThunk(
+    'auth/resetPassword',
+    async (data:resetData, { rejectWithValue }) => {
+        try {
+            const { id, password, confirmPassword } = data
+            const reset = await authService.resetPassword(id, password, confirmPassword)
+            return reset
+        } catch (e) {
+            return rejectWithValue('Ошибка!')
         }
     }
 )

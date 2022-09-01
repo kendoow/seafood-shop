@@ -6,12 +6,13 @@ import leftArrow from '@assets/left-arrow.svg'
 import rigthArrow from '@assets/right-arrow.svg'
 
 function SampleNextArrow({ className, style, onClick }: ArrowProps) {
+    const mediaMatch = window.innerWidth > 576
     return (
         <div
             className={className}
             style={{
                 ...style,
-                background: `url(${rigthArrow}) no-repeat`,
+                background: mediaMatch ? `url(${rigthArrow}) no-repeat` : 'none',
                 position: 'absolute',
                 marginRight: '80px',
                 width: '22px',
@@ -24,12 +25,13 @@ function SampleNextArrow({ className, style, onClick }: ArrowProps) {
 }
 
 function SamplePrevArrow({ className, style, onClick }: ArrowProps) {
+    const mediaMatch = window.innerWidth > 576
     return (
         <div
             className={className}
             style={{
                 ...style,
-                background: `url(${leftArrow}) no-repeat`,
+                background: mediaMatch ? `url(${leftArrow}) no-repeat` : 'none',
                 position: 'absolute',
                 marginLeft: '80px',
                 width: '22px',

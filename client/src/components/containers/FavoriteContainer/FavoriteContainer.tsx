@@ -9,14 +9,15 @@ import styles from './FavoriteContainer.module.scss'
 import heartFilled from '@assets/favoriteBig.png'
 import ProductItem from '@components/common/ProductItem/ProductItem'
 import EmptySpace from '@components/common/EmptySpace/EmptySpace'
+import authSelector from '@redux/slices/auth/auth.selector'
 
 const FavoriteContainer: FC = () => {
     const { favorite } = useTypedSelector(favoriteSelector)
     const dispatch = useTypedDispatch()
-    const { loading, error, favourite } = useTypedSelector(favoriteSelector)
+    const { isAuth } = useTypedSelector(authSelector)
 
     useEffect(() => {
-        !favourite?.length && dispatch(fetchFavorite())
+        !favorite?.length && dispatch(fetchFavorite())
     }, [])
 
     return (
@@ -37,7 +38,7 @@ const FavoriteContainer: FC = () => {
                         gramms={product.gramms}
 
                     />)}
-                </div> : <EmptySpace img={heartFilled} title="Здесь ничего нет..." btnText="В магазин!" />}
+                </div> : <EmptySpace img={heartFilled} title={isAuth ? 'Здесь ничего нет...' : 'Войдите в аккаунт чтобы добавить в избранное'} btnText="Войти" />}
 
         </div>
     )

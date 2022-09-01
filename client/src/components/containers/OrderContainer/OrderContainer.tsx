@@ -106,7 +106,7 @@ const OrderContainer: FC = () => {
                                     className={touched.address && errors.address && styles.ErrorValid}
                                     placeholder="Начните вводить..."
                                 />
-                                <OrderMap />
+                                {/* <OrderMap /> */}
                             </div>
 
                             <div className={styles.Phone}>
@@ -147,7 +147,7 @@ const OrderContainer: FC = () => {
                                     totalPrice ?
                                         !!cart?.length && cart.map((product: ICartProduct) => <CartItem
                                             id={product.id}
-                                            key={product.title}
+                                            key={product.id}
                                             title={product.title}
                                             gramms={product.gramms}
                                             price={product.price}

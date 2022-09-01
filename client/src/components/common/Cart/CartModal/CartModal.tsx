@@ -12,9 +12,11 @@ import CartItem from '../CartItem/CartItem'
 import styles from './CartModal.module.scss'
 import { CartModalProps } from './CartModal.interface'
 import boxIcon from '@assets/boxIcon.png'
+import authSelector from '@redux/slices/auth/auth.selector'
 
 const CartModal: FC<CartModalProps> = ({ active, setActive }) => {
     const dispatch = useTypedDispatch()
+    const { isAuth } = useTypedSelector(authSelector)
     const { cart, totalPrice } = useTypedSelector(cartSelector)
 
     useEffect(() => {
@@ -37,30 +39,47 @@ const CartModal: FC<CartModalProps> = ({ active, setActive }) => {
                         className={styles.CloseBtn}
                     />
 
-                    <div className={styles.Products}>
-                        {
-                            !!cart?.length && cart.map((product: ICartProduct) => <CartItem
-                                id={product.id}
-                                key={product.title}
-                                title={product.title}
-                                gramms={product.gramms}
-                                price={product.price}
-                                img={product.img}
-                                counter={product.counter}
-                            />)
-                        }
-                    </div>
+                    {!isAuth &&
+                        <div className={styles.Empty}>
+                            <EmptySpace
+                                isVisible={false}
+                                title={isAuth ? 'Добавьте сюда что нибудь...' : 'Войдите в аккаут чтобы оформить заказ'}
+                                img={boxIcon}
+                            />
+                        </div>}
+                        {!cart.length &&
+                        <div className={styles.Empty}>
+                            <EmptySpace
+                                isVisible={false}
+                                title={isAuth ? 'Добавьте сюда что нибудь...' : 'Войдите в аккаут чтобы оформить заказ'}
+                                img={boxIcon}
+                            />
+                        </div>}
+
+                    {!!cart?.length && isAuth &&
+                        <div className={styles.Products}>
+                            {
+                                !!cart?.length && isAuth && cart.map((product: ICartProduct) => <CartItem
+                                    id={product.id}
+                                    key={product.id}
+                                    title={product.title}
+                                    gramms={product.gramms}
+                                    price={product.price}
+                                    img={product.img}
+                                    counter={product.counter}
+                                />)
+                            }
+                        </div>}
+
                 </div>
-                {!cart.length && <EmptySpace
-                    isVisible={false}
-                    title="Добавьте сюда что
-                            нибудь..."
-                    img={boxIcon}
-                />}
+
                 <div className={styles.Btn}>
                     {
                         totalPrice === 0 ?
-                            <button onClick={() => setActive(false)} className={styles.BtnElement}>В магазин!</button>
+                            <button onClick={() => setActive(false)} className={styles.BtnElement}>
+                                {' '}
+                                {isAuth ? <>В магазин!</> : <Link className={styles.Link} to="/login">Войти</Link>}
+                            </button>
                             :
                             <div className={styles.BtnWrapper}>
                                 <div className={styles.TotalPrice}>

@@ -1,204 +1,234 @@
 .Container {
-	position: fixed;
-	z-index: 8;
-	top: 0;
-	left: 0;
+  position: fixed;
+  z-index: 8;
+  top: 0;
+  left: 0;
 
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 
-	width: 100vw;
-	height: 100vh;
+  width: 100vw;
+  height: 100vh;
 
-	transition: all 0.3s;
-	transform: translateX(120%);
-	backdrop-filter: blur(15px);
+  transition: all 0.3s;
+  transform: translateX(120%);
+  backdrop-filter: blur(15px);
 }
 
 .Active {
-	position: fixed;
-	z-index: 2;
-	top: 0;
+  position: fixed;
+  z-index: 10;
+  top: 0;
 
-	left: 0;
+  left: 0;
 
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 
-	width: 100vw;
-	height: 100%;
+  width: 100vw;
+  height: 100%;
 
-	transition: all 0.3s;
-	transform: translateX(0);
+  transition: all 0.3s;
+  transform: translateX(0);
 
-	background-color: transparent;
-	backdrop-filter: blur(10px);
+  background-color: transparent;
+  backdrop-filter: blur(10px);
 
-	.Content {
-		position: relative;
+  .Content {
+    position: relative;
 
-		display: flex;
-		overflow-x: hidden;
-		overflow-y: scroll;
-		align-items: flex-start;
-		flex-direction: column;
-		justify-content: space-between;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
 
-		width: 670px;
-		height: 100%;
-		min-height: 100vh;
+    width: 670px;
+    height: 100%;
+    min-height: 100vh;
+    background-color: #fff;
 
-		background-color: #FFF;
+    .Text {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      margin-top: 30px;
+      padding-right: 2.5%;
+      padding-left: 2.5%;
+      width: 100%;
+      text-transform: lowercase;
 
-		.Text {
-			display: flex;
-			flex-direction: column;
+      font-size: 64px;
+      font-weight: 600;
 
-			margin-top: 30px;
-			padding-right: 2.5%;
-			padding-left: 2.5%;
+      .Title {
+        margin-bottom: 47px;
+        margin-left: 4%;
+      }
 
-			text-transform: lowercase;
+      .CloseBtn {
+        width: 10px;
 
-			font-size: 64px;
-			font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
 
-			.Title {
-				margin-bottom: 47px;
-				margin-left: 4%;
-			}
+        &:hover {
+          transition: all 0.3s;
 
-			.CloseBtn {
-				width: 10px;
+          opacity: 0.8;
+        }
 
-				cursor: pointer;
-				transition: all 0.3s;
+        &::before,
+        &::after {
+          position: absolute;
+          top: 65px;
+          right: 35px;
 
-				&:hover {
-					transition: all 0.3s;
+          width: 40px;
+          height: 4px;
 
-					opacity: 0.8;
-				}
+          content: "";
 
-				&::before,
-				&::after {
-					position: absolute;
-					top: 65px;
-					right: 35px;
+          border-radius: 5px;
 
-					width: 40px;
-					height: 4px;
+          background: #000;
+        }
 
-					content: "";
+        &::after {
+          transform: rotate(45deg);
+        }
 
-					border-radius: 5px;
+        &::before {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+    .Empty {
+      vertical-align: middle;
+      margin-top: 10vh;
+    }
+    .Products {
+      overflow-y: scroll;
 
-					background: #000;
-				}
+      height: 650px;
+      width: 104%;
+      padding-right: 2%;
 
-				&::after {
-					transform: rotate(45deg);
-				}
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 42px;
+    }
 
-				&::before {
-					transform: rotate(-45deg);
-				}
-			}
-		}
+    .Btn {
+      display: flex;
+      justify-content: flex-start;
 
-		.Products {
-			overflow-y: scroll;
+      width: 100%;
+      height: 180px;
 
-			width: 650px;
-			padding-right: 2%;
+      background-color: #000;
+      .Link {
+        color: #fff;
+      }
+      .BtnElement {
+        display: flex;
+        align-items: center;
 
-			font-size: 36px;
-			font-weight: 500;
-			line-height: 42px;
-		}
+        width: 100%;
+        padding: 65px;
 
-		.Btn {
-			display: flex;
-			justify-content: flex-start;
+        transition: all 0.3s;
 
-			width: 100%;
-			height: 180px;
+        color: #fff;
+        border: none;
+        background: url("@assets/right-arrow.svg") no-repeat right 20% top 50%;
+        background-color: transparent;
 
-			background-color: #000;
+        font-size: 36px;
+        font-size: 48px;
+        font-weight: 500;
 
-			.BtnElement {
-				display: flex;
-				align-items: center;
+        &:hover {
+          padding-left: 100px;
 
-				width: 100%;
-				padding: 65px;
+          transition: all 0.3s;
 
-				transition: all 0.3s;
+          background: url("@assets/right-arrow.svg") no-repeat right 15% top 50%;
+        }
+      }
+    }
+  }
 
-				color: #FFF;
-				border: none;
-				background: url("@assets/right-arrow.svg") no-repeat right 20% top 50%;
-				background-color: transparent;
+  .BtnWrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 
-				font-size: 36px;
-				font-size: 48px;
-				font-weight: 500;
+    width: 100%;
 
-				&:hover {
-					padding-left: 100px;
+    .TotalPrice {
+      display: flex;
+      justify-content: space-between;
 
-					transition: all 0.3s;
+      width: 85%;
+      margin-top: 30px;
+      margin-bottom: 30px;
 
-					background: url("@assets/right-arrow.svg") no-repeat right 15% top 50%;
-				}
-			}
-		}
-	}
+      color: #fff;
 
-	.BtnWrapper {
-		display: flex;
-		align-items: center;
-		flex-direction: column;
-		justify-content: center;
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 42px;
+    }
 
-		width: 100%;
+    .BtnOrder {
+      display: flex;
+      justify-content: center;
 
-		.TotalPrice {
-			display: flex;
-			justify-content: space-between;
-
-			width: 85%;
-			margin-top: 30px;
-			margin-bottom: 30px;
-
-			color: #FFF;
-
-			font-size: 36px;
-			font-weight: 500;
-			line-height: 42px;
-		}
-
-		.BtnOrder {
-			display: flex;
-			justify-content: center;
-
-			width: 85%;
-			margin-bottom: 20px;
-		}
-	}
+      width: 85%;
+      margin-bottom: 20px;
+    }
+  }
 }
 
 // media requests
-@media (max-width: 576px) {
-	.Content {
-		.Btn {
-			.BtnElement {
-				padding: 20px !important;
 
-				background: url("@assets/right-arrow.svg") no-repeat right 10% top 50% !important;
-			}
+@media (max-width: 992px) {
+	.Content {
+	  .Text {
+		  .Products{
+			  height: 780px;
+		  }
+		.Empty {
+		  vertical-align: middle;
+		  margin-top: 0;
 		}
+	  }
 	}
+  }
+
+
+@media (max-width: 576px) {
+  .Content {
+    .Text {
+		.Products{
+			height: 340px;
+		}
+      .Empty {
+        vertical-align: middle;
+        margin-top: 0;
+      }
+    }
+    .Btn {
+      .BtnElement {
+        padding: 20px !important;
+
+        background: url("@assets/right-arrow.svg") no-repeat right 10% top 50% !important;
+      }
+    }
+  }
 }

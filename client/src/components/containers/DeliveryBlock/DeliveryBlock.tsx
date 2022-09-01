@@ -1,14 +1,20 @@
 import ButtonPrimary from '@components/UI/Buttons/ButtonPrimary/ButtonPrimary'
 import Text from '@components/UI/Text/Text'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import styles from './DeliveryBlock.module.scss'
-import fish from '@assets/deliveryFish.png'
+import fish from '@assets/delivery.svg'
 import car from '@assets/car.png'
 import clock from '@assets/clock.png'
 import cash from '@assets/cash.png'
-import { Link } from 'react-router-dom'
+import CartModal from '@components/common/Cart/CartModal/CartModal'
 
 const DeliveryBlock: FC = () => {
+    const [activeModal, setActiveModal] = useState<boolean>(false)
+
+    const activeHandler = () => {
+        setActiveModal(true)
+    }
+
     return (
         <div id="delivery" className={styles.Container}>
             <div className={styles.Text}>
@@ -38,10 +44,11 @@ const DeliveryBlock: FC = () => {
                     </div>
                     <Text className={styles.Decription} size="md">доставим в течении 24 часов</Text>
                 </div>
+                <CartModal active={activeModal} setActive={setActiveModal} />
                 <div className={styles.Center}>
-                    <Link to="/order">
+                    <button onClick={activeHandler}>
                         <ButtonPrimary className={styles.Btn} extraType="SecondaryArrowed">Оформить</ButtonPrimary>
-                    </Link>
+                    </button>
                 </div>
             </div>
             <div className={styles.Image}>

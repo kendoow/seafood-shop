@@ -24,14 +24,14 @@ const Layout: FC<LayoutProps> = ({ children }) => {
                 <div className={styles.Contacts}>
                     <div className={styles.ContactsTitle}>Контакты</div>
                     <div className={styles.FooterLinks}>
-                        <a href="tel:+7777777777">+7-999-999-99-99</a>
-                        <a href="mailto:mail@yandex.ru">mail@yandex.ru</a>
+                        <a href="tel:+79175880004" rel="noreferrer">+7-917-588-00-04</a>
+                        <a href="mailto:ikuroorders@mail.ru" rel="noreferrer">ikuroorders@mail.ru</a>
                     </div>
                     <div className={styles.FooterIcons}>
-                        <a href="tg">
+                        <a target="_blank" href="https://t.me/Ikuro1" rel="noreferrer">
                             <img src={telegram} alt="telegram" />
                         </a>
-                        <a href="whts">
+                        <a target="_blank" href="whts">
                             <img src={whatsapp} alt="whatsapp" />
                         </a>
                     </div>

@@ -25,6 +25,29 @@ class AuthController {
         }
     }
 
+    async resetPassword(req:Request, res:Response){
+        try {
+            const {resetToken} = req.cookies
+            const {id} = req.params
+            const {password, confirmPassword} = req.body
+            await authService.resetPassword(id, resetToken, password,confirmPassword) 
+            res.json(resetToken)
+        } catch (e) {
+            res.status(401).json({ message: `Auth Controller Error - ${e}` })
+        }
+    }
+
+    async reset(req:Request, res:Response){
+        try {
+            
+            const resetToken = await authService.reset(req.body.email)
+            res.cookie('resetToken', resetToken, { maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true })
+            res.json(resetToken)
+        } catch (e) {
+            res.status(401).json({ message: `Auth Controller Error - ${e}` })
+        }
+    }
+
     async logout(req:Request, res:Response,){
         try {
         const {refreshToken} = req.cookies;
